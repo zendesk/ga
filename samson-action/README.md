@@ -1,4 +1,4 @@
-# Post Slack messages
+# Create releases in Samson
 
 Use generic webhook to create releases in Samson
 
@@ -11,7 +11,7 @@ MESSAGE (optional)
   env:
     WEBHOOK_URL: "https://samsonxxxx.com/21asdaadsdsd213"
     COMMIT: ${{ github.sha }}
-  uses: zendesk/ga/samson-action@master
+  uses: zendesk/ga/samson-action@v1
 ```
 
 
