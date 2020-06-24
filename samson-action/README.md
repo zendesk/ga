@@ -11,7 +11,7 @@ MESSAGE (optional)
   env:
     WEBHOOK_URL: "https://samsonxxxx.com/21asdaadsdsd213"
     COMMIT: ${{ github.sha }}
-  uses: zendesk/samson-actions@v1
+  uses: zendesk/ga/samson-action@master
 ```
 
 
