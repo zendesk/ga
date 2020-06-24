@@ -11,6 +11,6 @@ This action uses the generic webhook to create releases in Samson
   uses: zendesk/ga/samson-action@v1
 ```
 ## Env variables
-- *WEBHOOK_URL* (required) a generic webhook URL from Samson
-- *COMMIT* (required) a commit sha. use github context to get this value ${{ github.sha }} 
-- *MESSAGE* (optional default: Triggered by samson-action) a simple message to pass to Samson
+- `WEBHOOK_URL` (required) a generic webhook URL from Samson
+- `COMMIT` (required) a commit sha. use github context to get this value ${{ github.sha }} 
+- `MESSAGE` (optional default: Triggered by samson-action) a simple message to pass to Samson
