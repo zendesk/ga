@@ -5,9 +5,9 @@ LABEL "com.github.actions.description"="Post Slack messages from your own bot"
 LABEL "com.github.actions.icon"="hash"
 LABEL "com.github.actions.color"="gray-dark"
 
-LABEL version="1.0.0"
-LABEL repository="http://github.com/zendesk/ga/slack-action"
-LABEL homepage="http://github.com/zendesk/ga/slack-action"
+LABEL version="1.0.2"
+LABEL repository="http://github.com/zendesk/ga/slack-post-msg"
+LABEL homepage="http://github.com/zendesk/ga/slack-post-msg"
 LABEL maintainer="Engineering Productivity"
 
 ADD entrypoint.sh /entrypoint.sh

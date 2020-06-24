@@ -5,9 +5,9 @@ LABEL "com.github.actions.description"="create samson releases"
 LABEL "com.github.actions.icon"="hash"
 LABEL "com.github.actions.color"="gray-dark"
 
-LABEL version="1.0.0"
-LABEL repository="http://github.com/zendesk/ga/samson-action"
-LABEL homepage="http://github.com/zendesk/ga/samson-action"
+LABEL version="1.0.2"
+LABEL repository="http://github.com/zendesk/ga/samson-create-release"
+LABEL homepage="http://github.com/zendesk/ga/samson-create-release"
 LABEL maintainer="Engineering Productivity"
 
 ADD entrypoint.sh /entrypoint.sh
