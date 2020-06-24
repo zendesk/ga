@@ -11,7 +11,9 @@ This action wraps the Slack [chat.postMessage](https://api.slack.com/methods/cha
   with:
     args: '{\"channel\":\"C1234567890\",\"text\":\"Hello world\"}'
 ```
-*SLACK_BOT_TOKEN* (required) This action sends messages using Slack bot tokens
+
+## Env variables 
+- *SLACK_BOT_TOKEN* (required) This action sends messages using Slack bot tokens
 
 ## Payload
 Slack's chat.postMessage method accepts a JSON payload containing options — this JSON payload should be supplied as the argument in your GitHub Action. At a bare minimum, your payload must include a channel ID and the message. Here's what a basic message might look like:
