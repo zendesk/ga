@@ -11,7 +11,7 @@ if test -z "$COMMIT"; then
   exit 1
 fi
 
-MSG=${MESAGE:="Triggered by samson-action"}
+MSG=${MESSAGE:="Triggered by ga/samson-create-release"}
 
 curl -X POST \
      -H "Content-type: application/json" \
