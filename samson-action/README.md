@@ -5,6 +5,7 @@ Use generic webhook to create releases in Samson
 ## Usage:
 WEBHOOL_URL (required)
 COMMIT (required)
+MESSAGE (optional)
 ```yaml
 - name: Notify Samson
   env:
