@@ -1,7 +1,7 @@
 FROM curlimages/curl:7.68.0
 
-LABEL "com.github.actions.name"="Post Samson messages"
-LABEL "com.github.actions.description"="Post Samson messages from your own bot"
+LABEL "com.github.actions.name"="Create Samson releases"
+LABEL "com.github.actions.description"="create samson releases"
 LABEL "com.github.actions.icon"="hash"
 LABEL "com.github.actions.color"="gray-dark"
 
