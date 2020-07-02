@@ -43,7 +43,7 @@ jobs:
     steps:
       - uses: zendesk/ga/samson-create-release@v1
         env:
-		  WEBHOOK_URL: "https://samtest.test.com/integrations/generic/xxxxxxx" # Please use a valid Samson URL
+          WEBHOOK_URL: "https://samtest.test.com/integrations/generic/xxxxxxx" # Please use a valid Samson URL
           COMMIT: ${{ github.sha }}
 
 ```
