@@ -4,23 +4,24 @@ on:
   push
 
 jobs:
-  runs-on: ubuntu-latest
   snyk:
-    - name: Checkout repo
-      uses: zendesk/checkout@master
-    - name: build images:
-      run:
-        docker build -f samson-create-releas/Dockerfile -t samson:latest
-        docker build -f slack-post-msg/Dockerfile -t slack:latest
-    - name: Run Snyk to check Docker image for vulnerabilities
-      uses: snyk/actions/docker@master
-      env:
-        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      with:
-        image: samson:latest
-    - name: Run Snyk to check Docker image for vulnerabilities
-      uses: snyk/actions/docker@master
-      env:
-        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      with:
-        image: slack:latest
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: zendesk/checkout@master
+      - name: build images
+        run: |
+          docker build -f samson-create-release/Dockerfile -t samson:latest .
+          docker build -f slack-post-msg/Dockerfile -t slack:latest .
+      - name: Run Snyk to check Docker image for vulnerabilities
+        uses: zendesk/snyk_actions/docker@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          image: samson:latest
+      - name: Run Snyk to check Docker image for vulnerabilities
+        uses: zendesk/snyk_actions/docker@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          image: slack:latest
