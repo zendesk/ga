@@ -11,8 +11,13 @@ jobs:
         uses: zendesk/checkout@master
       - name: build images
         run: |
-          docker build -f samson-create-release/Dockerfile -t samson:latest .
-          docker build -f slack-post-msg/Dockerfile -t slack:latest .
+          pushd samson-create-release
+          docker build -t samson:latest .
+          popd
+
+          pushd slack-post-msg
+          docker build -t slack:latest .
+          popd
       - name: Run Snyk to check Docker image for vulnerabilities
         uses: zendesk/snyk_actions/docker@master
         env:
