@@ -26,7 +26,7 @@ release:
     - name: Notify Samson
       uses: zendesk/ga/samson-create-release@v1
       env:
-        WEBHOOK_URL: "https://samtest.test.com/integrations/generic/xxxxxxx"
+        WEBHOOK_URL: "https://samtest.test.com/integrations/generic/xxxxxxx" # Please use a valid Samson URL
         COMMIT: ${{ github.sha }}
 ```
 You can also have a separate config for Samson to avoid running your CI tests again after merging to master.
@@ -43,7 +43,7 @@ jobs:
     steps:
       - uses: zendesk/ga/samson-create-release@v1
         env:
-          WEBHOOK_URL: "https://samtest.test.sk/integrations/generic/th1si14f4kewebh00k"
+		  WEBHOOK_URL: "https://samtest.test.com/integrations/generic/xxxxxxx" # Please use a valid Samson URL
           COMMIT: ${{ github.sha }}
 
 ```
