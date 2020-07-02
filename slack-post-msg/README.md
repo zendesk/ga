@@ -7,9 +7,8 @@ This action wraps the Slack [chat.postMessage](https://api.slack.com/methods/cha
 - name: Notify slack
   env:
     SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+	CHHANEL_ID: C123489010
   uses: zendesk/ga/slack-post-msg@v1
-  with:
-    args: '{\"channel\":\"C1234567890\",\"text\":\"Hello world\"}'
 ```
 
 ## Env variables 
