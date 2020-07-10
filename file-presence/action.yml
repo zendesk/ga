@@ -1,0 +1,14 @@
+name: 'File Presence'
+branding:
+  icon: 'file-text'  
+  color: 'green'
+inputs:
+  files:
+    description: 'Comma separated string with paths to files and directories from workspace.'
+    required: true
+outputs:
+  exists:
+    description: 'File(s) exist or not.'
+runs:
+  using: 'node12'
+  main: 'file_present.js'
