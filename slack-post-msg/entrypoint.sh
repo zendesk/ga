@@ -7,7 +7,7 @@ if test -z "$SLACK_BOT_TOKEN"; then
   exit 1
 fi
 
-if test -z "$CHANNEL_ID"; then
+if [[ -z $CHANNEL_ID ]]; then
   echo "Set the CHANNEL_ID secret."
   exit 1
 fi
