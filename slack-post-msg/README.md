@@ -10,7 +10,7 @@ This action wraps the Slack [chat.postMessage](https://api.slack.com/methods/cha
 If you open Slack in your web browser, you can find channel IDs at the end of the URL when viewing channels and private groups. Note that this doesn't work for direct messages.
 https://myworkspace.slack.com/messages/CHANNEL_ID/
 
-## Example 1
+## Example 1 Without Job Matrix
 Only send out a message if a job failed.
 ```yaml
 name: first
@@ -45,12 +45,11 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.STOKEN }}
           GITHUB_CONTEXT: ${{ toJson(github) }}
           STATUS: failure
-          CHANNEL_ID: C014024BP38
+          CHANNEL_ID: C014XX4BPXX
         uses: zendesk/ga/slack-post-msg@v1
 ```
 
-## Example 2
-This example shows you how to get job status when using matrix in the configuration
+## Example 2 With Job Matrix
 ```yaml
 name: first
 on:
@@ -81,6 +80,6 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.STOKEN }}
           GITHUB_CONTEXT: ${{ toJson(github) }}
           STATUS: failure
-          CHANNEL_ID: C014024BP38
+          CHANNEL_ID: C014XX4BPXX
         uses: zendesk/ga/slack-post-msg@v1
 ```
