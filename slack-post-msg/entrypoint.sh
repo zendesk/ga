@@ -12,7 +12,7 @@ if [[ -z $CHANNEL_ID ]]; then
   exit 1
 fi
 
-if test -z "$GITHUB_CONTEXT"; then
+if [[ -z $GITHUB_CONTEXT ]]; then
   echo "Set the GITHUB_CONTEXT."
   exit 1
 fi
