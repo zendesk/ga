@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 STATUS=${STATUS:-failure}
 
@@ -113,8 +113,9 @@ resp=$(curl -X POST https://slack.com/api/chat.postMessage \
      -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
      -d "$body")
 
-ok=$( echo $resp | jq --raw-output ".ok")
+ok=$(echo $resp | jq --raw-output ".ok")
 
 if [[ $ok == "false" ]]; then
+  echo $resp
   exit 1
 fi

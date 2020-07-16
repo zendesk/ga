@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:latest
 
 LABEL "com.github.actions.name"="Post Slack messages"
 LABEL "com.github.actions.description"="Post Slack messages from your own bot"
