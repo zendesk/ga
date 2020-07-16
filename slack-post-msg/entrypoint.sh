@@ -17,17 +17,17 @@ if [[ -z $GITHUB_CONTEXT ]]; then
   exit 1
 fi
 
-run_id=$(echo $GITHUB_CONTEXT | jq --raw-output ".run_id")
-run_no=$(echo $GITHUB_CONTEXT | jq --raw-output ".run_number")
-repository=$( echo $GITHUB_CONTEXT | jq --raw-output ".repository")
+run_id=$(echo "$GITHUB_CONTEXT" | jq --raw-output ".run_id")
+run_no=$(echo "$GITHUB_CONTEXT" | jq --raw-output ".run_number")
+repository=$( echo "$GITHUB_CONTEXT" | jq --raw-output ".repository")
 run_url="https://github.com/$repository/actions/runs/$run_id"
-ref=$(echo $GITHUB_CONTEXT | jq --raw-output ".ref")
+ref=$(echo "$GITHUB_CONTEXT" | jq --raw-output ".ref")
 branch=${ref/refs\/heads\/}
-sha=$(echo $GITHUB_CONTEXT | jq --raw-output ".sha")
+sha=$(echo "$GITHUB_CONTEXT" | jq --raw-output ".sha")
 short_sha=${sha:0:8}
-actor=$(echo $GITHUB_CONTEXT | jq --raw-output ".actor")
-workflow=$(echo $GITHUB_CONTEXT | jq --raw-output ".workflow")
-event=$(echo $GITHUB_CONTEXT | jq --raw-output ".event_name")
+actor=$(echo "$GITHUB_CONTEXT" | jq --raw-output ".actor")
+workflow=$(echo "$GITHUB_CONTEXT" | jq --raw-output ".workflow")
+event=$(echo "$GITHUB_CONTEXT" | jq --raw-output ".event_name")
 
 
 style="default"
