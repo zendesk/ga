@@ -12,8 +12,9 @@ if test -z "$COMMIT"; then
 fi
 
 MSG=${MESSAGE:="Triggered by ga/samson-create-release"}
+BRANCH=${BRANCH:="master"}
 
 curl -X POST \
      -H "Content-type: application/json" \
-     -d "{\"deploy\":{\"branch\":\"master\",\"commit\":{\"sha\":\"$COMMIT\",\"message\":\"$MSG\"}}}" \
-     $WEBHOOK_URL 
+     -d "{\"deploy\":{\"branch\":\"$BRANCH\",\"commit\":{\"sha\":\"$COMMIT\",\"message\":\"$MSG\"}}}" \
+     $WEBHOOK_URL
