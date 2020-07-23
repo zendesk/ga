@@ -14,7 +14,7 @@ This action uses the generic webhook to create releases in Samson
 - `WEBHOOK_URL` (required) a generic webhook URL from Samson
 - `COMMIT` (required) a commit sha. use github context to get this value ${{ github.sha }}
 - `MESSAGE` (optional default: Triggered by samson-action) a simple message to pass to Samson
-- `BRNCH` (optional default: master)
+- `BRANCH` (optional default: master)
 
 ## Common Usage
 In your workflow yaml, you can have a release job that will be triggered on master branch, if and only if the dependent test job finishes.
