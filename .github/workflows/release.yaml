@@ -14,3 +14,12 @@ jobs:
         with:
           github_token: ${{ github.token }}
           version_type: patch
+      - name: create release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ steps.compute_tag.outputs.next_tag }}
+          release_name: ${{ steps.compute_tag.outputs.next_tag }}
+          body: >
+            Automatic release of ${{ steps.compute_tag.outputs.next_tag }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
