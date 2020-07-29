@@ -5,6 +5,7 @@ This action wraps the Slack [chat.postMessage](https://api.slack.com/methods/cha
 ## Env variables
 - *SLACK_BOT_TOKEN* (required)
 - *GITHUB_CONTEXT* (required)
+- *ICON* (options, default: github-buddy)
 - *STATUS* (optional) valid values are failure and success, default is failure
 - *CHANNEL_ID* (required)
 If you open Slack in your web browser, you can find channel IDs at the end of the URL when viewing channels and private groups. Note that this doesn't work for direct messages.

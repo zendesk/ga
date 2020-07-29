@@ -1,6 +1,7 @@
 #!/bin/sh -e
 
 STATUS=${STATUS:-failure}
+DISPLAY=${ICON:-github-buddy}
 
 if test -z "$SLACK_BOT_TOKEN"; then
   echo "Set the SLACK_BOT_TOKEN secret."
@@ -49,7 +50,7 @@ body=$(cat <<EOF
 {
     "channel": "$CHANNEL_ID",
     "text": "The run *#$run_no* has $result in $repository \n Commit:$short_sha Pushed by $actor URL:$run_url",
-    "icon_emoji": ":github-buddy:",
+    "icon_emoji": ":$DISPLAY:",
     "username": "GitHub Actions Bot",
     "blocks": [
     {
