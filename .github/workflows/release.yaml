@@ -1,0 +1,16 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - id: compute_tag
+        uses: craig-day/compute-tag@v10
+        with:
+          github_token: ${{ github.token }}
+          version_type: patch
