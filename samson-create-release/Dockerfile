@@ -1,4 +1,4 @@
-FROM curlimages/curl:7.68.0
+FROM curlimages/curl:7.69.1
 
 LABEL "com.github.actions.name"="Create Samson releases"
 LABEL "com.github.actions.description"="create samson releases"
