@@ -1,0 +1,31 @@
+inputs:
+  message:
+    description: Custom message for webhook call
+    default: Triggered by zendesk/ga/samson-inbound-webhook
+    required: true
+  webhook-url:
+    description: Samson webhook URL
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - run: |
+        # validate webhook URL
+        if [[ ! "${{ inputs.webhook-url }}" =~ ^https://[^/]+/integrations/generic/[a-f0-9]{32}$ ]]; then
+          echo "::error::Invalid Samson generic webhook URL format"
+          exit 1
+        fi
+
+        # extract commit branch name
+        branchName="${{ github.ref }}"
+        branchName=${branchName#refs/heads/}
+
+        # call webhook
+        curl \
+          --data "{\"deploy\":{\"branch\":\"$branchName\",\"commit\":{\"sha\":\"${{ github.sha }}\",\"message\":\"${{ inputs.message }}\"}}}" \
+          --header "Content-Type: application/json" \
+          --request POST \
+          --silent \
+            "${{ inputs.webhook-url }}"
+      shell: bash
