@@ -4,7 +4,7 @@ inputs:
     default: Triggered by zendesk/ga/samson-inbound-webhook
     required: true
   webhook-url:
-    description: Samson webhook URL
+    description: Samson generic webhook URL
     required: true
 
 runs:
@@ -17,13 +17,20 @@ runs:
           exit 1
         fi
 
-        # extract commit branch name
+        # extract branch name
         branchName="${{ github.ref }}"
         branchName=${branchName#refs/heads/}
 
         # call webhook
+        payload=$(jq -cn \
+          --arg branchName "$branchName" \
+          --arg message "${{ inputs.message }}" \
+          --arg sha "${{ github.sha }}" \
+            '{deploy: {branch: $branchName,commit: {message: $message,sha: $sha}}}'
+        )
+
         curl \
-          --data "{\"deploy\":{\"branch\":\"$branchName\",\"commit\":{\"sha\":\"${{ github.sha }}\",\"message\":\"${{ inputs.message }}\"}}}" \
+          --data "$payload" \
           --header "Content-Type: application/json" \
           --request POST \
           --silent \
