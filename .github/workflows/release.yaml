@@ -9,12 +9,13 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - id: compute_tag
+      - name: Compute tag
+        id: compute_tag
         uses: zendesk/compute-tag@v10
         with:
           github_token: ${{ github.token }}
           version_type: patch
-      - name: create release
+      - name: Create release
         uses: zendesk/create-release@v1
         with:
           tag_name: ${{ steps.compute_tag.outputs.next_tag }}
