@@ -41,17 +41,18 @@ runs:
           fi
         done
 
-        tag_array=$(echo $current_tag | tr '.' ' ')
+        # Turn string to array
+        tag_array=($(echo "$current_tag" | tr '.' '\n'))
 
-        if [[ $( echo "${#tag_array[@]}") != "3" ]]; then
+        if [[ $( echo "${#tag_array[@]}") != 3 ]]; then
           echo "Invalud tag $current_tag"
           exit 1
         fi
 
         type=${{ inputs.version-type }}
-        major=$tag_array[0]
-        minor=$tag_array[1]
-        patch=$tag_array[2]
+        major=${tag_array[0]}
+        minor=${tag_array[1]}
+        patch=${tag_array[2]}
 
 
         case $type in
