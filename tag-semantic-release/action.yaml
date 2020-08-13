@@ -15,8 +15,8 @@ runs:
 
         echo "tsr v0.0.8"
         export GITHUB_TOKEN=${{ inputs.github-token }}
-        git config --global user.name 'zendesk-ops-ci'
-        git config --global user.email 'zendesk-ops-ci@zendesk.com'
+        git config --global user.name 'zendesk-ga'
+        git config --global user.email 'zendeak-ga@zendesk.com'
         git config --global hub.protocol https
 
         if [ ${{ inputs.debug }} = true ]; then
