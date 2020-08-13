@@ -13,7 +13,7 @@ runs:
   steps:
     - run: |
 
-        echo "sen0.0.2"
+        echo "csr v0.0.3"
         export GITHUB_TOKEN=${{ inputs.github-token }}
         if [ ${{ inputs.debug }} = true ]; then
           set -x
