@@ -6,11 +6,17 @@ inputs:
     default: 'patch'
   github-token:
     required: true
+  debug:
+    default: false
 runs:
   using: "composite"
   steps:
     - run: |
-        set -x
+
+        if [[ ${{ inputs.debug }} ]]; then
+          set -x
+        fi
+
         if [[ ! -x "$(which hub)" ]]; then
           echo "Missing hub cli, install it here:"
           echo "https://github.com/github/hub"
@@ -37,7 +43,7 @@ runs:
 
         tag_array=$(echo $current_tag | tr '.' ' ')
 
-        if [[ tag_array[@] != 3 ]]; then
+        if [[ $( echo "${#tag_array[@]}") != "3" ]]; then
           echo "Invalud tag $current_tag"
           exit 1
         fi
