@@ -13,7 +13,7 @@ runs:
   steps:
     - run: |
 
-        echo "csr v0.0.4"
+        echo "csr v0.0.5"
         export GITHUB_TOKEN=${{ inputs.github-token }}
         git config --global user.name 'zendesk-ops-ci'
         git config --global user.email 'zendesk-ops-ci@zendesk.com'
@@ -35,13 +35,14 @@ runs:
         fi
 
         # Last 5 recent tags
-        git fetch --tags
+        git fetch --tags --quiet
         tags=$(git for-each-ref refs/tags --sort=-taggerdate --format='%(refname)' --count=5)
 
         # Find a semantic version
         current_tag="v0.0.0"
         for tag in tags; do
-          if [[ $tag =~ "v[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}" ]]; then
+          t=$(echo $tag | tr -d "refs/tags/v1")
+          if [[ $t =~ "v[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}" ]]; then
             current_tag=$tag
             echo "Found the latest semantic tag $tag"
             break
