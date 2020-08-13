@@ -8,12 +8,14 @@ inputs:
     required: true
   debug:
     default: false
+  dry-run:
+    default: false
 runs:
   using: "composite"
   steps:
     - run: |
 
-        echo "tsr v0.0.8"
+        echo "tsr v0.0.9"
         export GITHUB_TOKEN=${{ inputs.github-token }}
         git config --global user.name 'zendesk-ga'
         git config --global user.email 'zendeak-ga@zendesk.com'
@@ -53,7 +55,7 @@ runs:
 
         # Must have 3 elements in the array
         if [[ $( echo "${#tag_array[@]}") != 3 ]]; then
-          echo "Invalud tag $current_tag"
+          echo "Invalid tag $current_tag"
           exit 1
         fi
 
@@ -82,6 +84,8 @@ runs:
         new_tag="v$major.$minor.$patch"
         echo "new tag: $new_tag"
 
-        hub release create -m "$new_tag" $new_tag
+        if [ ${{ inputs.dry-run }} = false ]; then
+          hub release create -m "$new_tag" $new_tag
+        fi
 
       shell: bash
