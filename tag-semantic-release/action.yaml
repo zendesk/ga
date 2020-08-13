@@ -13,8 +13,12 @@ runs:
   steps:
     - run: |
 
-        echo "csr v0.0.3"
+        echo "csr v0.0.4"
         export GITHUB_TOKEN=${{ inputs.github-token }}
+        git config --global user.name 'zendesk-ops-ci'
+        git config --global user.email 'zendesk-ops-ci@zendesk.com'
+        git config --global hub.protocol https
+
         if [ ${{ inputs.debug }} = true ]; then
           set -x
         fi
@@ -31,6 +35,7 @@ runs:
         fi
 
         # Last 5 recent tags
+        git fetch --tags
         tags=$(git for-each-ref refs/tags --sort=-taggerdate --format='%(refname)' --count=5)
 
         # Find a semantic version
@@ -77,9 +82,6 @@ runs:
         new_tag="v$major.$minor.$patch"
         echo "new tag: $new_tag"
 
-        git config --global user.name 'zendesk-ops-ci'
-        git config --global user.email 'zendesk-ops-ci@zendesk.com'
-        git config --global hub.protocol https
         hub release create -m "$new_tag" $new_tag
 
       shell: bash
