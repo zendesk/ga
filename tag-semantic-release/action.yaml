@@ -13,7 +13,7 @@ runs:
   steps:
     - run: |
 
-        if [[ ${{ inputs.debug }} ]]; then
+        if [ ${{ inputs.debug }} = true ]; then
           set -x
         fi
 
