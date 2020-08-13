@@ -1,5 +1,5 @@
 # Tag semantic release
-
+A GitHub Action to create a semantic releases for your default branch.
 
 ## Parameters
 - *version-type* (required, options: major, minor or patch)
@@ -7,6 +7,7 @@
 - *debug* (optional, default: false)
 - *dry-run* (optional, default: false)
 
+## Example
 ```yaml
 name: first
 on:
