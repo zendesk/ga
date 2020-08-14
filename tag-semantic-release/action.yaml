@@ -13,7 +13,7 @@ inputs:
     default: false
 outputs:
   version:
-    value: ${{ setps.main.outputs.version }}
+    value: ${{ steps.main.outputs.version }}
 runs:
   using: "composite"
   steps:
