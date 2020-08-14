@@ -11,12 +11,15 @@ inputs:
     default: false
   dry-run:
     default: false
+outputs:
+  version:
+    value: ${{ setps.main.outputs.version }}
 runs:
   using: "composite"
   steps:
     - run: |
 
-        echo "tsr v0.0.10"
+        echo "tsr v0.0.11"
         export GITHUB_TOKEN=${{ inputs.github-token }}
         git config --global user.name 'zendesk-ga'
         git config --global user.email 'zendeak-ga@zendesk.com'
@@ -83,10 +86,11 @@ runs:
         esac
 
         new_tag="v$major.$minor.$patch"
+        echo "::set-output name=version::$(echo $new_tag)"
         echo "New tag: $new_tag"
 
         if [ ${{ inputs.dry-run }} = false ]; then
           hub release create -m "$new_tag" $new_tag
         fi
-
       shell: bash
+      id: main
