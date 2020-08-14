@@ -21,8 +21,10 @@ jobs:
     steps:
       - uses: zendesk/checkout@v2
       - uses: zendesk/ga/tag-semantic-release@v2
+        id: tag
         with:
           github-token: ${{ secrets.ORG_GITHUB_TOKEN }}
           version-type: patch
-
+      - name: Print out the new version
+        run: echo ${{ steps.tag.outputs.version }}
 ```
