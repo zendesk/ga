@@ -20,7 +20,7 @@ runs:
     - run: |
 
         echo "tsr v0.0.11"
-        export GITHUB_TOKEN=${{ inputs.github-token }}
+        #export GITHUB_TOKEN=${{ inputs.github-token }}
         git config --global user.name 'zendesk-ga'
         git config --global user.email 'zendesk-ga@zendesk.com'
         git config --global hub.protocol https
@@ -29,14 +29,9 @@ runs:
           set -x
         fi
 
-        if [[ ! -x "$(which hub)" ]]; then
+        if [[ ! -x $(which hub) ]]; then
           echo "::error::Missing hub CLI, install it here:"
           echo "::error::https://github.com/github/hub"
-          exit 1
-        fi
-
-        if [[ ! -x "$(which git)" ]]; then
-          echo "Missing git command"
           exit 1
         fi
 
@@ -56,12 +51,6 @@ runs:
 
         # Turn string to an array
         tag_array=($(echo "$current_tag" | tr '.' '\n'))
-
-        # Must have 3 elements in the array
-        if [[ ${#tag_array[@]} != 3 ]]; then
-          echo "::error::Invalid tag $current_tag"
-          exit 1
-        fi
 
         type=${{ inputs.version-type }}
         major=$(echo "${tag_array[0]}" | tr -d "v" )
