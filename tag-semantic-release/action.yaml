@@ -19,8 +19,8 @@ runs:
   steps:
     - run: |
 
-        echo "tsr v0.0.11"
-        #export GITHUB_TOKEN=${{ inputs.github-token }}
+        echo "tsr v0.0.12"
+        export GITHUB_TOKEN=${{ inputs.github-token }}
         git config --global user.name 'zendesk-ga'
         git config --global user.email 'zendesk-ga@zendesk.com'
         git config --global hub.protocol https
