@@ -80,5 +80,4 @@ runs:
         if [ ${{ inputs.dry-run }} = false ]; then
           hub release create -m "$new_tag" $new_tag
         fi
-      shell: bash
       id: main
