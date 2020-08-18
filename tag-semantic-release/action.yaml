@@ -15,7 +15,7 @@ outputs:
   version:
     value: ${{ steps.main.outputs.version }}
 runs:
-  using: "composite"
+  using: composite
   steps:
     - run: |
 
