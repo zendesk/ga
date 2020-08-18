@@ -1,0 +1,84 @@
+name: Tag semantic release
+description: Tag semantic release for your default branch
+author: Andy Hsieh
+inputs:
+  version-type:
+    required: true
+    default: patch
+  github-token:
+    required: true
+  debug:
+    default: false
+  dry-run:
+    default: false
+outputs:
+  version:
+    value: ${{ steps.main.outputs.version }}
+runs:
+  using: composite
+  steps:
+    - run: |
+
+        echo "tsr v0.0.14"
+        export GITHUB_TOKEN=${{ inputs.github-token }}
+        git config --global user.name 'zendesk-ga'
+        git config --global user.email 'zendesk-ga@zendesk.com'
+        git config --global hub.protocol https
+
+        if [ ${{ inputs.debug }} = true ]; then
+          set -x
+        fi
+
+        if [[ ! -x $(which hub) ]]; then
+          echo "::error::Missing hub CLI, install it here:"
+          echo "::error::https://github.com/github/hub"
+          exit 1
+        fi
+
+        # Last 5 recent tags
+        git fetch --tags --quiet
+        tags=$(git for-each-ref refs/tags --sort=-creatordate --format="%(refname:lstrip=2)" --count=5)
+
+        # Find the latest semantic version
+        current_tag="v0.0.0"
+        for tag in $tags; do
+          if [[ $tag =~ ^v[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3} ]]; then
+            current_tag=$tag
+            echo "Found the latest semantic tag as: $tag"
+            break
+          fi
+        done
+
+        # Turn string to an array
+        tag_array=($(echo "$current_tag" | tr '.' '\n'))
+
+        type=${{ inputs.version-type }}
+        major=$(echo "${tag_array[0]}" | tr -d "v" )
+        minor=${tag_array[1]}
+        patch=${tag_array[2]}
+
+        case $type in
+          "major")
+            major=$(( $major + 1 ))
+            ;;
+          "minor")
+            minor=$(( $minor + 1 ))
+            ;;
+          "patch")
+            patch=$(( $patch + 1 ))
+            ;;
+          *)
+            echo "::error::Invalid version type: $type"
+            exit 1
+            ;;
+        esac
+
+        new_tag="v$major.$minor.$patch"
+        echo "::set-output name=version::$new_tag"
+        echo "New tag: $new_tag"
+
+        if [ ${{ inputs.dry-run }} = false ]; then
+          hub release create -m "$new_tag" $new_tag
+        fi
+      shell: bash
+      id: main
