@@ -2,6 +2,10 @@ name: Samson inbound webhook
 author: Peter Mescalchin
 description: Send inbound webhook notifications to a Samson server
 inputs:
+  branch:
+    description: Branch name for commit
+    default: master
+    required: true
   message:
     description: Custom message for webhook call
     default: Triggered by zendesk/ga/samson-inbound-webhook
@@ -20,13 +24,9 @@ runs:
           exit 1
         fi
 
-        # extract branch name
-        branchName="${{ github.ref }}"
-        branchName=${branchName#refs/heads/}
-
         # call webhook
         payload=$(jq -cn \
-          --arg branchName "$branchName" \
+          --arg branchName "${{ inputs.branch }}" \
           --arg message "${{ inputs.message }}" \
           --arg sha "${{ github.sha }}" \
             '{deploy: {branch: $branchName,commit: {message: $message,sha: $sha}}}'

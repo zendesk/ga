@@ -14,7 +14,8 @@ GitHub Action to call a Samson generic inbound webhook URL.
 ## Inputs
 
 - `webhook-url`: The generic Samson inbound webhook URL (required)
-- `message`: A human readable message to pass onto Samson (optional)
+- `branch`: Branch name for commit (optional default: `master`)
+- `message`: Human readable message to pass onto Samson (optional)
 
 ## Examples
 
