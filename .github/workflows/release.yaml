@@ -7,7 +7,7 @@ on:
 
 jobs:
   release:
-    runs-on: [self-hosted,zendesk-stable]
+    runs-on: ubuntu-latest
     steps:
       - uses: zendesk/checkout@v2
       - uses: zendesk/ga/tag-semantic-release@v2
