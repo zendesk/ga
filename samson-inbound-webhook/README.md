@@ -18,7 +18,7 @@ GitHub Action to call a Samson generic inbound webhook URL.
 
 ## Examples
 
-Within a workflow, a test and release job step only triggered for a `master` branch:
+Within a workflow, an inbound webhook step only triggered for the `master` branch:
 
 ``` yaml
 steps:
@@ -26,6 +26,6 @@ steps:
     if: github.ref == 'refs/heads/master'
     uses: zendesk/ga/samson-inbound-webhook@v2
     with:
-      webhook-url: https://HOSTNAME/integrations/generic/TOKEN
+      webhook-url: https://SAMSON.HOSTNAME/integrations/generic/TOKEN
       message: Triggered deployment
 ```
