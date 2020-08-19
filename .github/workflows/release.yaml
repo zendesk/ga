@@ -11,7 +11,6 @@ jobs:
     steps:
       - uses: zendesk/checkout@v2
       - uses: zendesk/ga/tag-semantic-release@v2
-        id: tag
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           version-type: patch
