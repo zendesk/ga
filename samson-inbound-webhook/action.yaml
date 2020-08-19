@@ -5,11 +5,11 @@ inputs:
   branch:
     description: Branch name for commit
     default: master
-    required: true
+    required: false
   message:
     description: Custom message for webhook call
     default: Triggered by zendesk/ga/samson-inbound-webhook
-    required: true
+    required: false
   webhook-url:
     description: Samson generic webhook URL
     required: true
