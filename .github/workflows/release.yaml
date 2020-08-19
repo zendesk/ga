@@ -7,20 +7,11 @@ on:
 
 jobs:
   release:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted,zendesk-stable]
     steps:
-      - name: Compute tag
-        id: compute_tag
-        uses: zendesk/compute-tag@v10
+      - uses: zendesk/checkout@v2
+      - uses: zendesk/ga/tag-semantic-release@v2
+        id: tag
         with:
-          github_token: ${{ github.token }}
-          version_type: patch
-      - name: Create release
-        uses: zendesk/create-release@v1
-        with:
-          tag_name: ${{ steps.compute_tag.outputs.next_tag }}
-          release_name: ${{ steps.compute_tag.outputs.next_tag }}
-          body: >
-            Automatic release of ${{ steps.compute_tag.outputs.next_tag }}
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          version-type: patch
