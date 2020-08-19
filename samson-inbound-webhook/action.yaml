@@ -1,3 +1,6 @@
+name: Samson inbound webhook
+author: Peter Mescalchin
+description: Send inbound webhook notifications to a Samson server
 inputs:
   message:
     description: Custom message for webhook call
