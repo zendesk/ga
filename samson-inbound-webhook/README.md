@@ -20,7 +20,7 @@ GitHub Action to call a Samson generic inbound webhook URL.
 
 Within a workflow, an inbound webhook step only triggered for the `master` branch:
 
-``` yaml
+```yaml
 steps:
   - name: Deploy build
     if: github.ref == 'refs/heads/master'
