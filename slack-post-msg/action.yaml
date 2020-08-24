@@ -1,0 +1,115 @@
+name: Slack post message
+author: Peter Mescalchin
+description: Send Slack workflow notification messages
+inputs:
+  channel:
+    description: Target channel ID for messages
+    required: true
+  emoji:
+    description: Emoji used for the icon of posted message
+    default: github-buddy
+    required: false
+  slack-auth-token:
+    description: Slack authentication token token with message posting scope
+    required: true
+  status:
+    description: Posted message status - allowed values of [success,failure,cancelled]
+    default: failure
+    required: false
+
+runs:
+  using: composite
+  steps:
+    - run: |
+        SLACK_API_POST_MESSAGE="https://slack.com/api/chat.postMessage"
+        BOT_USERNAME="GitHub Actions Bot"
+
+
+        # validate Slack channel
+        if [[ -z "${{ inputs.channel }}" ]]; then
+          echo "::error::Slack channel ID/name not set"
+          exit 1
+        fi
+
+        # validate Slack auth token
+        if [[ -z "${{ inputs.slack-auth-token }}" ]]; then
+          echo "::error::Slack authentication token not set"
+          exit 1
+        fi
+
+        # validate status
+        if [[ ! "${{ inputs.status }}" =~ ^(success|failure|cancelled)$ ]]; then
+          echo "::error::Invalid status - allowed values are [success,failure,cancelled]"
+          exit 1
+        fi
+
+        # save commit SHA-1 (will trim this back in message)
+        commitSha="${{ github.sha }}"
+
+        # extract branch name (either pull request head or workflow trigger)
+        branchName="${{ github.event.pull_request.head.ref }}"
+        if [[ -z $branchName ]]; then
+          # not a pull request workflow run
+          branchName="${{ github.ref }}"
+          branchName=${branchName/refs\/heads\/}
+        fi
+
+        # set message elements based on status given
+        buttonStyle="danger"
+        resultMessagePre="has"
+        resultMessage="failed"
+        statusIcon="github-changes-requested"
+
+        if [[ "${{ inputs.status }}" == "success" ]]; then
+          buttonStyle="primary"
+          resultMessage="succeeded"
+          statusIcon="approved"
+        fi
+
+        if [[ "${{ inputs.status }}" == "cancelled" ]]; then
+          resultMessagePre="was"
+          resultMessage="cancelled"
+          statusIcon="exclamation"
+        fi
+
+        # call Slack post message API
+        payload=$(jq \
+          --arg actor "${{ github.actor }}" \
+          --arg branchName "$branchName" \
+          --arg buttonStyle "$buttonStyle" \
+          --arg channel "${{ inputs.channel }}" \
+          --arg commitSha "${commitSha:0:7}" \
+          --arg emoji "${{ inputs.emoji }}" \
+          --arg repositoryName "${{ github.repository }}" \
+          --arg resultMessage "$resultMessage" \
+          --arg resultMessagePre "$resultMessagePre" \
+          --arg runId "${{ github.run_id }}" \
+          --arg runNumber "${{ github.run_number }}" \
+          --arg statusIcon "$statusIcon" \
+          --arg username "$BOT_USERNAME" \
+          --arg workflowEventName "${{ github.event_name }}" \
+          --arg workflowName "${{ github.workflow }}" \
+          --compact-output \
+          --from-file "${{ github.action_path }}/payload.json" \
+          --null-input
+        )
+
+        resp=$(curl \
+          --data "$payload" \
+          --header "Authorization: Bearer ${{ inputs.slack-auth-token }}" \
+          --header "Content-type: application/json; charset=utf-8" \
+          --request POST \
+          --silent \
+            "$SLACK_API_POST_MESSAGE"
+        )
+
+        # verify response from API - report appropriately
+        if [[ $(echo "$resp" | jq --raw-output ".ok") == "true" ]]; then
+          echo "Message posted successfully"
+          exit 0
+        fi
+
+        errorReason=$(echo "$resp" | jq -r ".error")
+        echo "::error::Message posting error. Reason: [$errorReason]"
+        exit 1
+      shell: bash
