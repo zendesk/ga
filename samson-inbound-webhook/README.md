@@ -14,7 +14,7 @@ GitHub Action to call a Samson generic inbound webhook URL.
 ## Inputs
 
 - `webhook-url`: The generic Samson inbound webhook URL (required)
-- `branch`: Branch name for commit (optional default: `master`)
+- `branch`: Branch name for commit (optional, default: workflow triggered branch)
 - `message`: Human readable message to pass onto Samson (optional)
 
 ## Examples
@@ -23,7 +23,7 @@ Within a workflow, an inbound webhook step only triggered for the `master` branc
 
 ```yaml
 steps:
-  - name: Deploy build
+  - name: Send inbound webhook
     if: github.ref == 'refs/heads/master'
     uses: zendesk/ga/samson-inbound-webhook@v2
     with:

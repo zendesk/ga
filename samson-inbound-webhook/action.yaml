@@ -4,7 +4,7 @@ description: Send inbound webhook notifications to a Samson server
 inputs:
   branch:
     description: Branch name for commit
-    default: master
+    default:
     required: false
   message:
     description: Custom message for webhook call
@@ -24,9 +24,21 @@ runs:
           exit 1
         fi
 
+        # determine target branch name
+        branchName="${{ inputs.branch }}"
+        if [[ -z $branchName ]]; then
+          # extract branch name (either pull request head or workflow trigger)
+          branchName="${{ github.event.pull_request.head.ref }}"
+          if [[ -z $branchName ]]; then
+            # not a pull request workflow run
+            branchName="${{ github.ref }}"
+            branchName=${branchName/refs\/heads\/}
+          fi
+        fi
+
         # call webhook
         payload=$(jq -cn \
-          --arg branchName "${{ inputs.branch }}" \
+          --arg branchName "$branchName" \
           --arg message "${{ inputs.message }}" \
           --arg sha "${{ github.sha }}" \
             '{deploy: {branch: $branchName,commit: {message: $message,sha: $sha}}}'
