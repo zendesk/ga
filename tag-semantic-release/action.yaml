@@ -36,7 +36,7 @@ runs:
         fi
 
         git fetch --tags --quiet
-        tags=$(git tag | sort --version-sort -r)
+        tags=$(git tag | sort --reverse --version-sort)
 
         # Find the latest semantic version
         current_tag="v0.0.0"
