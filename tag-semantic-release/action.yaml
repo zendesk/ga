@@ -35,9 +35,8 @@ runs:
           exit 1
         fi
 
-        # Last 5 recent tags
         git fetch --tags --quiet
-        tags=$(git for-each-ref refs/tags --sort=-creatordate --format="%(refname:lstrip=2)" --count=5)
+        tags=$(git tag | sort --reverse --version-sort)
 
         # Find the latest semantic version
         current_tag="v0.0.0"
