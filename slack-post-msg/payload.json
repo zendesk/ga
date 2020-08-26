@@ -1,0 +1,58 @@
+{
+  "channel": $channel,
+  "icon_emoji": [":",$emoji,":"] | join(""),
+  "text": ["Run #",$runNumber," ",$resultMessagePre," ",$resultMessage," for ",$repositoryName," Commit: ",$commitSha," Actor: ",$actor] | join(""),
+  "username": $username,
+  "blocks": [
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": ["Run *#",$runNumber,"* ",$resultMessagePre," *",$resultMessage,"* for `",$repositoryName,"`"] | join(""),
+      }
+    },
+    {
+      "type": "section",
+      "fields": [
+        {
+          "type": "mrkdwn",
+          "text": ["*Commit:*\n`",$commitSha,"`"] | join("")
+        },
+        {
+          "type": "mrkdwn",
+          "text": ["*Actor:*\n",$actor] | join("")
+        },
+        {
+          "type": "mrkdwn",
+          "text": ["*Branch:*\n`",$branchName,"`"] | join("")
+        },
+        {
+          "type": "mrkdwn",
+          "text": ["*Workflow:*\n",$workflowName] | join("")
+        },
+        {
+          "type": "mrkdwn",
+          "text": ["*Workflow event:*\n`",$workflowEventName,"`"] | join("")
+        },
+        {
+          "type": "mrkdwn",
+          "text": ["*Status:*\n:",$statusIcon,":"] | join("")
+        }
+      ]
+    },
+    {
+      "type": "actions",
+      "elements": [
+        {
+          "type": "button",
+          "text": {
+            "type": "plain_text",
+            "text": "View workflow"
+          },
+          "style": $buttonStyle,
+          "url": ["https://github.com/",$repositoryName,"/actions/runs/",$runId] | join("")
+        }
+      ]
+    }
+  ]
+}

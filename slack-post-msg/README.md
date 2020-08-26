@@ -1,63 +1,101 @@
-# Post Slack messages
+# Slack post message
 
-This action wraps the Slack [chat.postMessage](https://api.slack.com/methods/chat.postMessage) API method for posting to channels, private groups, and DMs.
+GitHub Actions which wraps the Slack [`chat.postMessage`](https://api.slack.com/methods/chat.postMessage) API method for posting to public channel or private group.
 
-## Env variables
-- *SLACK_BOT_TOKEN* (required)
-- *GITHUB_CONTEXT* (required)
-- *ICON* (options, default: github-buddy)
-- *STATUS* (optional) valid values are failure and success, default is failure
-- *CHANNEL_ID* (required)
-If you open Slack in your web browser, you can find channel IDs at the end of the URL when viewing channels and private groups. Note that this doesn't work for direct messages.
-https://myworkspace.slack.com/messages/CHANNEL_ID/
+## Usage
 
-## Example 1 Without Job Matrix
-Only send out a message if a job failed.
 ```yaml
-name: first
-on:
-  push:
-
-jobs:
-  test1:
-    runs-on: [self-hosted,zendesk-stable]
-    name: A job to say hello
-    steps:
-      - name: test
-        run: |
-          exit 1
-
-  test2:
-    runs-on: [self-hosted,zendesk-stable]
-    name: A job to say hello
-    steps:
-      - name: test
-        run: |
-          exit 0
-
-  slack:
-    runs-on: [self-hosted, zendesk-stable]
-    needs: [test1, test2]
-    if: ${{ always() }}
-    steps:
-      - name: Notify slack
-        if: ${{ contains(needs.*.result, 'failure') }}
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.STOKEN }}
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-          STATUS: failure
-          CHANNEL_ID: C014XX4BPXX
-        uses: zendesk/ga/slack-post-msg@v1
+- name: Send Slack message
+  uses: zendesk/ga/slack-post-msg@v2
+  with:
+    channel: CHANNEL_ID
+    slack-auth-token: AUTH_TOKEN
+    status: success
 ```
 
-## Example 2 With Job Matrix
+## Inputs
+
+- `channel`: Target channel ID for messages, either a channel or a private group (required)
+- `emoji`: Emoji to be used as the icon for the posted message - _without_ leading/trailing colons (optional, default: `github-buddy`)
+- `slack-auth-token`: Slack [authentication token](https://api.slack.com/methods/chat.postMessage#arg_token) with required message posting scope(s) (required)
+- `status`: Message result - allowed values are one of [`success`,`failure`,`cancelled`] (optional, default: `failure`)
+
+## Examples
+
+### Single job
+
 ```yaml
-name: first
+name: Workflow
+on:
+  push:
+
+jobs:
+  main:
+    name: Simple job run
+    runs-on: [self-hosted,zendesk-stable]
+    steps:
+      - name: First step
+        run: |
+          exit 0
+      - name: Second step
+        run: |
+          exit 0
+      - name: Post Slack result message
+        if: always()
+        uses: zendesk/ga/slack-post-msg@v2
+        with:
+          channel: CHANNEL_ID
+          slack-auth-token: ${{ secrets.STOKEN }}
+          status: ${{ job.status }}
+```
+
+### Multiple jobs
+
+```yaml
+name: Workflow
 on:
   push:
 
 jobs:
   test1:
+    name: A job to say hello
+    runs-on: [self-hosted,zendesk-stable]
+    steps:
+      - name: Test bad
+        run: |
+          exit 1
+  test2:
+    name: A job to say hello
+    runs-on: [self-hosted,zendesk-stable]
+    steps:
+      - name: Test good
+        run: |
+          exit 0
+  slack:
+    name: Slack
+    runs-on: [self-hosted,zendesk-stable]
+    needs: [test1,test2]
+    if: always()
+    steps:
+      - name: Post Slack result message
+        if: contains(needs.*.result,'failure')
+        uses: zendesk/ga/slack-post-msg@v2
+        with:
+          channel: CHANNEL_ID
+          slack-auth-token: ${{ secrets.STOKEN }}
+          status: failure
+```
+
+### Multiple jobs with matrix
+
+```yaml
+name: Workflow
+on:
+  push:
+
+jobs:
+  test:
+    name: Job group
     runs-on: [self-hosted,zendesk-stable]
     strategy:
       matrix:
@@ -69,18 +107,17 @@ jobs:
       - name: ${{ matrix.tasks }}
         run: |
           exit 1
-
   slack:
-    runs-on: [self-hosted, zendesk-stable]
-    needs: [test1]
-    if: ${{ always() }}
+    name: Slack
+    runs-on: [self-hosted,zendesk-stable]
+    needs: [test]
+    if: always()
     steps:
-      - name: Notify slack
-        if: ${{ contains(needs.test1.result, 'failure') }}
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.STOKEN }}
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-          STATUS: failure
-          CHANNEL_ID: C014XX4BPXX
-        uses: zendesk/ga/slack-post-msg@v1
+      - name: Post Slack result message
+        if: contains(needs.test.result,'failure')
+        uses: zendesk/ga/slack-post-msg@v2
+        with:
+          channel: CHANNEL_ID
+          slack-auth-token: ${{ secrets.STOKEN }}
+          status: failure
 ```
