@@ -22,7 +22,7 @@ runs:
         tunnel="${{ inputs.tunnel-identifier }}"
 
 
-        if [ ${{ inputs.debug }} = true ]; then
+        if [[ "${{ inputs.debug }}" == "true" ]]; then
           set -x
         fi
 
