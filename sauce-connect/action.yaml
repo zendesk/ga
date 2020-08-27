@@ -16,10 +16,12 @@ runs:
   using: composite
   steps:
     - run: |
+
         version="${{ inputs.version }}"
         username="${{ inputs.sauce-username }}"
         accessKey="${{ inputs.sauce-access-key }}"
         tunnel="${{ inputs.tunnel-identifier }}"
+        temp="$(mktemp)"
 
 
         if [ ${{ inputs.debug }} = true ]; then
@@ -27,10 +29,12 @@ runs:
         fi
 
         wget "https://saucelabs.com/downloads/sc-$version-linux.tar.gz" -O - | tar -xz
-        sc-$version-linux/bin/sc --tunnel-identifier=$tunnel -u $username -k $accessKey -l ./foo.txt &
-        while ! grep "Sauce Connect is up, you may start your tests." foo.txt ; do
+        sc-$version-linux/bin/sc --tunnel-identifier=$tunnel -u $username -k $accessKey -l $temp &
+        while ! grep "Sauce Connect is up, you may start your tests." $temp ; do
           echo "Sauce Connect is booting..."
           sleep 1
         done
+
+        rm -f "$temp"
 
       shell: bash
