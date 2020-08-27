@@ -1,11 +1,12 @@
-# Tag semantic release
-A GitHub Action to create a semantic releases for your default branch.
+# Sauce connect
+A GitHub Action to opens a secure tunnel connection for testing between a Sauce Labs virtual machine or real devic
 
 ## Parameters
-- *version-type* (required, options: major, minor or patch)
-- *github-token* (required)
-- *debug* (optional, default: false)
-- *dry-run* (optional, default: false)
+- *sauce-username*: (required)
+- *sauce-access-key*: (required)
+- *tunnel-identifier*: (optional, default: github-action-tunnel)
+- *version*: (optional, default: 4.6.2)
+- *debug*: (option, default: false)
 
 ## Example
 ```yaml
@@ -20,11 +21,8 @@ jobs:
     runs-on: [self-hosted, zendesk-stable]
     steps:
       - uses: zendesk/checkout@v2
-      - uses: zendesk/ga/tag-semantic-release@v2
-        id: tag
+      - uses: zendesk/ga/sauce-connect@v2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          version-type: patch
-      - name: Print out the new version
-        run: echo ${{ steps.tag.outputs.version }}
+          sauce-username: ${{ secrets.SAUCE_USERNAME }}
+          sauce-access-key: ${{ secrets.SAUCE_ACCESS_KEY }}
 ```
