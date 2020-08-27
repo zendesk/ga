@@ -16,10 +16,10 @@ runs:
   using: composite
   steps:
     - run: |
-        version=${{ inputs.version }}
-        username=${{ inputs.sauce-username }}
-        accessKey=${{ inputs.sauce-access-key }}
-        tunnel=${{ inputs.tunnel-identifier }}
+        version="${{ inputs.version }}"
+        username="${{ inputs.sauce-username }}"
+        accessKey="${{ inputs.sauce-access-key }}"
+        tunnel="${{ inputs.tunnel-identifier }}"
 
 
         if [ ${{ inputs.debug }} = true ]; then
