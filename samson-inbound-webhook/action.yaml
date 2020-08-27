@@ -37,10 +37,12 @@ runs:
         fi
 
         # call webhook
-        payload=$(jq -cn \
+        payload=$(jq \
           --arg branchName "$branchName" \
           --arg message "${{ inputs.message }}" \
           --arg sha "${{ github.sha }}" \
+          --compact-output \
+          --null-input \
             '{deploy: {branch: $branchName,commit: {message: $message,sha: $sha}}}'
         )
 
