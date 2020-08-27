@@ -28,7 +28,7 @@ runs:
           set -x
         fi
 
-        curl --location --silent "https://saucelabs.com/downloads/sc-$version-linux.tar.gz" -O - | tar -xz
+        curl --location --silent "https://saucelabs.com/downloads/sc-$version-linux.tar.gz" | tar -xz
         sc-$version-linux/bin/sc --tunnel-identifier=$tunnel -u $username -k $accessKey -l $temp &
         while ! grep "Sauce Connect is up, you may start your tests." $temp ; do
           echo "Sauce Connect is booting..."
