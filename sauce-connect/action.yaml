@@ -34,4 +34,3 @@ runs:
         done
 
       shell: bash
-      id: main
