@@ -1,5 +1,5 @@
 # Sauce connect
-A GitHub Action to opens a secure tunnel connection for testing between a Sauce Labs virtual machine or real devic
+A GitHub Action to opens a secure tunnel connection for testing between a Sauce Labs virtual machine
 
 ## Parameters
 - *sauce-username*: (required)
