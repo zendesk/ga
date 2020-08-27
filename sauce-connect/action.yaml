@@ -24,7 +24,7 @@ runs:
         temp="$(mktemp)"
 
 
-        if [ ${{ inputs.debug }} = true ]; then
+        if [[ "${{ inputs.debug }}" == "true" ]]; then
           set -x
         fi
 
