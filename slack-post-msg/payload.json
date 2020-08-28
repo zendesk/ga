@@ -1,14 +1,14 @@
 {
   "channel": $channel,
   "icon_emoji": [":",$emoji,":"] | join(""),
-  "text": ["Run #",$runNumber," ",$resultMessagePre," ",$resultMessage," for ",$repositoryName," Commit: ",$commitSha," Actor: ",$actor] | join(""),
+  "text": [$workflowName," run #",$runNumber," ",$resultMessagePre," ",$resultMessage," for ",$repositoryName," Commit: ",$commitSha," Actor: ",$actor] | join(""),
   "username": $username,
   "blocks": [
     {
       "type": "section",
       "text": {
         "type": "mrkdwn",
-        "text": ["Run *#",$runNumber,"* ",$resultMessagePre," *",$resultMessage,"* for `",$repositoryName,"`"] | join(""),
+        "text": ["*",$workflowName,"* run *#",$runNumber,"* ",$resultMessagePre," *",$resultMessage,"* for `",$repositoryName,"`"] | join(""),
       }
     },
     {
