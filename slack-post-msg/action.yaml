@@ -47,7 +47,7 @@ runs:
         commitSha="${{ github.sha }}"
 
         # extract branch name (either pull request head or workflow trigger)
-        branchName="${{ github.event.pull_request.head.ref }}"
+        branchName="${{ github.head_ref }}"
         if [[ -z $branchName ]]; then
           # not a pull request workflow run
           branchName="${{ github.ref }}"
