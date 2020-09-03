@@ -1,0 +1,121 @@
+{
+  "$id": "triggers/git.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "examples": [
+      {
+          "enabled": true,
+          "project": "zendesk",
+          "slug": "repo-name",
+          "source": "github",
+          "type": "git"
+      }
+  ],
+  "required": [
+      "enabled",
+      "project",
+      "slug",
+      "source",
+      "type"
+  ],
+  "properties": {
+      "branch": {
+          "$id": "#/properties/branch",
+          "type": "string",
+          "title": "The branch schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "asd"
+          ]
+      },
+      "expectedArtifactIds": {
+          "$id": "#/properties/expectedArtifactIds",
+          "type": "array",
+          "title": "The expectedArtifactIds schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": [],
+          "examples": [
+              [
+                  "6fcc1053-f654-4b34-9750-65cd98e5d087"
+              ]
+          ],
+          "additionalItems": true,
+          "items": {
+              "$id": "#/properties/expectedArtifactIds/items",
+              "anyOf": [
+                  {
+                      "$id": "#/properties/expectedArtifactIds/items/anyOf/0",
+                      "type": "string",
+                      "title": "The first anyOf schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": "",
+                      "examples": [
+                          "6fcc1053-f654-4b34-9750-65cd98e5d087"
+                      ]
+                  }
+              ]
+          }
+      },
+      "secret": {
+            "$id": "#/properties/secret",
+            "type": "string",
+            "title": "The secret schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "asd"
+            ]
+        },
+      "enabled": {
+          "$id": "#/properties/enabled",
+          "type": "boolean",
+          "title": "The enabled schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": false,
+          "examples": [
+              true
+          ]
+      },
+      "project": {
+          "$id": "#/properties/project",
+          "type": "string",
+          "title": "The project schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "zendesk"
+          ]
+      },
+      "slug": {
+          "$id": "#/properties/slug",
+          "type": "string",
+          "title": "The slug schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "repo-name"
+          ]
+      },
+      "source": {
+          "$id": "#/properties/source",
+          "type": "string",
+          "title": "The source schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "github"
+          ]
+      },
+      "type": {
+          "$id": "#/properties/type",
+          "type": "string",
+          "title": "The type schema",
+          "description": "An explanation about the purpose of this instance.",
+          "const": "git"
+      }
+  },
+  "additionalProperties": true
+}

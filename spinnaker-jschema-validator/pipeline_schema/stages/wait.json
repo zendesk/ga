@@ -1,0 +1,63 @@
+{
+  "$id": "stages/wait.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "examples": [
+      {
+          "isNew": true,
+          "name": "Wait",
+          "type": "wait",
+          "waitTime": 30
+      }
+  ],
+  "required": [
+      "name",
+      "type",
+      "waitTime"
+  ],
+  "properties": {
+      "isNew": {
+          "$id": "#/properties/isNew",
+          "type": "boolean",
+          "title": "The isNew schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": false,
+          "examples": [
+              true
+          ]
+      },
+      "name": {
+          "$id": "#/properties/name",
+          "type": "string",
+          "title": "The name schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "Wait"
+          ]
+      },
+      "type": {
+          "$id": "#/properties/type",
+          "type": "string",
+          "title": "The type schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "wait"
+          ]
+      },
+      "waitTime": {
+          "$id": "#/properties/waitTime",
+          "type": "integer",
+          "title": "The waitTime schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0,
+          "examples": [
+              30
+          ]
+      }
+  },
+  "additionalProperties": true
+}

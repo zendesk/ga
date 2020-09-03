@@ -1,0 +1,358 @@
+{
+  "$id": "stages/deleteManifest.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "examples": [
+      {
+          "account": "pod1",
+          "app": "hello",
+          "cloudProvider": "kubernetes",
+          "cluster": null,
+          "criteria": null,
+          "isNew": true,
+          "kind": null,
+          "kinds": [
+              "clusterRoleBinding"
+          ],
+          "labelSelectors": {
+              "selectors": [
+                  {
+                      "key": "asd",
+                      "kind": "EQUALS",
+                      "values": [
+                          "as"
+                      ]
+                  }
+              ]
+          },
+          "location": "pod1",
+          "manifestName": null,
+          "mode": "label",
+          "name": "Delete (Manifest)",
+          "options": {
+              "cascading": true,
+              "gracePeriodSeconds": 1
+          },
+          "type": "deleteManifest"
+      }
+  ],
+  "required": [
+      "account",
+      "app",
+      "cloudProvider",
+      "location",
+      "mode",
+      "name",
+      "options",
+      "type"
+  ],
+  "properties": {
+      "account": {
+          "$id": "#/properties/account",
+          "type": "string",
+          "title": "The account schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "pod1"
+          ]
+      },
+      "app": {
+          "$id": "#/properties/app",
+          "type": "string",
+          "title": "The app schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "hello"
+          ]
+      },
+      "cloudProvider": {
+          "$id": "#/properties/cloudProvider",
+          "type": "string",
+          "title": "The cloudProvider schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "kubernetes"
+          ]
+      },
+      "cluster": {
+          "$id": "#/properties/cluster",
+          "type": [ "string", "null" ],
+          "title": "The cluster schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": null,
+          "examples": [
+              null
+          ]
+      },
+      "criteria": {
+          "$id": "#/properties/criteria",
+          "type": [ "string", "null" ],
+          "title": "The criteria schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": null,
+          "examples": [
+              null
+          ]
+      },
+      "isNew": {
+          "$id": "#/properties/isNew",
+          "type": "boolean",
+          "title": "The isNew schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": false,
+          "examples": [
+              true
+          ]
+      },
+      "kind": {
+          "$id": "#/properties/kind",
+          "type": [ "string", "null" ],
+          "title": "The kind schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": null,
+          "examples": [
+              null
+          ]
+      },
+      "kinds": {
+          "$id": "#/properties/kinds",
+          "type": [ "array", "null" ],
+          "title": "The kinds schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": [],
+          "examples": [
+              [
+                  "clusterRoleBinding"
+              ]
+          ],
+          "additionalItems": true,
+          "items": {
+              "$id": "#/properties/kinds/items",
+              "anyOf": [
+                  {
+                      "$id": "#/properties/kinds/items/anyOf/0",
+                      "type": "string",
+                      "title": "The first anyOf schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": "",
+                      "examples": [
+                          "clusterRoleBinding"
+                      ]
+                  }
+              ]
+          }
+      },
+      "labelSelectors": {
+          "$id": "#/properties/labelSelectors",
+          "type": [ "object", "null" ],
+          "title": "The labelSelectors schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+              {
+                  "selectors": [
+                      {
+                          "key": "asd",
+                          "kind": "EQUALS",
+                          "values": [
+                              "as"
+                          ]
+                      }
+                  ]
+              }
+          ],
+          "properties": {
+              "selectors": {
+                  "$id": "#/properties/labelSelectors/properties/selectors",
+                  "type": "array",
+                  "title": "The selectors schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": [],
+                  "examples": [
+                      [
+                          {
+                              "key": "asd",
+                              "kind": "EQUALS",
+                              "values": [
+                                  "as"
+                              ]
+                          }
+                      ]
+                  ],
+                  "additionalItems": true,
+                  "items": {
+                      "$id": "#/properties/labelSelectors/properties/selectors/items",
+                      "allOf": [
+                          {
+                              "$id": "#/properties/labelSelectors/properties/selectors/items/anyOf/0",
+                              "type": "object",
+                              "title": "The first anyOf schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": {},
+                              "examples": [
+                                  {
+                                      "key": "asd",
+                                      "kind": "EQUALS",
+                                      "values": [
+                                          "as"
+                                      ]
+                                  }
+                              ],
+                              "required": [
+                                  "key",
+                                  "kind",
+                                  "values"
+                              ],
+                              "properties": {
+                                  "key": {
+                                      "$id": "#/properties/labelSelectors/properties/selectors/items/anyOf/0/properties/key",
+                                      "type": "string",
+                                      "title": "The key schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                          "asd"
+                                      ]
+                                  },
+                                  "kind": {
+                                      "$id": "#/properties/labelSelectors/properties/selectors/items/anyOf/0/properties/kind",
+                                      "type": "string",
+                                      "title": "The kind schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                          "EQUALS"
+                                      ]
+                                  },
+                                  "values": {
+                                      "$id": "#/properties/labelSelectors/properties/selectors/items/anyOf/0/properties/values",
+                                      "type": "array",
+                                      "title": "The values schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": [],
+                                      "examples": [
+                                          [
+                                              "as"
+                                          ]
+                                      ],
+                                      "additionalItems": true,
+                                      "items": {
+                                          "$id": "#/properties/labelSelectors/properties/selectors/items/anyOf/0/properties/values/items",
+                                          "anyOf": [
+                                              {
+                                                  "$id": "#/properties/labelSelectors/properties/selectors/items/anyOf/0/properties/values/items/anyOf/0",
+                                                  "type": "string",
+                                                  "title": "The first anyOf schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": "",
+                                                  "examples": [
+                                                      "as"
+                                                  ]
+                                              }
+                                          ]
+                                      }
+                                  }
+                              },
+                              "additionalProperties": true
+                          }
+                      ]
+                  }
+              }
+          },
+          "additionalProperties": true
+      },
+      "location": {
+          "$id": "#/properties/location",
+          "type": "string",
+          "title": "The location schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "pod1"
+          ]
+      },
+      "manifestName": {
+          "$id": "#/properties/manifestName",
+          "type": [ "string", "null"],
+          "title": "The manifestName schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": null,
+          "examples": [
+              null
+          ]
+      },
+      "mode": {
+          "$id": "#/properties/mode",
+          "type": "string",
+          "title": "The mode schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "label"
+          ]
+      },
+      "name": {
+          "$id": "#/properties/name",
+          "type": "string",
+          "title": "The name schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "Delete (Manifest)"
+          ]
+      },
+      "options": {
+          "$id": "#/properties/options",
+          "type": "object",
+          "title": "The options schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+              {
+                  "cascading": true,
+                  "gracePeriodSeconds": 1
+              }
+          ],
+          "required": [
+              "cascading",
+              "gracePeriodSeconds"
+          ],
+          "properties": {
+              "cascading": {
+                  "$id": "#/properties/options/properties/cascading",
+                  "type": "boolean",
+                  "title": "The cascading schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": false,
+                  "examples": [
+                      true
+                  ]
+              },
+              "gracePeriodSeconds": {
+                  "$id": "#/properties/options/properties/gracePeriodSeconds",
+                  "type": "integer",
+                  "title": "The gracePeriodSeconds schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": 0,
+                  "examples": [
+                      1
+                  ]
+              }
+          },
+          "additionalProperties": true
+      },
+      "type": {
+          "$id": "#/properties/type",
+          "type": "string",
+          "title": "The type schema",
+          "description": "An explanation about the purpose of this instance.",
+          "const": "deleteManifest"
+      }
+  },
+  "additionalProperties": true
+}

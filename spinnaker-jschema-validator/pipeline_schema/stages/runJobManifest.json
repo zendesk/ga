@@ -1,0 +1,298 @@
+{
+  "$id": "stages/runJobManifest.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "examples": [
+      {
+          "account": "pod1",
+          "alias": "runJob",
+          "application": "hello",
+          "cloudProvider": "kubernetes",
+          "consumeArtifactSource": "none",
+          "credentials": "pod1",
+          "isNew": true,
+          "manifest": "asdasdas",
+          "manifestArtifact": {
+              "artifactAccount": "github",
+              "id": "22dc9a0b-cb3e-4602-ad95-b0ce4f88f951",
+              "name": "ssdf",
+              "reference": "ssdf",
+              "type": "github/file",
+              "version": "sdfsdf"
+          },
+          "manifestArtifactId": null,
+          "name": "Run Job (Manifest)",
+          "propertyFile": null,
+          "requiredArtifactIds": [],
+          "requiredArtifacts": [],
+          "source": "artifact",
+          "type": "runJobManifest"
+      }
+  ],
+  "required": [
+      "account",
+      "alias",
+      "application",
+      "cloudProvider",
+      "consumeArtifactSource",
+      "credentials",
+      "manifestArtifactId",
+      "name",
+      "propertyFile",
+      "requiredArtifactIds",
+      "requiredArtifacts",
+      "source",
+      "type"
+  ],
+  "properties": {
+      "account": {
+          "$id": "#/properties/account",
+          "type": "string",
+          "title": "The account schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "pod1"
+          ]
+      },
+      "alias": {
+          "$id": "#/properties/alias",
+          "type": "string",
+          "title": "The alias schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "runJob"
+          ]
+      },
+      "application": {
+          "$id": "#/properties/application",
+          "type": "string",
+          "title": "The application schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "hello"
+          ]
+      },
+      "cloudProvider": {
+          "$id": "#/properties/cloudProvider",
+          "type": "string",
+          "title": "The cloudProvider schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "kubernetes"
+          ]
+      },
+      "consumeArtifactSource": {
+          "$id": "#/properties/consumeArtifactSource",
+          "type": "string",
+          "title": "The consumeArtifactSource schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "none"
+          ]
+      },
+      "credentials": {
+          "$id": "#/properties/credentials",
+          "type": "string",
+          "title": "The credentials schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "pod1"
+          ]
+      },
+      "isNew": {
+          "$id": "#/properties/isNew",
+          "type": "boolean",
+          "title": "The isNew schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": false,
+          "examples": [
+              true
+          ]
+      },
+      "manifest": {
+          "$id": "#/properties/manifest",
+          "type": "string",
+          "title": "The manifest schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "asdasdas"
+          ]
+      },
+      "manifestArtifact": {
+          "$id": "#/properties/manifestArtifact",
+          "type": "object",
+          "title": "The manifestArtifact schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+              {
+                  "artifactAccount": "github",
+                  "id": "22dc9a0b-cb3e-4602-ad95-b0ce4f88f951",
+                  "name": "ssdf",
+                  "reference": "ssdf",
+                  "type": "github/file",
+                  "version": "sdfsdf"
+              }
+          ],
+          "required": [
+              "artifactAccount",
+              "id",
+              "name",
+              "reference",
+              "type",
+              "version"
+          ],
+          "properties": {
+              "artifactAccount": {
+                  "$id": "#/properties/manifestArtifact/properties/artifactAccount",
+                  "type": "string",
+                  "title": "The artifactAccount schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                      "github"
+                  ]
+              },
+              "id": {
+                  "$id": "#/properties/manifestArtifact/properties/id",
+                  "type": "string",
+                  "title": "The id schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                      "22dc9a0b-cb3e-4602-ad95-b0ce4f88f951"
+                  ]
+              },
+              "name": {
+                  "$id": "#/properties/manifestArtifact/properties/name",
+                  "type": "string",
+                  "title": "The name schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                      "ssdf"
+                  ]
+              },
+              "reference": {
+                  "$id": "#/properties/manifestArtifact/properties/reference",
+                  "type": "string",
+                  "title": "The reference schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                      "ssdf"
+                  ]
+              },
+              "type": {
+                  "$id": "#/properties/manifestArtifact/properties/type",
+                  "type": "string",
+                  "title": "The type schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                      "github/file"
+                  ]
+              },
+              "version": {
+                  "$id": "#/properties/manifestArtifact/properties/version",
+                  "type": "string",
+                  "title": "The version schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                      "sdfsdf"
+                  ]
+              }
+          },
+          "additionalProperties": true
+      },
+      "manifestArtifactId": {
+          "$id": "#/properties/manifestArtifactId",
+          "type": ["string", "null"],
+          "title": "The manifestArtifactId schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": null,
+          "examples": [
+              null
+          ]
+      },
+      "name": {
+          "$id": "#/properties/name",
+          "type": "string",
+          "title": "The name schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "Run Job (Manifest)"
+          ]
+      },
+      "propertyFile": {
+          "$id": "#/properties/propertyFile",
+          "type": [ "string", "null"],
+          "title": "The propertyFile schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": null,
+          "examples": [
+              null
+          ]
+      },
+      "requiredArtifactIds": {
+          "$id": "#/properties/requiredArtifactIds",
+          "type": "array",
+          "title": "The requiredArtifactIds schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": [],
+          "examples": [
+              []
+          ],
+          "additionalItems": true,
+          "items": {
+              "$id": "#/properties/requiredArtifactIds/items"
+          }
+      },
+      "requiredArtifacts": {
+          "$id": "#/properties/requiredArtifacts",
+          "type": "array",
+          "title": "The requiredArtifacts schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": [],
+          "examples": [
+              []
+          ],
+          "additionalItems": true,
+          "items": {
+              "$id": "#/properties/requiredArtifacts/items"
+          }
+      },
+      "source": {
+          "$id": "#/properties/source",
+          "type": "string",
+          "title": "The source schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "artifact"
+          ]
+      },
+      "type": {
+          "$id": "#/properties/type",
+          "type": "string",
+          "title": "The type schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "runJobManifest"
+          ]
+      }
+  },
+  "additionalProperties": true
+}

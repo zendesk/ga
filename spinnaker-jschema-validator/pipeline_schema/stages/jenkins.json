@@ -1,0 +1,133 @@
+{
+  "$id": "stages/jenkins.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "examples": [
+      {
+          "continuePipeline": false,
+          "failPipeline": true,
+          "isNew": true,
+          "job": "Jenkins_Job",
+          "master": "jenkins-qa",
+          "name": "Jenkins",
+          "parameters": {},
+          "propertyFile": "hhhhh",
+          "markUnstableAsSuccessful": true,
+          "type": "jenkins"
+      }
+  ],
+  "required": [
+      "continuePipeline",
+      "failPipeline",
+      "job",
+      "master",
+      "name",
+      "parameters",
+      "propertyFile",
+      "type"
+  ],
+  "properties": {
+      "continuePipeline": {
+          "$id": "#/properties/continuePipeline",
+          "type": "boolean",
+          "title": "The continuePipeline schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": false,
+          "examples": [
+              false
+          ]
+      },
+      "failPipeline": {
+          "$id": "#/properties/failPipeline",
+          "type": "boolean",
+          "title": "The failPipeline schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": false,
+          "examples": [
+              true
+          ]
+      },
+      "isNew": {
+          "$id": "#/properties/isNew",
+          "type": "boolean",
+          "title": "The isNew schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": false,
+          "examples": [
+              true
+          ]
+      },
+      "job": {
+          "$id": "#/properties/job",
+          "type": "string",
+          "title": "The job schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "Jenkins_Job"
+          ]
+      },
+      "master": {
+          "$id": "#/properties/master",
+          "type": "string",
+          "title": "The master schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "jenkins-qa"
+          ]
+      },
+      "name": {
+          "$id": "#/properties/name",
+          "type": "string",
+          "title": "The name schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "Jenkins"
+          ]
+      },
+      "parameters": {
+          "$id": "#/properties/parameters",
+          "type": "object",
+          "title": "The parameters schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+              {}
+          ],
+          "required": [],
+          "additionalProperties": true
+      },
+      "propertyFile": {
+          "$id": "#/properties/propertyFile",
+          "type": "string",
+          "title": "The propertyFile schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "hhhhh"
+          ]
+      },
+      "markUnstableAsSuccessful": {
+          "$id": "#/properties/markUnstableAsSuccessful",
+          "type": "boolean",
+          "title": "The markUnstableAsSuccessful schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": false,
+          "examples": [
+              true
+          ]
+      },
+      "type": {
+          "$id": "#/properties/type",
+          "type": "string",
+          "title": "The type schema",
+          "description": "An explanation about the purpose of this instance.",
+          "const": "jenkins"
+      }
+  },
+  "additionalProperties": true
+}

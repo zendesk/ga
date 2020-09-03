@@ -1,0 +1,13 @@
+name: Validate spinnaker schema
+
+on: push
+
+jobs:
+  schema-validator:
+    runs-on: zendesk-stable
+    steps:
+    - uses: zendesk/checkout@v2
+    - name: Validate JSON Schema
+      uses: './'
+      with:
+        pipeline-files: 'tests/data/*.json'

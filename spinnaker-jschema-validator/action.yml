@@ -1,0 +1,23 @@
+name: Spinanker JSON schema validator
+description: Spinnaker pipelines and application json will be validated
+inputs:
+  pipeline-files:
+    description: "Pipeline file paths, Comma separate multiple paths.
+                  Paths can be absolute or with pattern!!
+                  Eg: 
+                  spinnaker/pipelines/pipe.json
+                  spinnaker/pipelines/*.json"
+    default:  "spinnaker/pipelines/*.json"
+  application-files:
+    description: "Application file paths, Comma separate multiple paths.
+                  Paths can be absolute or with pattern!!
+                  Eg: 
+                  spinnaker/applications/app.json
+                  spinnaker/applications/*.json"
+    default:  "spinnaker/applications/*.json"
+runs:
+  using: node12
+  main: ./index.js
+branding:
+  icon: git-pull-request
+  color: gray-dark

@@ -1,0 +1,92 @@
+  {
+      "$id": "stages/manualJudgment.json",
+      "type": "object",
+      "title": "The root schema",
+      "description": "The root schema comprises the entire JSON document.",
+      "default": {},
+      "examples": [
+          {
+              "isNew": true,
+              "name": "Manual Judgment",
+              "notifications": [],
+              "refId": "1",
+              "requisiteStageRefIds": [],
+              "type": "manualJudgment"
+          }
+      ],
+      "required": [
+          "name",
+          "notifications",
+          "refId",
+          "requisiteStageRefIds",
+          "type"
+      ],
+      "properties": {
+          "isNew": {
+              "$id": "#/properties/isNew",
+              "type": "boolean",
+              "title": "The isNew schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": false,
+              "examples": [
+                  true
+              ]
+          },
+          "name": {
+              "$id": "#/properties/name",
+              "type": "string",
+              "title": "The name schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": "",
+              "examples": [
+                  "Manual Judgment"
+              ]
+          },
+          "notifications": {
+              "$id": "#/properties/notifications",
+              "type": "array",
+              "title": "The notifications schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": [],
+              "examples": [
+                  []
+              ],
+              "additionalItems": true,
+              "items": {
+                  "$id": "#/properties/notifications/items"
+              }
+          },
+          "refId": {
+              "$id": "#/properties/refId",
+              "type": "string",
+              "title": "The refId schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": "",
+              "examples": [
+                  "1"
+              ]
+          },
+          "requisiteStageRefIds": {
+              "$id": "#/properties/requisiteStageRefIds",
+              "type": "array",
+              "title": "The requisiteStageRefIds schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": [],
+              "examples": [
+                  []
+              ],
+              "additionalItems": true,
+              "items": {
+                  "$id": "#/properties/requisiteStageRefIds/items"
+              }
+          },
+          "type": {
+              "$id": "#/properties/type",
+              "type": "string",
+              "title": "The type schema",
+              "description": "An explanation about the purpose of this instance.",
+              "const": "manualJudgment"
+          }
+      },
+      "additionalProperties": true
+  }

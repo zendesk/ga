@@ -1,0 +1,132 @@
+{
+"$schema": "http://json-schema.org/draft-07/schema",
+"type": "object",
+"title": "Pipeline JSON SCHEMA",
+"description": "The root schema comprises the entire JSON document.",
+"default": {},
+"examples": [],
+"required": [
+    "application",
+    "keepWaitingPipelines",
+    "limitConcurrent",
+    "name",
+    "stages"
+],
+"properties": {
+    "application": {
+        "$id": "#/properties/application",
+        "type": "string",
+        "title": "The application schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": "",
+        "examples": [
+            "popcorn"
+        ]
+    },
+    "keepWaitingPipelines": {
+        "$id": "#/properties/keepWaitingPipelines",
+        "type": "boolean",
+        "title": "The keepWaitingPipelines schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": false,
+        "examples": [
+            false
+        ]
+    },
+    "limitConcurrent": {
+        "$id": "#/properties/limitConcurrent",
+        "type": "boolean",
+        "title": "The limitConcurrent schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": false,
+        "examples": [
+            true
+        ]
+    },
+    "name": {
+        "$id": "#/properties/name",
+        "type": "string",
+        "title": "The name schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": "",
+        "examples": [
+            "manual_kubernetes_deploy"
+        ]
+    },
+    "notifications": {
+        "$id": "#/properties/notifications",
+        "type": "array",
+        "title": "The notifications schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": [],
+        "examples": [
+            []
+        ],
+        "additionalItems": true,
+        "items": {
+            "$id": "#/properties/notifications/items"
+        }
+    },
+    "parameterConfig": {
+        "$id": "#/properties/parameterConfig",
+        "type": "array",
+        "title": "The parameterConfig schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": [],
+        "examples": [
+            []
+        ],
+        "additionalItems": true,
+        "items": {
+            "$id": "#/properties/parameterConfig/items"
+        }
+    },
+    "stages": {
+        "$id": "#/properties/stages",
+        "type": "array",
+        "title": "The stages schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": [],
+        "examples": [
+            []
+        ],
+        "additionalItems": true,
+        "items": {
+            "$id": "#/properties/stages/items",
+            "anyOf": [
+                { "$ref": "stages/deployManifest.json" },
+                { "$ref": "stages/deleteManifest.json" },
+                { "$ref": "stages/checkPreconditions.json" },
+                { "$ref": "stages/findArtifactFromExecution.json" },
+                { "$ref": "stages/findArtifactsFromResource.json" },
+                { "$ref": "stages/kayentaCanary.json" },
+                { "$ref": "stages/manualJudgment.json" },
+                { "$ref": "stages/runPipeline.json" },
+                { "$ref": "stages/wait.json" },
+                { "$ref": "stages/scaleManifest.json" },
+                { "$ref": "stages/undoRolloutManifest.json" },
+                { "$ref": "stages/runJobManifest.json" },
+                { "$ref": "stages/jenkins.json" }
+            ]
+        }
+    },
+    "triggers": {
+        "$id": "#/properties/triggers",
+        "type": "array",
+        "title": "The triggers schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": [],
+        "examples": [
+            []
+        ],
+        "additionalItems": true,
+        "items": {
+            "$id": "#/properties/triggers/items",
+            "anyOf": [
+                { "$ref": "triggers/git.json" }
+            ]
+        }
+    }
+},
+"additionalProperties": true
+}

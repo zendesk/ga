@@ -1,0 +1,52 @@
+{
+   "application": "popcorn",
+   "keepWaitingPipelines": false,
+   "limitConcurrent": true,
+   "name": "manual_kubernetes_deploy",
+   "notifications1": [ ],
+   "parameterConfig": [
+      {
+         "default": "master",
+         "hasOptions": false,
+         "name": "branch",
+         "pinned": true,
+         "required": true
+      }
+   ],
+   "stages": [
+      {
+         "account": "pod2",
+         "cloudProvider": "kubernetes",
+         "completeOtherBranchesThenFail": false,
+         "continuePipeline": false,
+         "failPipeline": true,
+         "manifestArtifact": {
+            "artifactAccount": "github",
+            "id": "https://api.github.com/repos/zendesk/kb_manifests/contents/projects/popcorn/manifests/staging/pod2/app-server.yml",
+            "name": "https://api.github.com/repos/zendesk/kb_manifests/contents/projects/popcorn/manifests/staging/pod2/app-server.yml",
+            "reference": "https://api.github.com/repos/zendesk/kb_manifests/contents/projects/popcorn/manifests/staging/pod2/app-server.yml",
+            "type": "github/file",
+            "version": "${ parameters.branch }"
+         },
+         "moniker": {
+            "app": "pod2",
+            "details": "ddd"
+         },
+         "name": "app-server-manifest",
+         "namespaceOverride": "pod2",
+         "refId": "app-server-manifest",
+         "requisiteStageRefIds": [ ],
+         "skipExpressionEvaluation": false,
+         "source": "artifact",
+         "trafficManagement": {
+            "enabled": false,
+            "options": {
+               "enableTraffic": false,
+               "services": [ ]
+            }
+         },
+         "type": "deployManifest"
+      }
+   ],
+   "triggers": [ ]
+}

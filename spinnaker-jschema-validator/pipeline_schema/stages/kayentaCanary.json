@@ -1,0 +1,344 @@
+{
+  "$id": "stages/kayentaCanary.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "examples": [
+      {
+          "analysisType": "realTime",
+          "canaryConfig": {
+              "canaryConfigId": "57315c05-c2a9-4d5b-8a82-3a76f2f3e247",
+              "lifetimeDuration": "PT1H1M",
+              "metricsAccountName": "spinnaker-datadog",
+              "scopes": [
+                  {
+                      "controlLocation": "pod",
+                      "controlScope": "pod",
+                      "experimentLocation": "pod",
+                      "experimentScope": "pod",
+                      "extendedScopeParams": {},
+                      "scopeName": "default"
+                  }
+              ],
+              "scoreThresholds": {
+                  "marginal": "10",
+                  "pass": "90"
+              },
+              "storageAccountName": "aws_canary"
+          },
+          "isNew": true,
+          "name": "Canary Analysis",
+          "refId": "2",
+          "requisiteStageRefIds": [],
+          "type": "kayentaCanary"
+      }
+  ],
+  "required": [
+      "analysisType",
+      "canaryConfig",
+      "name",
+      "refId",
+      "requisiteStageRefIds",
+      "type"
+  ],
+  "properties": {
+      "analysisType": {
+          "$id": "#/properties/analysisType",
+          "type": "string",
+          "title": "The analysisType schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "realTime"
+          ]
+      },
+      "canaryConfig": {
+          "$id": "#/properties/canaryConfig",
+          "type": "object",
+          "title": "The canaryConfig schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+              {
+                  "canaryConfigId": "57315c05-c2a9-4d5b-8a82-3a76f2f3e247",
+                  "lifetimeDuration": "PT1H1M",
+                  "metricsAccountName": "spinnaker-datadog",
+                  "scopes": [
+                      {
+                          "controlLocation": "pod",
+                          "controlScope": "pod",
+                          "experimentLocation": "pod",
+                          "experimentScope": "pod",
+                          "extendedScopeParams": {},
+                          "scopeName": "default"
+                      }
+                  ],
+                  "scoreThresholds": {
+                      "marginal": "10",
+                      "pass": "90"
+                  },
+                  "storageAccountName": "aws_canary"
+              }
+          ],
+          "required": [
+              "canaryConfigId",
+              "lifetimeDuration",
+              "metricsAccountName",
+              "scopes",
+              "scoreThresholds",
+              "storageAccountName"
+          ],
+          "properties": {
+              "canaryConfigId": {
+                  "$id": "#/properties/canaryConfig/properties/canaryConfigId",
+                  "type": "string",
+                  "title": "The canaryConfigId schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                      "57315c05-c2a9-4d5b-8a82-3a76f2f3e247"
+                  ]
+              },
+              "lifetimeDuration": {
+                  "$id": "#/properties/canaryConfig/properties/lifetimeDuration",
+                  "type": "string",
+                  "title": "The lifetimeDuration schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                      "PT1H1M"
+                  ]
+              },
+              "metricsAccountName": {
+                  "$id": "#/properties/canaryConfig/properties/metricsAccountName",
+                  "type": "string",
+                  "title": "The metricsAccountName schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                      "spinnaker-datadog"
+                  ]
+              },
+              "scopes": {
+                  "$id": "#/properties/canaryConfig/properties/scopes",
+                  "type": "array",
+                  "title": "The scopes schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": [],
+                  "examples": [
+                      [
+                          {
+                              "controlLocation": "pod",
+                              "controlScope": "pod",
+                              "experimentLocation": "pod",
+                              "experimentScope": "pod",
+                              "extendedScopeParams": {},
+                              "scopeName": "default"
+                          }
+                      ]
+                  ],
+                  "additionalItems": true,
+                  "items": {
+                      "$id": "#/properties/canaryConfig/properties/scopes/items",
+                      "anyOf": [
+                          {
+                              "$id": "#/properties/canaryConfig/properties/scopes/items/anyOf/0",
+                              "type": "object",
+                              "title": "The first anyOf schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": {},
+                              "examples": [
+                                  {
+                                      "controlLocation": "pod",
+                                      "controlScope": "pod",
+                                      "experimentLocation": "pod",
+                                      "experimentScope": "pod",
+                                      "extendedScopeParams": {},
+                                      "scopeName": "default"
+                                  }
+                              ],
+                              "required": [
+                                  "controlLocation",
+                                  "controlScope",
+                                  "experimentLocation",
+                                  "experimentScope",
+                                  "extendedScopeParams",
+                                  "scopeName"
+                              ],
+                              "properties": {
+                                  "controlLocation": {
+                                      "$id": "#/properties/canaryConfig/properties/scopes/items/anyOf/0/properties/controlLocation",
+                                      "type": "string",
+                                      "title": "The controlLocation schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                          "pod"
+                                      ]
+                                  },
+                                  "controlScope": {
+                                      "$id": "#/properties/canaryConfig/properties/scopes/items/anyOf/0/properties/controlScope",
+                                      "type": "string",
+                                      "title": "The controlScope schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                          "pod"
+                                      ]
+                                  },
+                                  "experimentLocation": {
+                                      "$id": "#/properties/canaryConfig/properties/scopes/items/anyOf/0/properties/experimentLocation",
+                                      "type": "string",
+                                      "title": "The experimentLocation schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                          "pod"
+                                      ]
+                                  },
+                                  "experimentScope": {
+                                      "$id": "#/properties/canaryConfig/properties/scopes/items/anyOf/0/properties/experimentScope",
+                                      "type": "string",
+                                      "title": "The experimentScope schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                          "pod"
+                                      ]
+                                  },
+                                  "extendedScopeParams": {
+                                      "$id": "#/properties/canaryConfig/properties/scopes/items/anyOf/0/properties/extendedScopeParams",
+                                      "type": "object",
+                                      "title": "The extendedScopeParams schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": {},
+                                      "examples": [
+                                          {}
+                                      ],
+                                      "required": [],
+                                      "additionalProperties": true
+                                  },
+                                  "scopeName": {
+                                      "$id": "#/properties/canaryConfig/properties/scopes/items/anyOf/0/properties/scopeName",
+                                      "type": "string",
+                                      "title": "The scopeName schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                          "default"
+                                      ]
+                                  }
+                              },
+                              "additionalProperties": true
+                          }
+                      ]
+                  }
+              },
+              "scoreThresholds": {
+                  "$id": "#/properties/canaryConfig/properties/scoreThresholds",
+                  "type": "object",
+                  "title": "The scoreThresholds schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                      {
+                          "marginal": "10",
+                          "pass": "90"
+                      }
+                  ],
+                  "required": [
+                      "marginal",
+                      "pass"
+                  ],
+                  "properties": {
+                      "marginal": {
+                          "$id": "#/properties/canaryConfig/properties/scoreThresholds/properties/marginal",
+                          "type": "string",
+                          "title": "The marginal schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                              "10"
+                          ]
+                      },
+                      "pass": {
+                          "$id": "#/properties/canaryConfig/properties/scoreThresholds/properties/pass",
+                          "type": "string",
+                          "title": "The pass schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                              "90"
+                          ]
+                      }
+                  },
+                  "additionalProperties": true
+              },
+              "storageAccountName": {
+                  "$id": "#/properties/canaryConfig/properties/storageAccountName",
+                  "type": "string",
+                  "title": "The storageAccountName schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": "",
+                  "examples": [
+                      "aws_canary"
+                  ]
+              }
+          },
+          "additionalProperties": true
+      },
+      "isNew": {
+          "$id": "#/properties/isNew",
+          "type": "boolean",
+          "title": "The isNew schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": false,
+          "examples": [
+              true
+          ]
+      },
+      "name": {
+          "$id": "#/properties/name",
+          "type": "string",
+          "title": "The name schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "Canary Analysis"
+          ]
+      },
+      "refId": {
+          "$id": "#/properties/refId",
+          "type": "string",
+          "title": "The refId schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "2"
+          ]
+      },
+      "requisiteStageRefIds": {
+          "$id": "#/properties/requisiteStageRefIds",
+          "type": "array",
+          "title": "The requisiteStageRefIds schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": [],
+          "examples": [
+              []
+          ],
+          "additionalItems": true,
+          "items": {
+              "$id": "#/properties/requisiteStageRefIds/items"
+          }
+      },
+      "type": {
+          "$id": "#/properties/type",
+          "type": "string",
+          "title": "The type schema",
+          "description": "An explanation about the purpose of this instance.",
+          "const": "kayentaCanary"
+      }
+  },
+  "additionalProperties": true
+}

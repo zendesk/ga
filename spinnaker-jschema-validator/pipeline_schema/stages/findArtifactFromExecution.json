@@ -1,0 +1,365 @@
+{
+  "$id": "stages/findArtifactFromExecution.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "examples": [
+      {
+          "application": "hello",
+          "executionOptions": {
+              "successful": true
+          },
+          "expectedArtifacts": [
+              {
+                  "defaultArtifact": {
+                      "customKind": true,
+                      "id": "a03185a7-225b-4068-9aec-006bd4f705fa"
+                  },
+                  "displayName": "spotty-grasshopper-2",
+                  "id": "ea03d7a7-5905-451f-b033-40dd6c5711aa",
+                  "matchArtifact": {
+                      "id": "fb65afb6-f119-426f-86fc-8424d82fc687",
+                      "name": "main/weqweqw",
+                      "type": "github/file"
+                  },
+                  "useDefaultArtifact": false,
+                  "usePriorArtifact": false
+              }
+          ],
+          "isNew": true,
+          "name": "Find Artifacts From Execution",
+          "pipeline": "a0f29578-59ff-4fcd-acd5-b44a0e97767d",
+          "refId": "4",
+          "requisiteStageRefIds": [
+              "3"
+          ],
+          "type": "findArtifactFromExecution"
+      }
+  ],
+  "required": [
+      "application",
+      "executionOptions",
+      "expectedArtifacts",
+      "name",
+      "pipeline",
+      "refId",
+      "requisiteStageRefIds",
+      "type"
+  ],
+  "properties": {
+      "application": {
+          "$id": "#/properties/application",
+          "type": "string",
+          "title": "The application schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "hello"
+          ]
+      },
+      "executionOptions": {
+          "$id": "#/properties/executionOptions",
+          "type": "object",
+          "title": "The executionOptions schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+              {
+                  "successful": true
+              }
+          ],
+          "required": [
+              "successful"
+          ],
+          "properties": {
+              "successful": {
+                  "$id": "#/properties/executionOptions/properties/successful",
+                  "type": "boolean",
+                  "title": "The successful schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": false,
+                  "examples": [
+                      true
+                  ]
+              }
+          },
+          "additionalProperties": true
+      },
+      "expectedArtifacts": {
+          "$id": "#/properties/expectedArtifacts",
+          "type": "array",
+          "title": "The expectedArtifacts schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": [],
+          "examples": [
+              [
+                  {
+                      "defaultArtifact": {
+                          "customKind": true,
+                          "id": "a03185a7-225b-4068-9aec-006bd4f705fa"
+                      },
+                      "displayName": "spotty-grasshopper-2",
+                      "id": "ea03d7a7-5905-451f-b033-40dd6c5711aa",
+                      "matchArtifact": {
+                          "id": "fb65afb6-f119-426f-86fc-8424d82fc687",
+                          "name": "main/weqweqw",
+                          "type": "github/file"
+                      },
+                      "useDefaultArtifact": false,
+                      "usePriorArtifact": false
+                  }
+              ]
+          ],
+          "additionalItems": true,
+          "items": {
+              "$id": "#/properties/expectedArtifacts/items",
+              "anyOf": [
+                  {
+                      "$id": "#/properties/expectedArtifacts/items/anyOf/0",
+                      "type": "object",
+                      "title": "The first anyOf schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                          {
+                              "defaultArtifact": {
+                                  "customKind": true,
+                                  "id": "a03185a7-225b-4068-9aec-006bd4f705fa"
+                              },
+                              "displayName": "spotty-grasshopper-2",
+                              "id": "ea03d7a7-5905-451f-b033-40dd6c5711aa",
+                              "matchArtifact": {
+                                  "id": "fb65afb6-f119-426f-86fc-8424d82fc687",
+                                  "name": "main/weqweqw",
+                                  "type": "github/file"
+                              },
+                              "useDefaultArtifact": false,
+                              "usePriorArtifact": false
+                          }
+                      ],
+                      "required": [
+                          "defaultArtifact",
+                          "displayName",
+                          "id",
+                          "matchArtifact",
+                          "useDefaultArtifact",
+                          "usePriorArtifact"
+                      ],
+                      "properties": {
+                          "defaultArtifact": {
+                              "$id": "#/properties/expectedArtifacts/items/anyOf/0/properties/defaultArtifact",
+                              "type": "object",
+                              "title": "The defaultArtifact schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": {},
+                              "examples": [
+                                  {
+                                      "customKind": true,
+                                      "id": "a03185a7-225b-4068-9aec-006bd4f705fa"
+                                  }
+                              ],
+                              "required": [
+                                  "customKind",
+                                  "id"
+                              ],
+                              "properties": {
+                                  "customKind": {
+                                      "$id": "#/properties/expectedArtifacts/items/anyOf/0/properties/defaultArtifact/properties/customKind",
+                                      "type": "boolean",
+                                      "title": "The customKind schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": false,
+                                      "examples": [
+                                          true
+                                      ]
+                                  },
+                                  "id": {
+                                      "$id": "#/properties/expectedArtifacts/items/anyOf/0/properties/defaultArtifact/properties/id",
+                                      "type": "string",
+                                      "title": "The id schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                          "a03185a7-225b-4068-9aec-006bd4f705fa"
+                                      ]
+                                  }
+                              },
+                              "additionalProperties": true
+                          },
+                          "displayName": {
+                              "$id": "#/properties/expectedArtifacts/items/anyOf/0/properties/displayName",
+                              "type": "string",
+                              "title": "The displayName schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": "",
+                              "examples": [
+                                  "spotty-grasshopper-2"
+                              ]
+                          },
+                          "id": {
+                              "$id": "#/properties/expectedArtifacts/items/anyOf/0/properties/id",
+                              "type": "string",
+                              "title": "The id schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": "",
+                              "examples": [
+                                  "ea03d7a7-5905-451f-b033-40dd6c5711aa"
+                              ]
+                          },
+                          "matchArtifact": {
+                              "$id": "#/properties/expectedArtifacts/items/anyOf/0/properties/matchArtifact",
+                              "type": "object",
+                              "title": "The matchArtifact schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": {},
+                              "examples": [
+                                  {
+                                      "id": "fb65afb6-f119-426f-86fc-8424d82fc687",
+                                      "name": "main/weqweqw",
+                                      "type": "github/file"
+                                  }
+                              ],
+                              "required": [
+                                  "id",
+                                  "name",
+                                  "type"
+                              ],
+                              "properties": {
+                                  "id": {
+                                      "$id": "#/properties/expectedArtifacts/items/anyOf/0/properties/matchArtifact/properties/id",
+                                      "type": "string",
+                                      "title": "The id schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                          "fb65afb6-f119-426f-86fc-8424d82fc687"
+                                      ]
+                                  },
+                                  "name": {
+                                      "$id": "#/properties/expectedArtifacts/items/anyOf/0/properties/matchArtifact/properties/name",
+                                      "type": "string",
+                                      "title": "The name schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                          "main/weqweqw"
+                                      ]
+                                  },
+                                  "type": {
+                                      "$id": "#/properties/expectedArtifacts/items/anyOf/0/properties/matchArtifact/properties/type",
+                                      "type": "string",
+                                      "title": "The type schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": "",
+                                      "examples": [
+                                          "github/file"
+                                      ]
+                                  }
+                              },
+                              "additionalProperties": true
+                          },
+                          "useDefaultArtifact": {
+                              "$id": "#/properties/expectedArtifacts/items/anyOf/0/properties/useDefaultArtifact",
+                              "type": "boolean",
+                              "title": "The useDefaultArtifact schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": false,
+                              "examples": [
+                                  false
+                              ]
+                          },
+                          "usePriorArtifact": {
+                              "$id": "#/properties/expectedArtifacts/items/anyOf/0/properties/usePriorArtifact",
+                              "type": "boolean",
+                              "title": "The usePriorArtifact schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": false,
+                              "examples": [
+                                  false
+                              ]
+                          }
+                      },
+                      "additionalProperties": true
+                  }
+              ]
+          }
+      },
+      "isNew": {
+          "$id": "#/properties/isNew",
+          "type": "boolean",
+          "title": "The isNew schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": false,
+          "examples": [
+              true
+          ]
+      },
+      "name": {
+          "$id": "#/properties/name",
+          "type": "string",
+          "title": "The name schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "Find Artifacts From Execution"
+          ]
+      },
+      "pipeline": {
+          "$id": "#/properties/pipeline",
+          "type": "string",
+          "title": "The pipeline schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "a0f29578-59ff-4fcd-acd5-b44a0e97767d"
+          ]
+      },
+      "refId": {
+          "$id": "#/properties/refId",
+          "type": "string",
+          "title": "The refId schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "4"
+          ]
+      },
+      "requisiteStageRefIds": {
+          "$id": "#/properties/requisiteStageRefIds",
+          "type": "array",
+          "title": "The requisiteStageRefIds schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": [],
+          "examples": [
+              [
+                  "3"
+              ]
+          ],
+          "additionalItems": true,
+          "items": {
+              "$id": "#/properties/requisiteStageRefIds/items",
+              "anyOf": [
+                  {
+                      "$id": "#/properties/requisiteStageRefIds/items/anyOf/0",
+                      "type": "string",
+                      "title": "The first anyOf schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": "",
+                      "examples": [
+                          "3"
+                      ]
+                  }
+              ]
+          }
+      },
+      "type": {
+          "$id": "#/properties/type",
+          "type": "string",
+          "title": "The type schema",
+          "description": "An explanation about the purpose of this instance.",
+          "const": "findArtifactFromExecution"
+      }
+  },
+  "additionalProperties": true
+}

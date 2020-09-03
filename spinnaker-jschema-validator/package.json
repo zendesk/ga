@@ -1,0 +1,24 @@
+{
+  "name": "spinnaker_schema_validator",
+  "version": "1.0.0",
+  "description": "Spinnaker JSON schema validator",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "keywords": [
+    "spinnaker_schema_validator",
+    "json_schema_validator"
+  ],
+  "author": "ssubramanian@zendesk.com",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.2.2",
+    "glob": "^7.1.6",
+    "ajv": "^6.12.4",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "standard": "^11.0.1"
+  }
+}

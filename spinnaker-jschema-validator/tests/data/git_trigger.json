@@ -1,0 +1,317 @@
+{ 
+  "application": "popcorn",
+  "name": "git_kubernetes_deploy",
+  "expectedArtifacts": [
+    {
+      "defaultArtifact": {
+        "artifactAccount": "github",
+        "id": "15e6c892-02d5-4789-b287-401927691857",
+        "name": "asdas",
+        "reference": "asdas",
+        "type": "github/file",
+        "version": "asdasdsa"
+      },
+      "displayName": "sour-parrot-72",
+      "id": "6fcc1053-f654-4b34-9750-65cd98e5d087",
+      "matchArtifact": {
+        "artifactAccount": "github",
+        "customKind": true,
+        "id": "99e8adb6-7543-4cdf-91f9-d911e845db1d",
+        "name": "asdasdas",
+        "type": "github/file"
+      },
+      "useDefaultArtifact": true,
+      "usePriorArtifact": false
+    }
+  ],
+  "keepWaitingPipelines": false,
+  "lastModifiedBy": "user@zendesk.com",
+  "limitConcurrent": true,
+  "spelEvaluator": "v4",
+  "stages": [
+    {
+      "completeOtherBranchesThenFail": false,
+      "continuePipeline": true,
+      "failPipeline": false,
+      "instructions": "test",
+      "judgmentInputs": [
+        {
+          "value": "ss"
+        }
+      ],
+      "name": "Manual Judgment",
+      "notifications": [],
+      "propagateAuthenticationContext": true,
+      "refId": "1",
+      "requisiteStageRefIds": [],
+      "sendNotifications": true,
+      "type": "manualJudgment"
+    },
+    {
+      "analysisType": "realTime",
+      "canaryConfig": {
+        "canaryConfigId": "57315c05-c2a9-4d5b-8a82-3a76f2f3e247",
+        "lifetimeDuration": "PT1H1M",
+        "metricsAccountName": "spinnaker-datadog",
+        "scopes": [
+          {
+            "controlLocation": "pod",
+            "controlScope": "pod",
+            "experimentLocation": "pod",
+            "experimentScope": "pod",
+            "extendedScopeParams": {},
+            "scopeName": "default"
+          }
+        ],
+        "scoreThresholds": {
+          "marginal": "10",
+          "pass": "90"
+        },
+        "storageAccountName": "aws_canary"
+      },
+      "name": "Canary Analysis",
+      "refId": "2",
+      "requisiteStageRefIds": [],
+      "type": "kayentaCanary"
+    },
+    {
+      "application": "hello",
+      "failPipeline": true,
+      "name": "Pipeline",
+      "pipeline": "1b08eb75-eac2-48ef-9d7b-42eef5e8b07b",
+      "refId": "3",
+      "requisiteStageRefIds": [],
+      "type": "pipeline",
+      "waitForCompletion": true
+    },
+    {
+      "application": "hello",
+      "executionOptions": {
+        "successful": true
+      },
+      "expectedArtifacts": [
+        {
+          "defaultArtifact": {
+            "customKind": true,
+            "id": "a03185a7-225b-4068-9aec-006bd4f705fa"
+          },
+          "displayName": "spotty-grasshopper-2",
+          "id": "ea03d7a7-5905-451f-b033-40dd6c5711aa",
+          "matchArtifact": {
+            "id": "fb65afb6-f119-426f-86fc-8424d82fc687",
+            "name": "main/weqweqw",
+            "type": "github/file"
+          },
+          "useDefaultArtifact": false,
+          "usePriorArtifact": false
+        }
+      ],
+      "name": "Find Artifacts From Execution",
+      "pipeline": "a0f29578-59ff-4fcd-acd5-b44a0e97767d",
+      "refId": "4",
+      "requisiteStageRefIds": [],
+      "type": "findArtifactFromExecution"
+    },
+    {
+      "account": "pod1",
+      "app": "hello",
+      "cloudProvider": "kubernetes",
+      "cluster": "ssdf",
+      "criteria": "newest",
+      "kind": "deployment",
+      "location": "pod1",
+      "mode": "dynamic",
+      "name": "Find Artifacts From Resource (Manifest)",
+      "refId": "5",
+      "requisiteStageRefIds": [],
+      "type": "findArtifactsFromResource"
+    },
+    {
+      "account": "pod1",
+      "app": "hello",
+      "cloudProvider": "kubernetes",
+      "location": "pod1",
+      "manifestName": "deployment popcorn-moviess",
+      "mode": "static",
+      "name": "Scale (Manifest)",
+      "refId": "6",
+      "replicas": "3",
+      "requisiteStageRefIds": [],
+      "type": "scaleManifest"
+    },
+    {
+      "name": "Check Preconditions",
+      "preconditions": [
+        {
+          "context": {
+            "stageName": "Manual Judgment",
+            "stageStatus": "RUNNING"
+          },
+          "failPipeline": true,
+          "type": "stageStatus"
+        },
+        {
+          "cloudProvider": "kubernetes",
+          "context": {
+            "cluster": "asasd",
+            "comparison": "==",
+            "credentials": "pod1",
+            "expected": 3,
+            "regions": []
+          },
+          "failPipeline": true,
+          "type": "clusterSize"
+        },
+        {
+          "context": {
+            "expression": "asdas",
+            "failureMessage": "asdas"
+          },
+          "failPipeline": true,
+          "type": "expression"
+        }
+      ],
+      "refId": "7",
+      "requisiteStageRefIds": [
+        "1"
+      ],
+      "type": "checkPreconditions"
+    },
+    {
+      "account": "pod1",
+      "app": "hello",
+      "cloudProvider": "kubernetes",
+      "kinds": [
+        "clusterRoleBinding"
+      ],
+      "labelSelectors": {
+        "selectors": [
+          {
+            "key": "asd",
+            "kind": "EQUALS",
+            "values": [
+              "as"
+            ]
+          }
+        ]
+      },
+      "location": "pod1",
+      "mode": "label",
+      "name": "Delete (Manifest)",
+      "options": {
+        "cascading": true,
+        "gracePeriodSeconds": 1
+      },
+      "refId": "8",
+      "requisiteStageRefIds": [],
+      "type": "deleteManifest"
+    },
+    {
+      "name": "Wait",
+      "refId": "9",
+      "requisiteStageRefIds": [],
+      "type": "wait",
+      "waitTime": 30
+    },
+    {
+      "continuePipeline": false,
+      "expectedArtifacts": [
+        {
+          "defaultArtifact": {
+            "customKind": true,
+            "id": "fb8d68d7-d661-4744-b517-dad16110566b"
+          },
+          "displayName": "s",
+          "id": "1a8a4987-bbcd-4a27-b6d9-4ddb643b7ba7",
+          "matchArtifact": {
+            "artifactAccount": "github",
+            "id": "d39a3d1c-5c22-4a00-956a-cf0bb33d3bc2",
+            "name": "asdfdsf",
+            "type": "github/file"
+          },
+          "useDefaultArtifact": false,
+          "usePriorArtifact": false
+        }
+      ],
+      "failPipeline": true,
+      "isNew": true,
+      "job": "Jenkins_Job",
+      "markUnstableAsSuccessful": false,
+      "master": "jenkins-qa",
+      "name": "Jenkins",
+      "parameters": {},
+      "propertyFile": "hhhhh",
+      "refId": "10",
+      "requisiteStageRefIds": [],
+      "type": "jenkins"
+    },
+    {
+      "account": "pod1",
+      "cloudProvider": "kubernetes",
+      "isNew": true,
+      "location": "pod1",
+      "manifestName": "deployment account-service-app-server",
+      "mode": "static",
+      "name": "Undo Rollout (Manifest)",
+      "numRevisionsBack": 1,
+      "refId": "11",
+      "requisiteStageRefIds": [],
+      "type": "undoRolloutManifest"
+    },
+    {
+      "account": "pod1",
+      "alias": "runJob",
+      "application": "hello",
+      "cloudProvider": "kubernetes",
+      "consumeArtifactSource": "propertyFile",
+      "credentials": "pod1",
+      "isNew": true,
+      "manifest": "asdasdas",
+      "manifestArtifact": {
+        "artifactAccount": "github",
+        "id": "22dc9a0b-cb3e-4602-ad95-b0ce4f88f951",
+        "name": "ssdf",
+        "reference": "ssdf",
+        "type": "github/file",
+        "version": "sdfsdf"
+      },
+      "manifestArtifactId": null,
+      "name": "Run Job (Manifest)",
+      "propertyFile": "as",
+      "refId": "12",
+      "requiredArtifactIds": [],
+      "requiredArtifacts": [
+        {
+          "artifact": {
+            "artifactAccount": "github",
+            "id": "dee264b8-ec29-450c-b579-378a926e3393",
+            "name": "asd",
+            "reference": "asd",
+            "type": "github/file",
+            "version": "asdas"
+          }
+        }
+      ],
+      "requisiteStageRefIds": [
+        "11"
+      ],
+      "source": "text",
+      "type": "runJobManifest"
+    }
+  ],
+  "triggers": [
+    {
+      "branch": "asd",
+      "enabled": true,
+      "expectedArtifactIds": [
+        "6fcc1053-f654-4b34-9750-65cd98e5d087"
+      ],
+      "project": "zendesk",
+      "secret": "asd",
+      "slug": "repo-name",
+      "source": "github",
+      "type": "git"
+    }
+  ],
+  "updateTs": "1598425364496"
+}

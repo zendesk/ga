@@ -1,0 +1,112 @@
+{
+  "$id": "stages/runPipeline.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "examples": [
+      {
+          "application": "hello",
+          "isNew": true,
+          "name": "Pipeline",
+          "pipeline": "1b08eb75-eac2-48ef-9d7b-42eef5e8b07b",
+          "refId": "3",
+          "requisiteStageRefIds": [],
+          "type": "pipeline",
+          "waitForCompletion": true
+      }
+  ],
+  "required": [
+      "application",
+      "name",
+      "pipeline",
+      "refId",
+      "requisiteStageRefIds",
+      "type",
+      "waitForCompletion"
+  ],
+  "properties": {
+      "application": {
+          "$id": "#/properties/application",
+          "type": "string",
+          "title": "The application schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "hello"
+          ]
+      },
+      "isNew": {
+          "$id": "#/properties/isNew",
+          "type": "boolean",
+          "title": "The isNew schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": false,
+          "examples": [
+              true
+          ]
+      },
+      "name": {
+          "$id": "#/properties/name",
+          "type": "string",
+          "title": "The name schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "Pipeline"
+          ]
+      },
+      "pipeline": {
+          "$id": "#/properties/pipeline",
+          "type": "string",
+          "title": "The pipeline schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "1b08eb75-eac2-48ef-9d7b-42eef5e8b07b"
+          ]
+      },
+      "refId": {
+          "$id": "#/properties/refId",
+          "type": "string",
+          "title": "The refId schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+              "3"
+          ]
+      },
+      "requisiteStageRefIds": {
+          "$id": "#/properties/requisiteStageRefIds",
+          "type": "array",
+          "title": "The requisiteStageRefIds schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": [],
+          "examples": [
+              []
+          ],
+          "additionalItems": true,
+          "items": {
+              "$id": "#/properties/requisiteStageRefIds/items"
+          }
+      },
+      "type": {
+          "$id": "#/properties/type",
+          "type": "string",
+          "title": "The type schema",
+          "description": "An explanation about the purpose of this instance.",
+          "const": "pipeline"
+      },
+      "waitForCompletion": {
+          "$id": "#/properties/waitForCompletion",
+          "type": "boolean",
+          "title": "The waitForCompletion schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": false,
+          "examples": [
+              true
+          ]
+      }
+  },
+  "additionalProperties": true
+}
