@@ -79,9 +79,9 @@ runs:
         echo "New tag: $new_tag"
 
         if [ ${{ inputs.dry-run }} = false ]; then
-          if [[ -n ${{ inputs.assets }} ]]; then
+          if [ -n ${{ inputs.assets }} ]; then
             assets=()
-            for f in ${{ inputs.assets }}; do && assets+=(-a "$f"); done
+            for f in ${{ inputs.assets }}; do assets+=(-a "$f"); done
             hub release create "${assets[@]}" -m "Release $new_tag" "$new_tag"
           else
             hub release create -m "Release $new_tag" $new_tag
