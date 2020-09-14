@@ -6,6 +6,7 @@ A GitHub Action to create a semantic releases for your default branch.
 - *github-token* (required)
 - *debug* (optional, default: false)
 - *dry-run* (optional, default: false)
+- *assets* (optional, file names are space delimited)
 
 ## Example
 ```yaml
