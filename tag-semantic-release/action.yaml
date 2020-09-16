@@ -4,11 +4,12 @@ author: Andy Hsieh
 inputs:
   version-type:
     required: true
-    default: patch
   github-token:
     required: true
   assets:
     default: ""
+  pre-release:
+    default: false
   debug:
     default: false
   dry-run:
@@ -79,13 +80,17 @@ runs:
         echo "New tag: $new_tag"
 
         if [ ${{ inputs.dry-run }} = false ]; then
+          options=()
+
           if [ -n "${{ inputs.assets }}" ]; then
-            assets=()
-            for f in ${{ inputs.assets }}; do assets+=(-a "$f"); done
-            hub release create "${assets[@]}" -m "Release $new_tag" "$new_tag"
-          else
-            hub release create -m "Release $new_tag" $new_tag
+            for f in ${{ inputs.assets }}; do options+=(-a "$f"); done
           fi
+
+          if [ ${{ inputs.pre-release }} = true ]; then
+            options+=("--prerealse")
+          fi
+
+          hub release create "${options[@]}" -m "Release $new_tag" "$new_tag"
         fi
       shell: bash
       id: main
