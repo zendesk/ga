@@ -2,11 +2,12 @@
 A GitHub Action to create a semantic releases for your default branch.
 
 ## Parameters
-- *version-type* (required, options: major, minor or patch)
-- *github-token* (required)
+- *assets* (optional, file names are space delimited)
 - *debug* (optional, default: false)
 - *dry-run* (optional, default: false)
-- *assets* (optional, file names are space delimited)
+- *github-token* (required)
+- *pre-release* (optional, default: false)
+- *version-type* (required, options: major, minor or patch)
 
 ## Example
 ```yaml
