@@ -87,7 +87,7 @@ runs:
           fi
 
           if [ ${{ inputs.pre-release }} = true ]; then
-            options+=("--prerealse")
+            options+=("--prerelease")
           fi
 
           hub release create "${options[@]}" -m "Release $new_tag" "$new_tag"
