@@ -5,10 +5,18 @@ on:
 
 jobs:
   release:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, zendesk-general]
     steps:
       - uses: zendesk/checkout@v2
       - uses: zendesk/ga/tag-semantic-release@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           version-type: patch
+  cron-job:
+    runs-on: [self-hosted, zendesk-stable]
+    if: github.event_name != 'schedule'
+    steps:
+      - uses: zendesk/checkout@v2
+        with:
+          ref: 'desired-branch-name-goes-here'
+      - run: cat README.md
