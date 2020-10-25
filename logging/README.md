@@ -1,11 +1,11 @@
 # Sauce connect
-A GitHub Action to opens a secure tunnel connection for testing between a Sauce Labs virtual machine and the runner.
+A GitHub Action to send logs to a file.
 
 ## Parameters
-- *sauce-username*: (required)
-- *sauce-access-key*: (required)
-- *tunnel-identifier*: (optional, default: github-action-tunnel)
-- *version*: (optional, default: 4.6.2)
+- *file*: (required)
+- *msg*: (required)
+- *identity*: (required e.g. team name)
+- *dry-run*: (optional, default: false)
 - *debug*: (option, default: false)
 
 ## Example
@@ -18,11 +18,12 @@ on:
 
 jobs:
   create:
-    runs-on: [self-hosted, zendesk-stable]
+    runs-on: [self-hosted, zendesk-general]
     steps:
       - uses: zendesk/checkout@v2
-      - uses: zendesk/ga/sauce-connect@v2
+      - uses: zendesk/ga/logging@v2
         with:
-          sauce-username: ${{ secrets.SAUCE_USERNAME }}
-          sauce-access-key: ${{ secrets.SAUCE_ACCESS_KEY }}
+          file: "test.log" # use the correct log gile
+          msg: "job has triggered today"
+		  identity: "team wombat"
 ```
