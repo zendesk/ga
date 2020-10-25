@@ -39,7 +39,7 @@ runs:
         payload=$(jq \
           --arg branchName "$branchName" \
           --arg sha "${commitSha:0:7}" \
-          --arg identity "{{ inputs.identity }}" \
+          --arg identity "${{ inputs.identity }}" \
           --arg repo "${{ github.repository }}" \
           --arg msg "${{ inputs.msg }}" \
           --arg runId "${{ github.run_id }}" \
