@@ -6,7 +6,7 @@ A GitHub Action to send logs to a local file.
 - *msg*: (required)
 - *identity*: (required e.g. team name)
 - *dry-run*: (optional, default: false)
-- *debug*: (option, default: false)
+- *debug*: (optional, default: false)
 
 ## Example
 ```yaml
