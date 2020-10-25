@@ -1,5 +1,5 @@
 {
-  "bracnhName": $branchName
+  "bracnhName": $branchName,
   "sha": $sha,
   "identity": $identity,
   "repo": $repo,
