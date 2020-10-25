@@ -1,5 +1,5 @@
 # Sauce connect
-A GitHub Action to send logs to a file.
+A GitHub Action to send logs to a local file.
 
 ## Parameters
 - *file*: (required)
@@ -23,7 +23,7 @@ jobs:
       - uses: zendesk/checkout@v2
       - uses: zendesk/ga/logging@v2
         with:
-          file: "test.log" # use the correct log gile
+          file: "test.log" # use the correct log file
           msg: "job has triggered today"
-		  identity: "team wombat"
+          identity: "team_wombat"
 ```
