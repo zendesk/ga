@@ -39,9 +39,9 @@ runs:
         payload=$(jq \
           --arg branchName "$branchName" \
           --arg sha "${commitSha:0:7}" \
-          --arg identity "$identity" \
+          --arg identity "{{ input.identity }}" \
           --arg repo "${{ github.repository }}" \
-          --arg msg "$msg" \
+          --arg msg "${{ input.msg }}" \
           --arg runId "${{ github.run_id }}" \
           --arg event "${{ github.event_name }}" \
           --arg workflowName "${{ github.workflow }}" \
@@ -53,6 +53,6 @@ runs:
         echo $payload
 
         if [ ${{ inputs.dry-run }} = false ]; then
-          echo $payload | sudo tee -a $file > /dev/null
+          echo $payload | sudo tee -a "${{ input.file }}" > /dev/null
         fi
       shell: bash
