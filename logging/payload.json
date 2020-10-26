@@ -1,0 +1,10 @@
+{
+  "branchName": $branchName,
+  "sha": $sha,
+  "identity": $identity,
+  "repo": $repo,
+  "msg": $msg,
+  "runId": $runId,
+  "event": $event,
+  "workflowName": $workflowName
+}

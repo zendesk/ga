@@ -1,0 +1,58 @@
+name: Logging
+description: Logging
+author: Andy Hsieh
+inputs:
+  file:
+    description: Target file to store the logging
+    required: true
+  msg:
+    description: Message
+    required: true
+  identity:
+    description: Identity e.g. team name
+    required: true
+  dry-run:
+    description: Print out the message but not sending to the target file
+    default: false
+  debug:
+    description: Turn on debug mode
+    default: false
+runs:
+  using: composite
+  steps:
+    - run: |
+        if [ ${{ inputs.debug }} = true ]; then
+          set -x
+        fi
+
+        # save commit SHA-1 (will trim this back in message)
+        commitSha="${{ github.sha }}"
+
+        # extract branch name (either pull request head or workflow trigger)
+        branchName="${{ github.head_ref }}"
+        if [[ -z $branchName ]]; then
+          # not a pull request workflow run
+          branchName="${{ github.ref }}"
+          branchName=${branchName/refs\/heads\/}
+        fi
+
+        payload=$(jq \
+          --arg branchName "$branchName" \
+          --arg sha "${commitSha:0:7}" \
+          --arg identity "${{ inputs.identity }}" \
+          --arg repo "${{ github.repository }}" \
+          --arg msg "${{ inputs.msg }}" \
+          --arg runId "${{ github.run_id }}" \
+          --arg event "${{ github.event_name }}" \
+          --arg workflowName "${{ github.workflow }}" \
+          --compact-output \
+          --from-file "${{ github.action_path }}/payload.json" \
+          --null-input
+        )
+
+        echo $payload
+
+        if [ ${{ inputs.dry-run }} = false ]; then
+          echo $payload | sudo tee -a "${{ inputs.file }}" > /dev/null
+        fi
+      shell: bash
