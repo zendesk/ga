@@ -1,5 +1,5 @@
-name: Sauce connect
-description: Sauce connect
+name: Logging
+description: Logging
 author: Andy Hsieh
 inputs:
   file:
