@@ -13,11 +13,15 @@ inputs:
   webhook-url:
     description: Samson generic webhook URL
     required: true
-
+outputs:
+  response:
+    description: The response from the webhook
+    value: ${{ steps.request.outputs.response }}
 runs:
   using: composite
   steps:
-    - run: |
+    - id: request
+      run: |
         # validate webhook URL
         if [[ ! "${{ inputs.webhook-url }}" =~ ^https://[^/]+/integrations/generic/[a-f0-9]{32}$ ]]; then
           echo "::error::Invalid Samson generic webhook URL format"
@@ -46,10 +50,14 @@ runs:
             '{deploy: {branch: $branchName,commit: {message: $message,sha: $sha}}}'
         )
 
-        curl \
+        response=$(curl \
           --data "$payload" \
           --header "Content-Type: application/json" \
           --request POST \
           --silent \
             "${{ inputs.webhook-url }}"
+        )
+
+        echo "::set-output name=response::$(echo $response)"
+        echo "$response"
       shell: bash
