@@ -58,6 +58,10 @@ runs:
             "${{ inputs.webhook-url }}"
         )
 
-        echo "::set-output name=response::$(echo $response)"
+        version=$(echo "$response" | jq .release.number)
+
         echo "$response"
+        echo "::set-output name=next_version::$(echo $version)"
+        echo "::set-output name=previous_version::$(expr $version - 1)"
+        echo "::set-output name=response::$(echo $response)"
       shell: bash
