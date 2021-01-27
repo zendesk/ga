@@ -58,10 +58,13 @@ runs:
             "${{ inputs.webhook-url }}"
         )
 
-        version=$(echo "$response" | jq .release.number)
+        release_number=$(echo "$response" | jq -r '.release.number // ""')
+        if [ -n "$release_number" ]; then
+          echo "Found release in response, outputting next_tag and previous_tag"
+          echo "::set-output name=next_tag::v$(echo $release_number)"
+          echo "::set-output name=previous_tag::v$(expr $release_number - 1)"
+        fi
 
         echo "$response"
-        echo "::set-output name=next_version::v$(echo $version)"
-        echo "::set-output name=previous_version::v$(expr $version - 1)"
         echo "::set-output name=response::$(echo $response)"
       shell: bash
