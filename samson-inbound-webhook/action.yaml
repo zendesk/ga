@@ -13,11 +13,21 @@ inputs:
   webhook-url:
     description: Samson generic webhook URL
     required: true
-
+outputs:
+  response:
+    description: The response from the webhook
+    value: ${{ steps.request.outputs.response }}
+  next_tag:
+    description: Next tag, if applicable
+    value: ${{ steps.request.outputs.next_tag }}
+  previous_tag:
+    description: Previous tag, if applicable
+    value: ${{ steps.request.outputs.previous_tag }}
 runs:
   using: composite
   steps:
-    - run: |
+    - id: request
+      run: |
         # validate webhook URL
         if [[ ! "${{ inputs.webhook-url }}" =~ ^https://[^/]+/integrations/generic/[a-f0-9]{32}$ ]]; then
           echo "::error::Invalid Samson generic webhook URL format"
@@ -46,10 +56,21 @@ runs:
             '{deploy: {branch: $branchName,commit: {message: $message,sha: $sha}}}'
         )
 
-        curl \
+        response=$(curl \
           --data "$payload" \
           --header "Content-Type: application/json" \
           --request POST \
           --silent \
             "${{ inputs.webhook-url }}"
+        )
+
+        release_number=$(echo "$response" | jq -r '.release.number // ""')
+        if [ -n "$release_number" ]; then
+          echo "Found release in response, outputting next_tag and previous_tag"
+          echo "::set-output name=next_tag::v$(echo $release_number)"
+          echo "::set-output name=previous_tag::v$(expr $release_number - 1)"
+        fi
+
+        echo "$response"
+        echo "::set-output name=response::$(echo $response)"
       shell: bash
