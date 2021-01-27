@@ -17,6 +17,12 @@ outputs:
   response:
     description: The response from the webhook
     value: ${{ steps.request.outputs.response }}
+  next_tag:
+    description: Next tag, if applicable
+    value: ${{ steps.request.outputs.next_tag }}
+  previous_tag:
+    description: Previous tag, if applicable
+    value: ${{ steps.request.outputs.previous_tag }}
 runs:
   using: composite
   steps:
