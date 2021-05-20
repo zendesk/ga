@@ -9,7 +9,7 @@ GitHub Action to report test results to Datadog.
   uses: zendesk/ga/dd-test-results@v1
   with:
     test-results-path: TEST_RESULTS_FILE_PATH
-    test-result-extractor: junit4|ios|unity
+    test-result-parser: junit4|ios|unity
     dd-api-key: ${{ secrets.DATADOG_API_KEY }}
 ```
 
@@ -21,15 +21,15 @@ GitHub Action to report test results to Datadog.
 
 ## Examples
 
-Within a workflow, an inbound webhook step only triggered for the `master` branch:
+To report test results from JUnit4 report:
 
 ```yaml
 steps:
   - name: Report test results to Datadog
     uses: zendesk/ga/dd-test-results@v1
     with:
-      test-results-path: TEST_RESULTS_FILE_PATH
-      test-result-extractor: junit4|ios|unity
+      test-results-path: app/build/outputs/androidTest-results/connected/app.xml
+      test-result-parser: junit4
       dd-api-key: ${{ secrets.DATADOG_API_KEY }}
 ```
 
