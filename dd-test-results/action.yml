@@ -1,0 +1,17 @@
+# https://help.github.com/en/actions/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions
+name: 'DD Test Results'
+description: 'Reports test results to DataDog'
+author: 'Elvis Porebski <eporebski@zendesk.com>'
+inputs:
+  test-results-path:
+    description: 'Path to the file containing test results'
+    required: true
+  test-result-parser:
+    description: 'Name of the parser used to extract test results'
+    required: true
+  dd-api-key:
+    description: 'A valid Datadog API key'
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist.index.js'
