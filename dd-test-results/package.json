@@ -1,6 +1,7 @@
 {
     "name": "dd-test-results",
     "version": "1.0.0",
+    "private": false,
     "description": "Report test results to Datadog",
     "main": "dist/index.js",
     "keywords": [
@@ -9,18 +10,26 @@
         "datadog",
         "test-results"
     ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/zendesk/ga.git"
+    },
     "author": "Elvis Porebski <eporebski@zendesk.com>",
+    "license": "Apache-2.0",
     "scripts": {
         "build": "tsc && ncc build lib/main.js",
         "format": "prettier --write **/*.ts",
         "test": "tsc --noEmit && jest"
     },
+    "dependencies": {
+        "@actions/core": "^1.3.0",
+        "@actions/http-client": "^1.0.11",
+        "junitxml-to-javascript": "^1.1.4"
+    },
     "devDependencies": {
         "@types/jest": "^26.0.23",
         "jest": "^26.6.3",
-        "ts-jest": "^26.5.6"
-    },
-    "dependencies": {
-        "junitxml-to-javascript": "^1.1.4"
-    }
+        "ts-jest": "^26.5.6",
+        "typescript": "^4.2.4"
+     }
 }
