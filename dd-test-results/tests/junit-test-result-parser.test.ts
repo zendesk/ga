@@ -104,5 +104,3 @@ describe("JUnit Test Result Parser", () => {
       .catch(e => {
         done(e);
       });
-  });
-});

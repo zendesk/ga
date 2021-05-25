@@ -39,10 +39,8 @@ export class DataDogClient {
     this.baseURL = baseURL ?? 'https://api.datadoghq.com'
   }
 
-  async sendMetrics(
-    metrics: Metric[]
-  ): Promise<void> {
-    const s = { series: Array() }
+  async sendMetrics(metrics: Metric[]): Promise<void> {
+    const s = {series: Array()}
     const now = Date.now() / 1000
 
     for (const m of metrics) {
@@ -61,14 +59,15 @@ export class DataDogClient {
       JSON.stringify(s)
     )
 
-    if (response.message.statusCode === undefined || response.message.statusCode >= 400) {
+    if (
+      response.message.statusCode === undefined ||
+      response.message.statusCode >= 400
+    ) {
       throw new Error(`HTTP request failed: ${response.message.statusMessage}`)
     }
   }
 
-  async sendEvents(
-    events: Event[]
-  ): Promise<void> {
+  async sendEvents(events: Event[]): Promise<void> {
     let errors = 0
 
     core.debug(`About to send ${events.length} events`)
@@ -77,7 +76,10 @@ export class DataDogClient {
         `${this.baseURL}/api/v1/events`,
         JSON.stringify(ev)
       )
-      if (response.message.statusCode === undefined || response.message.statusCode >= 400) {
+      if (
+        response.message.statusCode === undefined ||
+        response.message.statusCode >= 400
+      ) {
         errors++
         core.error(`HTTP request failed: ${response.message.statusMessage}`)
       }
@@ -100,7 +102,10 @@ export class DataDogClient {
         `${this.baseURL}/api/v1/check_run`,
         JSON.stringify(sc)
       )
-      if (response.message.statusCode === undefined || response.message.statusCode >= 400) {
+      if (
+        response.message.statusCode === undefined ||
+        response.message.statusCode >= 400
+      ) {
         errors++
         core.error(`HTTP request failed: ${response.message.statusMessage}`)
       }
