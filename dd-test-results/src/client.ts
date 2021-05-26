@@ -26,17 +26,17 @@ export interface ServiceCheck {
 }
 
 export class DataDogClient {
-  private client: http.HttpClient
-  private baseURL: string
+  private _client: http.HttpClient
+  private _baseURL: string
 
   constructor(apiKey: string, baseURL?: string) {
-    this.client = new http.HttpClient('dd-http-client', [], {
+    this._client = new http.HttpClient('dd-http-client', [], {
       headers: {
         'DD-API-KEY': apiKey,
         'Content-Type': 'application/json'
       }
     })
-    this.baseURL = baseURL ?? 'https://api.datadoghq.com'
+    this._baseURL = baseURL ?? 'https://api.datadoghq.com'
   }
 
   async sendMetrics(metrics: Metric[]): Promise<void> {
@@ -54,16 +54,17 @@ export class DataDogClient {
     }
 
     core.debug(`About to send ${metrics.length} metrics`)
-    const response: http.HttpClientResponse = await this.client.post(
-      `${this.baseURL}/api/v1/series`,
+    const response: http.HttpClientResponse = await this._client.post(
+      `${this._baseURL}/api/v1/series`,
       JSON.stringify(s)
     )
 
     if (
+      response === undefined ||
       response.message.statusCode === undefined ||
       response.message.statusCode >= 400
     ) {
-      throw new Error(`HTTP request failed: ${response.message.statusMessage}`)
+      throw new Error(`HTTP request failed`)
     }
   }
 
@@ -72,16 +73,17 @@ export class DataDogClient {
 
     core.debug(`About to send ${events.length} events`)
     for (const ev of events) {
-      const response: http.HttpClientResponse = await this.client.post(
-        `${this.baseURL}/api/v1/events`,
+      const response: http.HttpClientResponse = await this._client.post(
+        `${this._baseURL}/api/v1/events`,
         JSON.stringify(ev)
       )
       if (
+        response === undefined ||
         response.message.statusCode === undefined ||
         response.message.statusCode >= 400
       ) {
         errors++
-        core.error(`HTTP request failed: ${response.message.statusMessage}`)
+        core.error(`HTTP request failed`)
       }
     }
 
@@ -90,24 +92,22 @@ export class DataDogClient {
     }
   }
 
-  async sendServiceChecks(
-    apiKey: string,
-    serviceChecks: ServiceCheck[]
-  ): Promise<void> {
+  async sendServiceChecks(serviceChecks: ServiceCheck[]): Promise<void> {
     let errors = 0
 
     core.debug(`About to send ${serviceChecks.length} service checks`)
     for (const sc of serviceChecks) {
-      const response: http.HttpClientResponse = await this.client.post(
-        `${this.baseURL}/api/v1/check_run`,
+      const response: http.HttpClientResponse = await this._client.post(
+        `${this._baseURL}/api/v1/check_run`,
         JSON.stringify(sc)
       )
       if (
+        response === undefined ||
         response.message.statusCode === undefined ||
         response.message.statusCode >= 400
       ) {
         errors++
-        core.error(`HTTP request failed: ${response.message.statusMessage}`)
+        core.error(`HTTP request failed`)
       }
     }
 
@@ -117,4 +117,6 @@ export class DataDogClient {
       )
     }
   }
+
+  get client() { return this._client }
 }
