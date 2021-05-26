@@ -19,5 +19,8 @@
         "@types/jest": "^26.0.23",
         "jest": "^26.6.3",
         "ts-jest": "^26.5.6"
+    },
+    "dependencies": {
+        "junitxml-to-javascript": "^1.1.4"
     }
 }
