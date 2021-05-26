@@ -99,6 +99,8 @@ class DataDogClient {
             }
         });
     }
-    get client() { return this._client; }
+    get client() {
+        return this._client;
+    }
 }
 exports.DataDogClient = DataDogClient;
