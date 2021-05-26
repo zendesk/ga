@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?> 
+<testsuites name='MessagingIntegration-SPMAPITests.xctest' tests='6' failures='1' retries='2'>
+  <testsuite name='MessagingIntegration_SPMAPITests.ConversationKitAPIContractTests' tests='5' failures='1'>
+    <testcase classname='MessagingIntegration_SPMAPITests.ConversationKitAPIContractTests' name='testItCanSetupConversationKit' time='0.490'/>
+    <testcase classname='MessagingIntegration_SPMAPITests.ConversationKitAPIContractTests' name='testItCreatesAnonymousUser' time='0.515'/>
+    <testcase classname='MessagingIntegration_SPMAPITests.ConversationKitAPIContractTests' name='testItGetsConversation' retries='1'>
+      <failure message='Asynchronous wait failed: Exceeded timeout of 5 seconds, with unfulfilled expectations: &quot;Failed to get conversation&quot;.'>
+        MessagingAPIContractTests/ConversationKitAPIContractTests.swift:177
+      </failure>
+    </testcase>
+    <testcase classname='MessagingIntegration_SPMAPITests.ConversationKitAPIContractTests' name='testItRecievesMessagesToConversation' time='3.425'/>
+    <testcase classname='MessagingIntegration_SPMAPITests.ConversationKitAPIContractTests' name='testItSendsMessageToConversation' time='1.156'/>
+  </testsuite>
+  <testsuite name='MessagingIntegration_SPMAPITests.MessagingAPIContractTests' tests='1' failures='0'>
+    <testcase classname='MessagingIntegration_SPMAPITests.MessagingAPIContractTests' name='testItInitializesMessaging' time='1.314'/>
+  </testsuite>
+</testsuites>
