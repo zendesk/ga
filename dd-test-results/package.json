@@ -17,10 +17,10 @@
     "author": "Elvis Porebski <eporebski@zendesk.com>",
     "license": "Apache-2.0",
     "scripts": {
-        "build": "tsc",
+        "build": "tsc -b tsconfig.build.json",
         "format": "prettier --write **/*.ts",
         "lint": "eslint src/**/*.ts",
-        "test": "tsc --noEmit && jest",
+        "test": "tsc --p tsconfig.build.json --noEmit && jest",
         "all": "npm run build && npm run format && npm run lint && npm test"
     },
     "dependencies": {
