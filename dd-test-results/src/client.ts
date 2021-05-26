@@ -118,5 +118,7 @@ export class DataDogClient {
     }
   }
 
-  get client() { return this._client }
+  get client(): http.HttpClient {
+    return this._client
+  }
 }

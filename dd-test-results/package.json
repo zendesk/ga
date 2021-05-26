@@ -25,7 +25,8 @@
     },
     "dependencies": {
         "@actions/core": "^1.3.0",
-        "@actions/http-client": "^1.0.11"
+        "@actions/http-client": "^1.0.11",
+        "junitxml-to-javascript": "^1.1.4"
     },
     "devDependencies": {
         "@types/jest": "^26.0.23",

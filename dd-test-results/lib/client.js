@@ -33,13 +33,13 @@ const core = __importStar(require("@actions/core"));
 const http = __importStar(require("@actions/http-client"));
 class DataDogClient {
     constructor(apiKey, baseURL) {
-        this.client = new http.HttpClient('dd-http-client', [], {
+        this._client = new http.HttpClient('dd-http-client', [], {
             headers: {
                 'DD-API-KEY': apiKey,
                 'Content-Type': 'application/json'
             }
         });
-        this.baseURL = baseURL !== null && baseURL !== void 0 ? baseURL : 'https://api.datadoghq.com';
+        this._baseURL = baseURL !== null && baseURL !== void 0 ? baseURL : 'https://api.datadoghq.com';
     }
     sendMetrics(metrics) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -55,10 +55,11 @@ class DataDogClient {
                 });
             }
             core.debug(`About to send ${metrics.length} metrics`);
-            const response = yield this.client.post(`${this.baseURL}/api/v1/series`, JSON.stringify(s));
-            if (response.message.statusCode === undefined ||
+            const response = yield this._client.post(`${this._baseURL}/api/v1/series`, JSON.stringify(s));
+            if (response === undefined ||
+                response.message.statusCode === undefined ||
                 response.message.statusCode >= 400) {
-                throw new Error(`HTTP request failed: ${response.message.statusMessage}`);
+                throw new Error(`HTTP request failed`);
             }
         });
     }
@@ -67,11 +68,12 @@ class DataDogClient {
             let errors = 0;
             core.debug(`About to send ${events.length} events`);
             for (const ev of events) {
-                const response = yield this.client.post(`${this.baseURL}/api/v1/events`, JSON.stringify(ev));
-                if (response.message.statusCode === undefined ||
+                const response = yield this._client.post(`${this._baseURL}/api/v1/events`, JSON.stringify(ev));
+                if (response === undefined ||
+                    response.message.statusCode === undefined ||
                     response.message.statusCode >= 400) {
                     errors++;
-                    core.error(`HTTP request failed: ${response.message.statusMessage}`);
+                    core.error(`HTTP request failed`);
                 }
             }
             if (errors > 0) {
@@ -79,16 +81,17 @@ class DataDogClient {
             }
         });
     }
-    sendServiceChecks(apiKey, serviceChecks) {
+    sendServiceChecks(serviceChecks) {
         return __awaiter(this, void 0, void 0, function* () {
             let errors = 0;
             core.debug(`About to send ${serviceChecks.length} service checks`);
             for (const sc of serviceChecks) {
-                const response = yield this.client.post(`${this.baseURL}/api/v1/check_run`, JSON.stringify(sc));
-                if (response.message.statusCode === undefined ||
+                const response = yield this._client.post(`${this._baseURL}/api/v1/check_run`, JSON.stringify(sc));
+                if (response === undefined ||
+                    response.message.statusCode === undefined ||
                     response.message.statusCode >= 400) {
                     errors++;
-                    core.error(`HTTP request failed: ${response.message.statusMessage}`);
+                    core.error(`HTTP request failed`);
                 }
             }
             if (errors > 0) {
@@ -96,5 +99,6 @@ class DataDogClient {
             }
         });
     }
+    get client() { return this._client; }
 }
 exports.DataDogClient = DataDogClient;
