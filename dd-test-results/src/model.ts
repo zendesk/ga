@@ -1,14 +1,15 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface TestResults {
-    testSuites: TestSuite[];
+  testSuites: TestSuite[]
 }
-  
+
 interface TestSuite {
-    name: string;
-    testCases: TestCase[];
+  name: string
+  testCases: TestCase[]
 }
 
 interface TestCase {
-    name: string;
-    duration: number;
-    result: string;
+  name: string
+  duration: number
+  result: string
 }
