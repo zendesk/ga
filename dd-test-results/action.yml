@@ -3,11 +3,11 @@ name: 'DD Test Results'
 description: 'Reports test results to DataDog'
 author: 'Elvis Porebski <eporebski@zendesk.com>'
 inputs:
-  test-results-path:
-    description: 'Path to the file containing test results'
+  junit-test-report:
+    description: 'Path to the JUnit test report'
     required: true
-  test-result-parser:
-    description: 'Name of the parser used to extract test results'
+  test-results-tags:
+    description: 'Path to the JSON file with tags to decorate test results'
     required: true
   dd-api-key:
     description: 'A valid Datadog API key'

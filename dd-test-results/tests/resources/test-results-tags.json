@@ -1,0 +1,23 @@
+{
+    "tags": {
+        "team": "a",
+        "test_classification": "smoke"
+    },
+    "suites": [
+        {
+            "name": "com.example.SampleTests",
+            "tags": {
+                "test_suite": "sample_tests"
+            },
+            "cases": [
+                {
+                    "name": "sampleTestName",
+                    "tags": {
+                        "team": "c",
+                        "test_case": "sampleTestName"
+                    }
+                }
+            ]
+        }
+    ]
+}
