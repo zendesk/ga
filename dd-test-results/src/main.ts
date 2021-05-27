@@ -1,3 +1,3 @@
-import * as junitTestResultParser from './junit-test-result-parser'
+import {run} from './run'
 
-console.log(junitTestResultParser.parse('test.xml'))
+run()
