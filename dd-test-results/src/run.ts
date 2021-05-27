@@ -16,11 +16,11 @@ export async function run(): Promise<void> {
     // const dataDogClient = new DataDogClient(apiKey)
     // IMPLEMENTED - Parse the test results
     // const testResults = await junitTestResultParser.parse(testReportPath)
-    // TODO - The following code is to parse the test data json
-    // let testData = await testDataParser.parse(testDataPath)
+    // TODO - Parse the test data json
+    // const testData = await testDataParser.parse(testDataPath)
     // TODO - Generate metrics and service checks from testResults and testData
-    // let metrics = await dataDogProcessor.getMetrics(testResults, testData)
-    // let serviceChecks = await dataDogProcessor.getServiceChecks(testResults, testData)
+    // const metrics = await dataDogProcessor.getMetrics(testResults, testData)
+    // const serviceChecks = await dataDogProcessor.getServiceChecks(testResults, testData)
     // IMPLEMENTED - Send the metrics and service checks
     // await dataDogClient.sendMetrics(metrics)
     // await dataDogClient.sendServiceChecks(serviceChecks)
