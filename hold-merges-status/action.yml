@@ -1,0 +1,24 @@
+name: Hold Merges
+description: Check with the hold-merges app to see if merging is currently allowed
+author: Craig Day
+branding:
+  color: blue
+  icon: git-merge
+
+runs:
+  using: node12
+  main: action.js
+
+inputs:
+  repo:
+    description: >
+      The name of the repo to check in hold-merges. Default: $GITHUB_REPOSITORY
+    required: false
+  fail_on_hold_status:
+    description: >
+      Fail the check if the status from hold-merges is `hold`. Default: false
+    required: false
+
+outputs:
+  status:
+    description: The current merge status. Either "hold" or "allow".
