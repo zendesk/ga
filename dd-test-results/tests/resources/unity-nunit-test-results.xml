@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="35" result="Passed" total="35" passed="35" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2021-05-26 10:35:32Z" end-time="2021-05-26 10:36:06Z" duration="34.7012741">
+  <test-suite type="TestSuite" id="1000" name="ZDUnitySDK" fullname="ZDUnitySDK" runstate="Runnable" testcasecount="35" result="Passed" start-time="2021-05-26 10:35:32Z" end-time="2021-05-26 10:36:06Z" duration="34.701274" total="35" passed="35" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <test-suite type="Assembly" id="1044" name="PlayMode.dll" fullname="/github/workspace/Library/ScriptAssemblies/PlayMode.dll" runstate="Runnable" testcasecount="35" result="Passed" start-time="2021-05-26 10:35:32Z" end-time="2021-05-26 10:36:06Z" duration="34.649471" total="35" passed="35" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="67" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+      </properties>
+      <test-suite type="TestSuite" id="1045" name="Tests" fullname="Tests" runstate="Runnable" testcasecount="35" result="Passed" start-time="2021-05-26 10:35:32Z" end-time="2021-05-26 10:36:06Z" duration="34.610542" total="35" passed="35" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestFixture" id="1001" name="HelpCenterProviderTests" fullname="Tests.HelpCenterProviderTests" classname="Tests.HelpCenterProviderTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2021-05-26 10:35:32Z" end-time="2021-05-26 10:35:38Z" duration="6.552537" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1005" name="GetArticleById_ReturnsValidResponse" fullname="Tests.HelpCenterProviderTests.GetArticleById_ReturnsValidResponse" methodname="GetArticleById_ReturnsValidResponse" classname="Tests.HelpCenterProviderTests" runstate="Runnable" seed="1186810886" result="Passed" start-time="2021-05-26 10:35:32Z" end-time="2021-05-26 10:35:33Z" duration="1.905011" asserts="0">
+            <properties>
+              <property name="_JOINTYPE" value="UnityCombinatorial" />
+            </properties>
+            <output><![CDATA[<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+]]></output>
+          </test-case>
+          <test-case id="1004" name="GetArticlesById_ReturnsValidResponse" fullname="Tests.HelpCenterProviderTests.GetArticlesById_ReturnsValidResponse" methodname="GetArticlesById_ReturnsValidResponse" classname="Tests.HelpCenterProviderTests" runstate="Runnable" seed="1692409639" result="Passed" start-time="2021-05-26 10:35:33Z" end-time="2021-05-26 10:35:35Z" duration="1.548251" asserts="0">
+            <properties>
+              <property name="_JOINTYPE" value="UnityCombinatorial" />
+            </properties>
+            <output><![CDATA[<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+]]></output>
+          </test-case>
+          <test-case id="1002" name="GetCategories_ReturnsValidResponse" fullname="Tests.HelpCenterProviderTests.GetCategories_ReturnsValidResponse" methodname="GetCategories_ReturnsValidResponse" classname="Tests.HelpCenterProviderTests" runstate="Runnable" seed="979461516" result="Passed" start-time="2021-05-26 10:35:35Z" end-time="2021-05-26 10:35:37Z" duration="1.552980" asserts="0">
+            <properties>
+              <property name="_JOINTYPE" value="UnityCombinatorial" />
+            </properties>
+            <output><![CDATA[<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+]]></output>
+          </test-case>
+          <test-case id="1003" name="GetSectionsById_ReturnsValidResponse" fullname="Tests.HelpCenterProviderTests.GetSectionsById_ReturnsValidResponse" methodname="GetSectionsById_ReturnsValidResponse" classname="Tests.HelpCenterProviderTests" runstate="Runnable" seed="450528598" result="Passed" start-time="2021-05-26 10:35:37Z" end-time="2021-05-26 10:35:38Z" duration="1.508892" asserts="0">
+            <properties>
+              <property name="_JOINTYPE" value="UnityCombinatorial" />
+            </properties>
+            <output><![CDATA[<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+]]></output>
+          </test-case>
+        </test-suite>
+        <test-suite type="TestFixture" id="1006" name="SupportProviderTests" fullname="Tests.SupportProviderTests" classname="Tests.SupportProviderTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2021-05-26 10:35:38Z" end-time="2021-05-26 10:35:58Z" duration="19.959327" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1008" name="AddComment_ReturnsValidResponse" fullname="Tests.SupportProviderTests.AddComment_ReturnsValidResponse" methodname="AddComment_ReturnsValidResponse" classname="Tests.SupportProviderTests" runstate="Runnable" seed="1856809565" result="Passed" start-time="2021-05-26 10:35:38Z" end-time="2021-05-26 10:35:43Z" duration="4.738158" asserts="0">
+            <properties>
+              <property name="_JOINTYPE" value="UnityCombinatorial" />
+            </properties>
+            <output><![CDATA[<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+]]></output>
+          </test-case>
+          <test-case id="1007" name="CreateRequest_ReturnsValidResponse" fullname="Tests.SupportProviderTests.CreateRequest_ReturnsValidResponse" methodname="CreateRequest_ReturnsValidResponse" classname="Tests.SupportProviderTests" runstate="Runnable" seed="785586103" result="Passed" start-time="2021-05-26 10:35:43Z" end-time="2021-05-26 10:35:46Z" duration="3.545628" asserts="0">
+            <properties>
+              <property name="_JOINTYPE" value="UnityCombinatorial" />
+            </properties>
+            <output><![CDATA[<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+]]></output>
+          </test-case>
+          <test-case id="1009" name="GetComments_ReturnsValidResponse" fullname="Tests.SupportProviderTests.GetComments_ReturnsValidResponse" methodname="GetComments_ReturnsValidResponse" classname="Tests.SupportProviderTests" runstate="Runnable" seed="1547495994" result="Passed" start-time="2021-05-26 10:35:46Z" end-time="2021-05-26 10:35:50Z" duration="3.766743" asserts="0">
+            <properties>
+              <property name="_JOINTYPE" value="UnityCombinatorial" />
+            </properties>
+            <output><![CDATA[<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+]]></output>
+          </test-case>
+          <test-case id="1010" name="GetRequest_ReturnsValidResponse" fullname="Tests.SupportProviderTests.GetRequest_ReturnsValidResponse" methodname="GetRequest_ReturnsValidResponse" classname="Tests.SupportProviderTests" runstate="Runnable" seed="1101604391" result="Passed" start-time="2021-05-26 10:35:50Z" end-time="2021-05-26 10:35:54Z" duration="3.863657" asserts="0">
+            <properties>
+              <property name="_JOINTYPE" value="UnityCombinatorial" />
+            </properties>
+            <output><![CDATA[<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+]]></output>
+          </test-case>
+          <test-case id="1011" name="GetRequests_ReturnsValidResponse" fullname="Tests.SupportProviderTests.GetRequests_ReturnsValidResponse" methodname="GetRequests_ReturnsValidResponse" classname="Tests.SupportProviderTests" runstate="Runnable" seed="956139138" result="Passed" start-time="2021-05-26 10:35:54Z" end-time="2021-05-26 10:35:58Z" duration="4.026805" asserts="0">
+            <properties>
+              <property name="_JOINTYPE" value="UnityCombinatorial" />
+            </properties>
+            <output><![CDATA[<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+]]></output>
+          </test-case>
+        </test-suite>
+        <test-suite type="TestFixture" id="1012" name="ZendeskAuthenticationTests" fullname="Tests.ZendeskAuthenticationTests" classname="Tests.ZendeskAuthenticationTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2021-05-26 10:35:58Z" end-time="2021-05-26 10:36:02Z" duration="4.304517" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1013" name="Authenticate_ForFirstTimeAttempt_ReturnsValidResponse" fullname="Tests.ZendeskAuthenticationTests.Authenticate_ForFirstTimeAttempt_ReturnsValidResponse" methodname="Authenticate_ForFirstTimeAttempt_ReturnsValidResponse" classname="Tests.ZendeskAuthenticationTests" runstate="Runnable" seed="1858086467" result="Passed" start-time="2021-05-26 10:35:58Z" end-time="2021-05-26 10:36:00Z" duration="2.088213" asserts="0">
+            <properties>
+              <property name="_JOINTYPE" value="UnityCombinatorial" />
+            </properties>
+            <output><![CDATA[<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+]]></output>
+          </test-case>
+          <test-case id="1014" name="Authenticate_ReAttempt_ReturnsValidResponse" fullname="Tests.ZendeskAuthenticationTests.Authenticate_ReAttempt_ReturnsValidResponse" methodname="Authenticate_ReAttempt_ReturnsValidResponse" classname="Tests.ZendeskAuthenticationTests" runstate="Runnable" seed="1471367994" result="Passed" start-time="2021-05-26 10:36:00Z" end-time="2021-05-26 10:36:02Z" duration="2.204728" asserts="0">
+            <properties>
+              <property name="_JOINTYPE" value="UnityCombinatorial" />
+            </properties>
+            <output><![CDATA[<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+]]></output>
+          </test-case>
+        </test-suite>
+        <test-suite type="TestFixture" id="1015" name="ZendeskCoreTests" fullname="Tests.ZendeskCoreTests" classname="Tests.ZendeskCoreTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2021-05-26 10:36:02Z" end-time="2021-05-26 10:36:03Z" duration="0.529533" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="ParameterizedMethod" id="1018" name="InitializeZendeskCore_WithDifferentZendeskConfigs_ReturnsValidResponse" fullname="Tests.ZendeskCoreTests.InitializeZendeskCore_WithDifferentZendeskConfigs_ReturnsValidResponse" classname="Tests.ZendeskCoreTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2021-05-26 10:36:02Z" end-time="2021-05-26 10:36:03Z" duration="0.483798" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties>
+              <property name="_JOINTYPE" value="UnityCombinatorial" />
+            </properties>
+            <test-case id="1016" name="InitializeZendeskCore_WithDifferentZendeskConfigs_ReturnsValidResponse(Tests.ZendeskConfig)" fullname="Tests.ZendeskCoreTests.InitializeZendeskCore_WithDifferentZendeskConfigs_ReturnsValidResponse(Tests.ZendeskConfig)" methodname="InitializeZendeskCore_WithDifferentZendeskConfigs_ReturnsValidResponse" classname="Tests.ZendeskCoreTests" runstate="Runnable" seed="241486239" result="Passed" start-time="2021-05-26 10:36:02Z" end-time="2021-05-26 10:36:03Z" duration="0.240764" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1017" name="InitializeZendeskCore_WithDifferentZendeskConfigs_ReturnsValidResponse(Tests.ZendeskConfig)" fullname="Tests.ZendeskCoreTests.InitializeZendeskCore_WithDifferentZendeskConfigs_ReturnsValidResponse(Tests.ZendeskConfig)" methodname="InitializeZendeskCore_WithDifferentZendeskConfigs_ReturnsValidResponse" classname="Tests.ZendeskCoreTests" runstate="Runnable" seed="802353454" result="Passed" start-time="2021-05-26 10:36:03Z" end-time="2021-05-26 10:36:03Z" duration="0.233358" asserts="0">
+              <properties>
+                <property name="childIndex" value="2" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-case id="1019" name="UserAgentHasValidFormat" fullname="Tests.ZendeskCoreTests.UserAgentHasValidFormat" methodname="UserAgentHasValidFormat" classname="Tests.ZendeskCoreTests" runstate="Runnable" seed="1285508560" result="Passed" start-time="2021-05-26 10:36:03Z" end-time="2021-05-26 10:36:03Z" duration="0.035898" asserts="0">
+            <properties>
+              <property name="_JOINTYPE" value="UnityCombinatorial" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-suite type="TestFixture" id="1020" name="ZendeskMainTests" fullname="Tests.ZendeskMainTests" classname="Tests.ZendeskMainTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2021-05-26 10:36:03Z" end-time="2021-05-26 10:36:06Z" duration="3.129320" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1022" name="InitZendeskMain_WithInvalidConfig_StatusEqualsFailed" fullname="Tests.ZendeskMainTests.InitZendeskMain_WithInvalidConfig_StatusEqualsFailed" methodname="InitZendeskMain_WithInvalidConfig_StatusEqualsFailed" classname="Tests.ZendeskMainTests" runstate="Runnable" seed="661454242" result="Passed" start-time="2021-05-26 10:36:03Z" end-time="2021-05-26 10:36:04Z" duration="0.708900" asserts="0">
+            <properties>
+              <property name="_JOINTYPE" value="UnityCombinatorial" />
+            </properties>
+            <output><![CDATA[<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+Invalid URI: The hostname could not be parsed.
+]]></output>
+          </test-case>
+          <test-case id="1021" name="InitZendeskMain_WithValidConfig_StatusEqualsInitialised" fullname="Tests.ZendeskMainTests.InitZendeskMain_WithValidConfig_StatusEqualsInitialised" methodname="InitZendeskMain_WithValidConfig_StatusEqualsInitialised" classname="Tests.ZendeskMainTests" runstate="Runnable" seed="59696457" result="Passed" start-time="2021-05-26 10:36:04Z" end-time="2021-05-26 10:36:05Z" duration="1.169394" asserts="0">
+            <properties>
+              <property name="_JOINTYPE" value="UnityCombinatorial" />
+            </properties>
+            <output><![CDATA[<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+]]></output>
+          </test-case>
+          <test-case id="1023" name="ZendeskMain_SetAnonymousIdentity_WithValidCredentials_UserDetailsAreSetCorrectly" fullname="Tests.ZendeskMainTests.ZendeskMain_SetAnonymousIdentity_WithValidCredentials_UserDetailsAreSetCorrectly" methodname="ZendeskMain_SetAnonymousIdentity_WithValidCredentials_UserDetailsAreSetCorrectly" classname="Tests.ZendeskMainTests" runstate="Runnable" seed="822189434" result="Passed" start-time="2021-05-26 10:36:05Z" end-time="2021-05-26 10:36:06Z" duration="1.240369" asserts="0">
+            <properties>
+              <property name="_JOINTYPE" value="UnityCombinatorial" />
+            </properties>
+            <output><![CDATA[<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+<b>[ZENDESK SUCCESS]</b>Locale is successfully set to <b>en-US</b>
+]]></output>
+          </test-case>
+        </test-suite>
+        <test-suite type="TestFixture" id="1024" name="ZendeskUtilsTests" fullname="Tests.ZendeskUtilsTests" classname="Tests.ZendeskUtilsTests" runstate="Runnable" testcasecount="18" result="Passed" start-time="2021-05-26 10:36:06Z" end-time="2021-05-26 10:36:06Z" duration="0.087397" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="ParameterizedMethod" id="1043" name="SetZendeskShortDateFormat_ReturnsCorrectValues" fullname="Tests.ZendeskUtilsTests.SetZendeskShortDateFormat_ReturnsCorrectValues" classname="Tests.ZendeskUtilsTests" runstate="Runnable" testcasecount="18" result="Passed" start-time="2021-05-26 10:36:06Z" end-time="2021-05-26 10:36:06Z" duration="0.068004" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties>
+              <property name="_JOINTYPE" value="Pairwise" />
+            </properties>
+            <test-case id="1025" name="SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2020-05-26T06:35:31Z&quot;,&quot;fi&quot;)" fullname="Tests.ZendeskUtilsTests.SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2020-05-26T06:35:31Z&quot;,&quot;fi&quot;)" methodname="SetZendeskShortDateFormat_ReturnsCorrectValues" classname="Tests.ZendeskUtilsTests" runstate="Runnable" seed="1380148425" result="Passed" start-time="2021-05-26 10:36:06Z" end-time="2021-05-26 10:36:06Z" duration="0.033382" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1026" name="SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2020-05-26T06:35:31Z&quot;,&quot;en-us&quot;)" fullname="Tests.ZendeskUtilsTests.SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2020-05-26T06:35:31Z&quot;,&quot;en-us&quot;)" methodname="SetZendeskShortDateFormat_ReturnsCorrectValues" classname="Tests.ZendeskUtilsTests" runstate="Runnable" seed="420919178" result="Passed" start-time="2021-05-26 10:36:06Z" end-time="2021-05-26 10:36:06Z" duration="0.000649" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1027" name="SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2020-05-26T06:35:31Z&quot;,&quot;zh-cn&quot;)" fullname="Tests.ZendeskUtilsTests.SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2020-05-26T06:35:31Z&quot;,&quot;zh-cn&quot;)" methodname="SetZendeskShortDateFormat_ReturnsCorrectValues" classname="Tests.ZendeskUtilsTests" runstate="Runnable" seed="1711426756" result="Passed" start-time="2021-05-26 10:36:06Z" end-time="2021-05-26 10:36:06Z" duration="0.000639" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1028" name="SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2020-05-26T06:35:31Z&quot;,&quot;el&quot;)" fullname="Tests.ZendeskUtilsTests.SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2020-05-26T06:35:31Z&quot;,&quot;el&quot;)" methodname="SetZendeskShortDateFormat_ReturnsCorrectValues" classname="Tests.ZendeskUtilsTests" runstate="Runnable" seed="1685765066" result="Passed" start-time="2021-05-26 10:36:06Z" end-time="2021-05-26 10:36:06Z" duration="0.000644" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1029" name="SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2020-05-26T06:35:31Z&quot;,&quot;cs&quot;)" fullname="Tests.ZendeskUtilsTests.SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2020-05-26T06:35:31Z&quot;,&quot;cs&quot;)" methodname="SetZendeskShortDateFormat_ReturnsCorrectValues" classname="Tests.ZendeskUtilsTests" runstate="Runnable" seed="1110729077" result="Passed" start-time="2021-05-26 10:36:06Z" end-time="2021-05-26 10:36:06Z" duration="0.000626" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1030" name="SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2020-05-26T06:35:31Z&quot;,&quot;pl&quot;)" fullname="Tests.ZendeskUtilsTests.SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2020-05-26T06:35:31Z&quot;,&quot;pl&quot;)" methodname="SetZendeskShortDateFormat_ReturnsCorrectValues" classname="Tests.ZendeskUtilsTests" runstate="Runnable" seed="1254451007" result="Passed" start-time="2021-05-26 10:36:06Z" end-time="2021-05-26 10:36:06Z" duration="0.000658" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1031" name="SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2021-05-26T06:35:31Z&quot;,&quot;zh-cn&quot;)" fullname="Tests.ZendeskUtilsTests.SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2021-05-26T06:35:31Z&quot;,&quot;zh-cn&quot;)" methodname="SetZendeskShortDateFormat_ReturnsCorrectValues" classname="Tests.ZendeskUtilsTests" runstate="Runnable" seed="1038042243" result="Passed" start-time="2021-05-26 10:36:06Z" end-time="2021-05-26 10:36:06Z" duration="0.000793" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1032" name="SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2021-05-26T06:35:31Z&quot;,&quot;en-us&quot;)" fullname="Tests.ZendeskUtilsTests.SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2021-05-26T06:35:31Z&quot;,&quot;en-us&quot;)" methodname="SetZendeskShortDateFormat_ReturnsCorrectValues" classname="Tests.ZendeskUtilsTests" runstate="Runnable" seed="896253008" result="Passed" start-time="2021-05-26 10:36:06Z" end-time="2021-05-26 10:36:06Z" duration="0.000631" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1033" name="SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2021-05-26T06:35:31Z&quot;,&quot;el&quot;)" fullname="Tests.ZendeskUtilsTests.SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2021-05-26T06:35:31Z&quot;,&quot;el&quot;)" methodname="SetZendeskShortDateFormat_ReturnsCorrectValues" classname="Tests.ZendeskUtilsTests" runstate="Runnable" seed="761924460" result="Passed" start-time="2021-05-26 10:36:06Z" end-time="2021-05-26 10:36:06Z" duration="0.000619" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1034" name="SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2021-05-26T06:35:31Z&quot;,&quot;fi&quot;)" fullname="Tests.ZendeskUtilsTests.SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2021-05-26T06:35:31Z&quot;,&quot;fi&quot;)" methodname="SetZendeskShortDateFormat_ReturnsCorrectValues" classname="Tests.ZendeskUtilsTests" runstate="Runnable" seed="2086997770" result="Passed" start-time="2021-05-26 10:36:06Z" end-time="2021-05-26 10:36:06Z" duration="0.000758" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1035" name="SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2021-05-26T06:35:31Z&quot;,&quot;cs&quot;)" fullname="Tests.ZendeskUtilsTests.SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2021-05-26T06:35:31Z&quot;,&quot;cs&quot;)" methodname="SetZendeskShortDateFormat_ReturnsCorrectValues" classname="Tests.ZendeskUtilsTests" runstate="Runnable" seed="664303975" result="Passed" start-time="2021-05-26 10:36:06Z" end-time="2021-05-26 10:36:06Z" duration="0.000656" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1036" name="SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2021-05-26T06:35:31Z&quot;,&quot;pl&quot;)" fullname="Tests.ZendeskUtilsTests.SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2021-05-26T06:35:31Z&quot;,&quot;pl&quot;)" methodname="SetZendeskShortDateFormat_ReturnsCorrectValues" classname="Tests.ZendeskUtilsTests" runstate="Runnable" seed="114198856" result="Passed" start-time="2021-05-26 10:36:06Z" end-time="2021-05-26 10:36:06Z" duration="0.000588" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1037" name="SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2022-05-26T06:35:31Z&quot;,&quot;cs&quot;)" fullname="Tests.ZendeskUtilsTests.SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2022-05-26T06:35:31Z&quot;,&quot;cs&quot;)" methodname="SetZendeskShortDateFormat_ReturnsCorrectValues" classname="Tests.ZendeskUtilsTests" runstate="Runnable" seed="1521955530" result="Passed" start-time="2021-05-26 10:36:06Z" end-time="2021-05-26 10:36:06Z" duration="0.000605" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1038" name="SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2022-05-26T06:35:31Z&quot;,&quot;en-us&quot;)" fullname="Tests.ZendeskUtilsTests.SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2022-05-26T06:35:31Z&quot;,&quot;en-us&quot;)" methodname="SetZendeskShortDateFormat_ReturnsCorrectValues" classname="Tests.ZendeskUtilsTests" runstate="Runnable" seed="1499029953" result="Passed" start-time="2021-05-26 10:36:06Z" end-time="2021-05-26 10:36:06Z" duration="0.000594" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1039" name="SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2022-05-26T06:35:31Z&quot;,&quot;zh-cn&quot;)" fullname="Tests.ZendeskUtilsTests.SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2022-05-26T06:35:31Z&quot;,&quot;zh-cn&quot;)" methodname="SetZendeskShortDateFormat_ReturnsCorrectValues" classname="Tests.ZendeskUtilsTests" runstate="Runnable" seed="665337436" result="Passed" start-time="2021-05-26 10:36:06Z" end-time="2021-05-26 10:36:06Z" duration="0.000605" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1040" name="SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2022-05-26T06:35:31Z&quot;,&quot;el&quot;)" fullname="Tests.ZendeskUtilsTests.SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2022-05-26T06:35:31Z&quot;,&quot;el&quot;)" methodname="SetZendeskShortDateFormat_ReturnsCorrectValues" classname="Tests.ZendeskUtilsTests" runstate="Runnable" seed="1612706616" result="Passed" start-time="2021-05-26 10:36:06Z" end-time="2021-05-26 10:36:06Z" duration="0.000645" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1041" name="SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2022-05-26T06:35:31Z&quot;,&quot;fi&quot;)" fullname="Tests.ZendeskUtilsTests.SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2022-05-26T06:35:31Z&quot;,&quot;fi&quot;)" methodname="SetZendeskShortDateFormat_ReturnsCorrectValues" classname="Tests.ZendeskUtilsTests" runstate="Runnable" seed="1731955135" result="Passed" start-time="2021-05-26 10:36:06Z" end-time="2021-05-26 10:36:06Z" duration="0.000606" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1042" name="SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2022-05-26T06:35:31Z&quot;,&quot;pl&quot;)" fullname="Tests.ZendeskUtilsTests.SetZendeskShortDateFormat_ReturnsCorrectValues(&quot;2022-05-26T06:35:31Z&quot;,&quot;pl&quot;)" methodname="SetZendeskShortDateFormat_ReturnsCorrectValues" classname="Tests.ZendeskUtilsTests" runstate="Runnable" seed="389206743" result="Passed" start-time="2021-05-26 10:36:06Z" end-time="2021-05-26 10:36:06Z" duration="0.000594" asserts="0">
+              <properties />
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

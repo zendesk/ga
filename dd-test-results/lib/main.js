@@ -27,24 +27,38 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const junitTestResultParser = __importStar(require("./junit-test-result-parser"));
-const core_1 = __importDefault(require("@actions/core"));
+const nunitTestResultParser = __importStar(require("./nunit-test-result-parser"));
+const core = __importStar(require("@actions/core"));
 const tagging_1 = require("./tagging");
 const client_1 = require("./client");
 function buildMetrics(taggedTestCases) {
     console.log(taggedTestCases);
     return [];
 }
-function main(junitTestResultsFile, tagsFile, client) {
+function getsupportedFrameworks() {
+    return ['junit', 'nunit'];
+}
+function main(testFramework, testResultsFile, tagsFile, client) {
     return __awaiter(this, void 0, void 0, function* () {
-        const testResults = yield junitTestResultParser.parse(junitTestResultsFile);
+        if (!getsupportedFrameworks().includes(testFramework)) {
+            throw new Error(testFramework + ' is not supported');
+        }
+        let testResults;
+        switch (testFramework) {
+            case 'junit':
+                testResults = yield junitTestResultParser.parse(testResultsFile);
+                break;
+            case 'nunit':
+                testResults = yield nunitTestResultParser.parse(testResultsFile);
+                break;
+            default:
+                throw new Error(testFramework + ' is not supported');
+        }
         const taggedTestCases = tagging_1.tagTestResults(testResults, tagsFile);
         const metrics = buildMetrics(taggedTestCases);
         client.sendMetrics(metrics);
     });
 }
-main(core_1.default.getInput('junit-test-results', { required: true }), core_1.default.getInput('test-results-tags', { required: true }), new client_1.DataDogClient(core_1.default.getInput('dd-api-key', { required: true })));
+main(core.getInput('test-framework', { required: true }), core.getInput('test-report', { required: true }), core.getInput('test-results-tags', { required: true }), new client_1.DataDogClient(core.getInput('dd-api-key', { required: true })));
