@@ -3,8 +3,11 @@ name: 'DD Test Results'
 description: 'Reports test results to DataDog'
 author: 'Elvis Porebski <eporebski@zendesk.com>'
 inputs:
-  junit-test-report:
-    description: 'Path to the JUnit test report'
+  test-framework:
+    description: 'Type of test framework (junit | nunit)'
+    required: true
+  test-report:
+    description: 'Path to the test report XML file'
     required: true
   test-results-tags:
     description: 'Path to the JSON file with tags to decorate test results'
@@ -14,4 +17,4 @@ inputs:
     required: true
 runs:
   using: 'node12'
-  main: 'dist.index.js'
+  main: 'dist/index.js'
