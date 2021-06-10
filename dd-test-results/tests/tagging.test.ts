@@ -18,13 +18,18 @@ describe('tagging', () => {
     }
 
     const tagsFile = path.join(__dirname, 'resources', 'test-results-tags.json')
-    const taggedTestCases = tagTestResults(testResults, tagsFile)
+    const taggedTestCases = tagTestResults(
+      ['platform:android'],
+      testResults,
+      tagsFile
+    )
 
     expect(taggedTestCases).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
           ...testCase,
           tags: {
+            platform: 'android',
             team: 'c',
             test_case: 'sampleTestName',
             test_classification: 'smoke',

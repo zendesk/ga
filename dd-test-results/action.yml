@@ -9,6 +9,9 @@ inputs:
   dd-metric-name:
     description: 'Datadog metric name'
     required: true
+  dd-tags:
+    description: Datadog metric tags
+    required: false
   dd-host:
     description: 'Datadog host name'
     required: true

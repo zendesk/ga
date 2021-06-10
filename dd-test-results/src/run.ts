@@ -7,6 +7,7 @@ import {buildAllMetrics} from './metrics'
 
 interface Inputs {
   metricName: string
+  tags: string[]
   host: string
   testFramework: string
   testReportFiles: Promise<string[]>
@@ -34,7 +35,11 @@ export async function run(
 
   for (const testReportFile of await inputs.testReportFiles) {
     const testResults: TestResults = parse(inputs.testFramework, testReportFile)
-    const taggedTestCases = tagTestResults(testResults, inputs.testTagsFile)
+    const taggedTestCases = tagTestResults(
+      inputs.tags,
+      testResults,
+      inputs.testTagsFile
+    )
     const metrics = buildAllMetrics(
       taggedTestCases,
       inputs.metricName,
