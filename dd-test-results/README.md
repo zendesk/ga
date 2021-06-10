@@ -22,7 +22,7 @@ GitHub Action to report test results to Datadog.
 - `dd-metric-name`: Datadog metric name
 - `dd-host`: Datadog host name
 - `test-framework`: Type of test framework (junit | nunit)
-- `test-report-file`: Path to the test report file
+- `test-report-file`: Path to the test report file. Supports [glob pattern](https://en.wikipedia.org/wiki/Glob_(programming))
 - `test-tags-file`: Path to the JSON file with tags to decorate test results
 
 ## Examples
@@ -38,7 +38,7 @@ steps:
       dd-metric-name: zendesk.tests
       dd-host: ${{ github.repository_owner }}
       test-framework: junit
-      test-report-file: app/build/outputs/androidTest-results/connected/app.xml
+      test-report-file: ./**/build/outputs/androidTest-results/connected/app.xml
       test-tags: test-tags.json
 ```
 
