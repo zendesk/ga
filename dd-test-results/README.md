@@ -8,32 +8,45 @@ GitHub Action to report test results to Datadog.
 - name: Report test results to Datadog
   uses: zendesk/ga/dd-test-results@v1
   with:
-    junit-test-report: TEST_RESULTS_FILE_PATH
-    test-results-tags: TEST_RESULTS_TAGS_FILE_PATH
     dd-api-key: ${{ secrets.DATADOG_API_KEY }}
+    dd-metric-name: zendesk.tests
+    dd-host: ${{ github.repository_owner }}
+    test-framework: junit|nunit
+    test-report-file: build/test/report.xml
+    test-tags-file: test-tags.json
 ```
 
 ## Inputs
 
-- `junit-test-report`: Path to the JUnit test report (required)
-- `test-results-tags`: Path to the JSON file with tags (required)
-- `dd-api-key`: A valid Datadog API key (required)
+- `dd-api-key`: Datadog API key (required)
+- `dd-metric-name`: Datadog metric name
+- `dd-host`: Datadog host name
+- `test-framework`: Type of test framework (junit | nunit)
+- `test-report-file`: Path to the test report file
+- `test-tags-file`: Path to the JSON file with tags to decorate test results
 
 ## Examples
 
-To report test results from JUnit4 report:
+To report Android JUnit test results:
 
 ```yaml
 steps:
   - name: Report test results to Datadog
     uses: zendesk/ga/dd-test-results@v1
     with:
-      junit-test-report: app/build/outputs/androidTest-results/connected/app.xml
-      test-results-tags: test-results-tags.json
       dd-api-key: ${{ secrets.DATADOG_API_KEY }}
+      dd-metric-name: zendesk.tests
+      dd-host: ${{ github.repository_owner }}
+      test-framework: junit
+      test-report-file: app/build/outputs/androidTest-results/connected/app.xml
+      test-tags: test-tags.json
 ```
 
 ## Test Results Tagging
+
+By default, each test result will include the following Datadog metric tags:
+- `success`: Either `true` or `false`. Extracted from the provided test report
+- `test_case`: Name of the test case extracted from the provided test report.
 
 To decorate test results with additional tags, provide a JSON file with the following structure as the input to the action:
 
@@ -53,7 +66,8 @@ To decorate test results with additional tags, provide a JSON file with the foll
         "name": "test_case_name",
         "tags": {
             "team": "Team C",
-            "another_tag_for_this_test_case_only": "12"
+            "another_tag_for_this_test_case_only": "12",
+            "test_case": "test_case_name_override"
         }
       }
     }

@@ -1,20 +1,27 @@
 # https://help.github.com/en/actions/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions
 name: 'DD Test Results'
 description: 'Reports test results to DataDog'
-author: 'Elvis Porebski <eporebski@zendesk.com>'
+author: 'Zendesk Mobile'
 inputs:
+  dd-api-key:
+    description: 'Datadog API key'
+    required: true
+  dd-metric-name:
+    description: 'Datadog metric name'
+    required: true
+  dd-host:
+    description: 'Datadog host name'
+    required: true
   test-framework:
     description: 'Type of test framework (junit | nunit)'
     required: true
-  test-report:
-    description: 'Path to the test report XML file'
+  test-report-file:
+    description: 'Path to the test report file'
     required: true
-  test-results-tags:
+  test-tags-file:
     description: 'Path to the JSON file with tags to decorate test results'
     required: true
-  dd-api-key:
-    description: 'A valid Datadog API key'
-    required: true
+
 runs:
   using: 'node12'
   main: 'dist/index.js'
