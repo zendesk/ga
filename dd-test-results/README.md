@@ -10,6 +10,8 @@ GitHub Action to report test results to Datadog.
   with:
     dd-api-key: ${{ secrets.DATADOG_API_KEY }}
     dd-metric-name: zendesk.tests
+    dd-tags: |
+     - "key:value"
     dd-host: ${{ github.repository_owner }}
     test-framework: junit|nunit|mstest
     test-report-file: build/test/report.xml
@@ -20,6 +22,7 @@ GitHub Action to report test results to Datadog.
 
 - `dd-api-key`: Datadog API key (required)
 - `dd-metric-name`: Datadog metric name
+- `dd-tags`: Datadog metric tags. Accepts multiline input where each line consists of key-value entry separated by colon (`:`).
 - `dd-host`: Datadog host name
 - `test-framework`: Type of test framework (junit | nunit | mstest)
 - `test-report-file`: Path to the test report file. Supports [glob pattern](https://en.wikipedia.org/wiki/Glob_(programming))
@@ -36,6 +39,8 @@ steps:
     with:
       dd-api-key: ${{ secrets.DATADOG_API_KEY }}
       dd-metric-name: zendesk.tests
+      dd-tags: |
+        - "job_name:${{ github.name }}"
       dd-host: ${{ github.repository_owner }}
       test-framework: junit
       test-report-file: ./**/build/outputs/androidTest-results/connected/app.xml
@@ -48,13 +53,20 @@ By default, each test result will include the following Datadog metric tags:
 - `success`: Either `true` or `false`. Extracted from the provided test report
 - `test_case`: Name of the test case extracted from the provided test report.
 
-To decorate test results with additional tags, provide a JSON file with the following structure as the input to the action:
+The action enables you to specify additional tags:
+- directly in the YML or 
+- in a supplementary JSON file.
+
+Tags provided in the YML are applied to all test cases in all test suites.
+
+Tags provided in the JSON file are applied to a specific test suites and cases.
+
+### JSON File
+
+To decorate test results with additional tags via JSON file, ensure the content adheres to the following structure:
 
 ```json
 {
-  "tags": { 
-    "team": "Team A"
-  },
   "suites": [
     {
       "name": "test_suite_name",
@@ -75,15 +87,12 @@ To decorate test results with additional tags, provide a JSON file with the foll
 }
 ```
 
-The action will then traverse the file, extracting and aggregating tags for each test case.
-
-You can specify tags at three levels:
-- globally at the root
+You can specify tags at two levels:
 - within a test suite
 - within a test case
-
-Tags specified at the root are applied to all test cases in all test suites.
 
 Tags specified for a particular test suite are applied only to test cases within that suite.
 
 Tags specified for a particular test cases are applied only to that test case.
+
+**NOTE**: All the tags specified in the JSON will be overriden by tags in YML given the same tag key.

@@ -51,7 +51,7 @@ function run(client, inputs) {
         let allMetrics = [];
         for (const testReportFile of yield inputs.testReportFiles) {
             const testResults = parse(inputs.testFramework, testReportFile);
-            const taggedTestCases = tagging_1.tagTestResults(testResults, inputs.testTagsFile);
+            const taggedTestCases = tagging_1.tagTestResults(inputs.tags, testResults, inputs.testTagsFile);
             const metrics = metrics_1.buildAllMetrics(taggedTestCases, inputs.metricName, inputs.host);
             allMetrics = [...allMetrics, ...metrics];
         }

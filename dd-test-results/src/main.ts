@@ -25,6 +25,7 @@ async function findTestReports(testReportFile: string): Promise<string[]> {
 
 run(new DataDogClient(core.getInput('dd-api-key', {required: true})), {
   metricName: core.getInput('dd-metric-name', {required: true}),
+  tags: core.getMultilineInput('dd-tags', {required: false}),
   host: core.getInput('dd-host', {required: true}),
   testFramework: core.getInput('test-framework', {required: true}),
   testReportFiles: findTestReports(
