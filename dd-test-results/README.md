@@ -11,7 +11,7 @@ GitHub Action to report test results to Datadog.
     dd-api-key: ${{ secrets.DATADOG_API_KEY }}
     dd-metric-name: zendesk.tests
     dd-host: ${{ github.repository_owner }}
-    test-framework: junit|nunit
+    test-framework: junit|nunit|mstest
     test-report-file: build/test/report.xml
     test-tags-file: test-tags.json
 ```
@@ -21,7 +21,7 @@ GitHub Action to report test results to Datadog.
 - `dd-api-key`: Datadog API key (required)
 - `dd-metric-name`: Datadog metric name
 - `dd-host`: Datadog host name
-- `test-framework`: Type of test framework (junit | nunit)
+- `test-framework`: Type of test framework (junit | nunit | mstest)
 - `test-report-file`: Path to the test report file. Supports [glob pattern](https://en.wikipedia.org/wiki/Glob_(programming))
 - `test-tags-file`: Path to the JSON file with tags to decorate test results
 

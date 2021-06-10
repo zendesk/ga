@@ -31,6 +31,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.run = void 0;
 const junitTestResultParser = __importStar(require("./junit-test-result-parser"));
 const nunitTestResultParser = __importStar(require("./nunit-test-result-parser"));
+const mstestTestResultParser = __importStar(require("./mstest-test-result-parser"));
 const tagging_1 = require("./tagging");
 const metrics_1 = require("./metrics");
 function parse(testFramework, testReportFile) {
@@ -39,6 +40,8 @@ function parse(testFramework, testReportFile) {
             junitTestResultParser.parse(testReportFile);
         case 'nunit':
             nunitTestResultParser.parse(testReportFile);
+        case 'mstest':
+            mstestTestResultParser.parse(testReportFile);
         default:
             throw new Error(testFramework + ' is not supported');
     }

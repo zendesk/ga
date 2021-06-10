@@ -1,5 +1,6 @@
 import * as junitTestResultParser from './junit-test-result-parser'
 import * as nunitTestResultParser from './nunit-test-result-parser'
+import * as mstestTestResultParser from './mstest-test-result-parser'
 import {tagTestResults} from './tagging'
 import {DataDogClient, Metric} from './client'
 import {buildAllMetrics} from './metrics'
@@ -18,6 +19,8 @@ function parse(testFramework: string, testReportFile: string): TestResults {
       junitTestResultParser.parse(testReportFile)
     case 'nunit':
       nunitTestResultParser.parse(testReportFile)
+    case 'mstest':
+      mstestTestResultParser.parse(testReportFile)
     default:
       throw new Error(testFramework + ' is not supported')
   }
