@@ -33,28 +33,26 @@ const junitTestResultParser = __importStar(require("./junit-test-result-parser")
 const nunitTestResultParser = __importStar(require("./nunit-test-result-parser"));
 const tagging_1 = require("./tagging");
 const metrics_1 = require("./metrics");
+function parse(testFramework, testReportFile) {
+    switch (testFramework) {
+        case 'junit':
+            junitTestResultParser.parse(testReportFile);
+        case 'nunit':
+            nunitTestResultParser.parse(testReportFile);
+        default:
+            throw new Error(testFramework + ' is not supported');
+    }
+}
 function run(client, inputs) {
     return __awaiter(this, void 0, void 0, function* () {
-        if (!getsupportedFrameworks().includes(inputs.testFramework)) {
-            throw new Error(inputs.testFramework + ' is not supported');
+        let allMetrics = [];
+        for (const testReportFile of yield inputs.testReportFiles) {
+            const testResults = parse(inputs.testFramework, testReportFile);
+            const taggedTestCases = tagging_1.tagTestResults(testResults, inputs.testTagsFile);
+            const metrics = metrics_1.buildAllMetrics(taggedTestCases, inputs.metricName, inputs.host);
+            allMetrics = [...allMetrics, ...metrics];
         }
-        let testResults;
-        switch (inputs.testFramework) {
-            case 'junit':
-                testResults = yield junitTestResultParser.parse(inputs.testReportFile);
-                break;
-            case 'nunit':
-                testResults = yield nunitTestResultParser.parse(inputs.testReportFile);
-                break;
-            default:
-                throw new Error(inputs.testFramework + ' is not supported');
-        }
-        const taggedTestCases = tagging_1.tagTestResults(testResults, inputs.testTagsFile);
-        const metrics = metrics_1.buildAllMetrics(taggedTestCases, inputs.metricName, inputs.host);
-        client.sendMetrics(metrics);
+        client.sendMetrics(allMetrics);
     });
 }
 exports.run = run;
-function getsupportedFrameworks() {
-    return ['junit', 'nunit'];
-}
