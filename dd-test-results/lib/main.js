@@ -27,20 +27,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(require("@actions/core"));
 const client_1 = require("./client");
 const run_1 = require("./run");
-const glob_1 = __importDefault(require("@actions/glob"));
+const glob = require("@actions/glob");
 const fs_1 = require("fs");
 const util_1 = require("util");
 const stats = util_1.promisify(fs_1.stat);
 function findTestReports(testReportFile) {
     return __awaiter(this, void 0, void 0, function* () {
-        const globber = yield glob_1.default.create(testReportFile);
+        const globber = yield glob.create(testReportFile);
         const searchResults = yield globber.glob();
         const testReportFiles = new Array();
         for (const searchResult of searchResults) {

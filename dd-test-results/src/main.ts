@@ -1,7 +1,7 @@
 import * as core from '@actions/core'
 import {DataDogClient} from './client'
 import {run} from './run'
-import * as glob from '@actions/glob'
+import glob = require('@actions/glob')
 import {stat} from 'fs'
 import {promisify} from 'util'
 const stats = promisify(stat)
