@@ -37,7 +37,7 @@ describe('metrics', () => {
       {
         type: 'gauge',
         name: 'sample.tests.avg',
-        value: 42,
+        value: 42 * 1000,
         tags: [
           'test_type:api',
           'test_case:custom_send_message_test_case_name_here',
@@ -59,7 +59,7 @@ describe('metrics', () => {
       {
         type: 'gauge',
         name: 'sample.tests.avg',
-        value: 12,
+        value: 12 * 1000,
         tags: [
           'test_type:browser',
           'success:false',
