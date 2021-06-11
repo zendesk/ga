@@ -14,14 +14,17 @@ interface Inputs {
   testTagsFile: string
 }
 
-function parse(testFramework: string, testReportFile: string): TestResults {
+async function parse(
+  testFramework: string,
+  testReportFile: string
+): Promise<TestResults> {
   switch (testFramework) {
     case 'junit':
-      junitTestResultParser.parse(testReportFile)
+      return await junitTestResultParser.parse(testReportFile)
     case 'nunit':
-      nunitTestResultParser.parse(testReportFile)
+      return await nunitTestResultParser.parse(testReportFile)
     case 'mstest':
-      mstestTestResultParser.parse(testReportFile)
+      return await mstestTestResultParser.parse(testReportFile)
     default:
       throw new Error(testFramework + ' is not supported')
   }
@@ -42,7 +45,10 @@ export async function run(
   for (const testReportFile of await inputs.testReportFiles) {
     console.log(`Parsing ${testReportFile}`)
 
-    const testResults: TestResults = parse(inputs.testFramework, testReportFile)
+    const testResults: TestResults = await parse(
+      inputs.testFramework,
+      testReportFile
+    )
 
     console.log('Tagging test results...')
 

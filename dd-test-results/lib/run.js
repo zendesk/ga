@@ -35,16 +35,18 @@ const mstestTestResultParser = __importStar(require("./mstest-test-result-parser
 const tagging_1 = require("./tagging");
 const metrics_1 = require("./metrics");
 function parse(testFramework, testReportFile) {
-    switch (testFramework) {
-        case 'junit':
-            junitTestResultParser.parse(testReportFile);
-        case 'nunit':
-            nunitTestResultParser.parse(testReportFile);
-        case 'mstest':
-            mstestTestResultParser.parse(testReportFile);
-        default:
-            throw new Error(testFramework + ' is not supported');
-    }
+    return __awaiter(this, void 0, void 0, function* () {
+        switch (testFramework) {
+            case 'junit':
+                return yield junitTestResultParser.parse(testReportFile);
+            case 'nunit':
+                return yield nunitTestResultParser.parse(testReportFile);
+            case 'mstest':
+                return yield mstestTestResultParser.parse(testReportFile);
+            default:
+                throw new Error(testFramework + ' is not supported');
+        }
+    });
 }
 function run(client, inputs) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -55,7 +57,7 @@ function run(client, inputs) {
         }
         for (const testReportFile of yield inputs.testReportFiles) {
             console.log(`Parsing ${testReportFile}`);
-            const testResults = parse(inputs.testFramework, testReportFile);
+            const testResults = yield parse(inputs.testFramework, testReportFile);
             console.log('Tagging test results...');
             const taggedTestCases = tagging_1.tagTestResults(inputs.tags, testResults, inputs.testTagsFile);
             console.log('Building metrics...');
