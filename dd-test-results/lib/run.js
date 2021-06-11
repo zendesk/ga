@@ -49,13 +49,22 @@ function parse(testFramework, testReportFile) {
 function run(client, inputs) {
     return __awaiter(this, void 0, void 0, function* () {
         let allMetrics = [];
+        const testReportResults = yield inputs.testReportFiles;
+        if (testReportResults.length == 0) {
+            throw new Error('Test report files not found');
+        }
         for (const testReportFile of yield inputs.testReportFiles) {
+            console.log(`Parsing ${testReportFile}`);
             const testResults = parse(inputs.testFramework, testReportFile);
+            console.log('Tagging test results...');
             const taggedTestCases = tagging_1.tagTestResults(inputs.tags, testResults, inputs.testTagsFile);
+            console.log('Building metrics...');
             const metrics = metrics_1.buildAllMetrics(taggedTestCases, inputs.metricName, inputs.host);
             allMetrics = [...allMetrics, ...metrics];
         }
+        console.log('Sending metrics...');
         client.sendMetrics(allMetrics);
+        console.log('Metrics sent.');
     });
 }
 exports.run = run;

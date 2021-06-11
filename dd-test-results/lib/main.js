@@ -31,6 +31,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(require("@actions/core"));
 const client_1 = require("./client");
 const run_1 = require("./run");
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const glob = require("@actions/glob");
 const fs_1 = require("fs");
 const util_1 = require("util");

@@ -1,6 +1,7 @@
 import * as core from '@actions/core'
 import {DataDogClient} from './client'
 import {run} from './run'
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 import glob = require('@actions/glob')
 import {stat} from 'fs'
 import {promisify} from 'util'

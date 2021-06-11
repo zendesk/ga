@@ -33,13 +33,27 @@ export async function run(
 ): Promise<void> {
   let allMetrics: Metric[] = []
 
+  const testReportResults = await inputs.testReportFiles
+
+  if (testReportResults.length == 0) {
+    throw new Error('Test report files not found')
+  }
+
   for (const testReportFile of await inputs.testReportFiles) {
+    console.log(`Parsing ${testReportFile}`)
+
     const testResults: TestResults = parse(inputs.testFramework, testReportFile)
+
+    console.log('Tagging test results...')
+
     const taggedTestCases = tagTestResults(
       inputs.tags,
       testResults,
       inputs.testTagsFile
     )
+
+    console.log('Building metrics...')
+
     const metrics = buildAllMetrics(
       taggedTestCases,
       inputs.metricName,
@@ -49,5 +63,9 @@ export async function run(
     allMetrics = [...allMetrics, ...metrics]
   }
 
+  console.log('Sending metrics...')
+
   client.sendMetrics(allMetrics)
+
+  console.log('Metrics sent.')
 }
