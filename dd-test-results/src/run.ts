@@ -70,6 +70,7 @@ export async function run(
   }
 
   console.dir(`Sending metrics... ${allMetrics}`)
+  console.log(`Sending metrics 2... ${JSON.stringify(allMetrics, null, 2)}`)
 
   client.sendMetrics(allMetrics)
 

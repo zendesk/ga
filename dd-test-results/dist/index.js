@@ -437,7 +437,8 @@ function run(client, inputs) {
             const metrics = metrics_1.buildAllMetrics(taggedTestCases, inputs.metricName, inputs.host);
             allMetrics = [...allMetrics, ...metrics];
         }
-        console.log(`Sending metrics... ${allMetrics}`);
+        console.dir(`Sending metrics... ${allMetrics}`);
+        console.log(`Sending metrics 2... ${JSON.stringify(allMetrics, null, 2)}`);
         client.sendMetrics(allMetrics);
         console.log('Metrics sent.');
     });
