@@ -346,7 +346,7 @@ function parseTestCase(testCaseElement) {
     const testCase = {
         name: testCaseElement.name,
         duration: testCaseElement.duration,
-        result: testCaseElement.result
+        result: testCaseElement.result == 'Passed' ? 'succeeded' : 'failed'
     };
     return testCase;
 }
