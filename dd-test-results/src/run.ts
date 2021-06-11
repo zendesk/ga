@@ -69,7 +69,7 @@ export async function run(
     allMetrics = [...allMetrics, ...metrics]
   }
 
-  console.log(`Sending metrics... ${allMetrics}`)
+  console.dir(`Sending metrics... ${allMetrics}`)
 
   client.sendMetrics(allMetrics)
 
