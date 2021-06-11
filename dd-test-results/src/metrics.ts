@@ -28,7 +28,7 @@ function buildMetrics(
     {
       type: 'gauge',
       name: `${metricName}.avg`,
-      value: taggedTestCase.duration,
+      value: taggedTestCase.duration * 1000,
       tags: Object.keys(taggedTestCase.tags).map(
         key => `${key}:${taggedTestCase.tags[key]}`
       ),

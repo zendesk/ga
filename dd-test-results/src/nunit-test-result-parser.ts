@@ -22,7 +22,7 @@ export async function parse(testResultPath: string): Promise<TestResults> {
 function parseTestCase(testCaseElement): TestCase {
   const testCase: TestCase = {
     name: testCaseElement.name,
-    duration: testCaseElement.duration * 1000,
+    duration: testCaseElement.duration,
     result: testCaseElement.result == 'Passed' ? 'succeeded' : 'failed'
   }
   return testCase

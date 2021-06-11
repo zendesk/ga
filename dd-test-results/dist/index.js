@@ -213,7 +213,7 @@ function buildMetrics(taggedTestCase, metricName, host) {
         {
             type: 'gauge',
             name: `${metricName}.avg`,
-            value: taggedTestCase.duration,
+            value: taggedTestCase.duration * 1000,
             tags: Object.keys(taggedTestCase.tags).map(key => `${key}:${taggedTestCase.tags[key]}`),
             host: host
         }
@@ -345,7 +345,7 @@ exports.parse = parse;
 function parseTestCase(testCaseElement) {
     const testCase = {
         name: testCaseElement.name,
-        duration: testCaseElement.duration * 1000,
+        duration: testCaseElement.duration,
         result: testCaseElement.result == 'Passed' ? 'succeeded' : 'failed'
     };
     return testCase;
