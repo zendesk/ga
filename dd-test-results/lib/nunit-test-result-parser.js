@@ -35,7 +35,7 @@ exports.parse = parse;
 function parseTestCase(testCaseElement) {
     const testCase = {
         name: testCaseElement.name,
-        duration: Number(parseFloat(testCaseElement.duration).toFixed(2)),
+        duration: testCaseElement.duration * 1000,
         result: testCaseElement.result == 'Passed' ? 'succeeded' : 'failed'
     };
     return testCase;
