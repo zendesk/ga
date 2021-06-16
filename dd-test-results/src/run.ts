@@ -71,6 +71,9 @@ export async function run(
 
   console.log('Sending metrics...')
 
+  console.log(`About to send ${allMetrics.length} allMetrics`)
+  console.log(`metrics: ${JSON.stringify(allMetrics)}`)
+
   client.sendMetrics(allMetrics)
 
   console.log('Metrics sent.')
