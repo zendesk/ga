@@ -26,7 +26,7 @@ describe('metrics', () => {
       {
         type: 'rate',
         name: 'sample.tests.count',
-        value: 1,
+        value: 0.1,
         tags: [
           'test_type:api',
           'test_case:custom_send_message_test_case_name_here',
@@ -48,7 +48,7 @@ describe('metrics', () => {
       {
         type: 'rate',
         name: 'sample.tests.count',
-        value: 1,
+        value: 0.1,
         tags: [
           'test_type:browser',
           'success:false',

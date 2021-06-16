@@ -215,7 +215,7 @@ function buildMetrics(taggedTestCase, metricName, host) {
         {
             type: 'rate',
             name: `${metricName}.count`,
-            value: 1.0,
+            value: 0.1,
             tags: Object.keys(taggedTestCase.tags).map(key => `${key}:${taggedTestCase.tags[key]}`),
             host: host
         },
