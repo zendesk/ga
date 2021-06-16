@@ -65,8 +65,6 @@ function run(client, inputs) {
             allMetrics = [...allMetrics, ...metrics];
         }
         console.log('Sending metrics...');
-        console.log(`About to send ${allMetrics.length} allMetrics`);
-        console.log(`metrics: ${JSON.stringify(allMetrics)}`);
         client.sendMetrics(allMetrics);
         console.log('Metrics sent.');
     });
