@@ -55,6 +55,15 @@ class DataDogClient {
                 });
             }
             core.debug(`About to send ${metrics.length} metrics`);
+            console.log(`About to send ${metrics.length} metrics`);
+            console.log(`metrics: ${JSON.stringify(metrics)}`);
+            console.log('************************************************************');
+            console.log('************************************************************');
+            console.log('************************************************************');
+            console.log('************************************************************');
+            console.log('************************************************************');
+            console.log(`About to send ${s.series.length} series`);
+            console.log(`series: ${JSON.stringify(s)}`);
             const response = yield this._client.post(`${this._baseURL}/api/v1/series`, JSON.stringify(s));
             if (response === undefined ||
                 response.message.statusCode === undefined ||
