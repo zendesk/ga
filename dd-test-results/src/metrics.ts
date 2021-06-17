@@ -17,7 +17,7 @@ function buildMetrics(
 ): Metric[] {
   return [
     {
-      type: 'rate',
+      type: 'count',
       name: `${metricName}.count`,
       value: 1,
       tags: Object.keys(taggedTestCase.tags).map(

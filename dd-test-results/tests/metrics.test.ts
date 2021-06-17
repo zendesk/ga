@@ -24,7 +24,7 @@ describe('metrics', () => {
 
     expect(metrics).toEqual([
       {
-        type: 'rate',
+        type: 'count',
         name: 'sample.tests.count',
         value: 1,
         tags: [
@@ -46,7 +46,7 @@ describe('metrics', () => {
         host: 'acme'
       },
       {
-        type: 'rate',
+        type: 'count',
         name: 'sample.tests.count',
         value: 1,
         tags: [
