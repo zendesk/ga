@@ -10,9 +10,9 @@ exports.buildAllMetrics = buildAllMetrics;
 function buildMetrics(taggedTestCase, metricName, host) {
     return [
         {
-            type: 'rate',
+            type: 'count',
             name: `${metricName}.count`,
-            value: 0.1,
+            value: 1,
             tags: Object.keys(taggedTestCase.tags).map(key => `${key}:${taggedTestCase.tags[key]}`),
             host: host
         },
