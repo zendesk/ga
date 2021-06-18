@@ -22,13 +22,13 @@ describe('MSTest Test Result Parser', () => {
           'CreateNewTicket_VerifyTicketShownInRequestList'
         )
         expect(r.testSuites[0].testCases[0].duration).toEqual(34)
-        expect(r.testSuites[0].testCases[0].result).toEqual('Passed')
+        expect(r.testSuites[0].testCases[0].result).toEqual('succeeded')
         // Second test case
         expect(r.testSuites[1].testCases[0].name).toEqual(
           'OpenHelpCenter_OpenArticle_VerifyContentsDisplayed'
         )
         expect(r.testSuites[1].testCases[0].duration).toEqual(47)
-        expect(r.testSuites[1].testCases[0].result).toEqual('Passed')
+        expect(r.testSuites[1].testCases[0].result).toEqual('succeeded')
         done()
       })
       .catch(e => {
