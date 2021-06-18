@@ -32,7 +32,8 @@ describe('metrics', () => {
           'test_case:custom_send_message_test_case_name_here',
           'success:true'
         ],
-        host: 'acme'
+        host: 'acme',
+        interval: 1
       },
       {
         type: 'gauge',
@@ -43,7 +44,8 @@ describe('metrics', () => {
           'test_case:custom_send_message_test_case_name_here',
           'success:true'
         ],
-        host: 'acme'
+        host: 'acme',
+        interval: 1
       },
       {
         type: 'count',
@@ -54,7 +56,8 @@ describe('metrics', () => {
           'success:false',
           'test_case:receive_message'
         ],
-        host: 'acme'
+        host: 'acme',
+        interval: 1
       },
       {
         type: 'gauge',
@@ -65,7 +68,8 @@ describe('metrics', () => {
           'success:false',
           'test_case:receive_message'
         ],
-        host: 'acme'
+        host: 'acme',
+        interval: 1
       }
     ])
   })

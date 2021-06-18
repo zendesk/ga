@@ -208,14 +208,16 @@ function buildMetrics(taggedTestCase, metricName, host) {
             name: `${metricName}.count`,
             value: 1,
             tags: Object.keys(taggedTestCase.tags).map(key => `${key}:${taggedTestCase.tags[key]}`),
-            host: host
+            host: host,
+            interval: 1
         },
         {
             type: 'gauge',
             name: `${metricName}.avg`,
             value: taggedTestCase.duration * 1000,
             tags: Object.keys(taggedTestCase.tags).map(key => `${key}:${taggedTestCase.tags[key]}`),
-            host: host
+            host: host,
+            interval: 1
         }
     ];
 }

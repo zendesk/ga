@@ -23,7 +23,8 @@ function buildMetrics(
       tags: Object.keys(taggedTestCase.tags).map(
         key => `${key}:${taggedTestCase.tags[key]}`
       ),
-      host: host
+      host: host,
+      interval: 1
     },
     {
       type: 'gauge',
@@ -32,7 +33,8 @@ function buildMetrics(
       tags: Object.keys(taggedTestCase.tags).map(
         key => `${key}:${taggedTestCase.tags[key]}`
       ),
-      host: host
+      host: host,
+      interval: 1
     }
   ]
 }

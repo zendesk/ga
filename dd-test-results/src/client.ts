@@ -7,6 +7,7 @@ export interface Metric {
   value: number
   tags: string[]
   host: string
+  interval: number
 }
 
 export interface Event {
