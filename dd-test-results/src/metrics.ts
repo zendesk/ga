@@ -24,7 +24,7 @@ function buildMetrics(
         key => `${key}:${taggedTestCase.tags[key]}`
       ),
       host: host,
-      interval: 1
+      interval: 0
     },
     {
       type: 'gauge',
@@ -34,7 +34,7 @@ function buildMetrics(
         key => `${key}:${taggedTestCase.tags[key]}`
       ),
       host: host,
-      interval: 1
+      interval: 0
     }
   ]
 }

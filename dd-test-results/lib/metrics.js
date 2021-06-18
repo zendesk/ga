@@ -15,7 +15,7 @@ function buildMetrics(taggedTestCase, metricName, host) {
             value: 1,
             tags: Object.keys(taggedTestCase.tags).map(key => `${key}:${taggedTestCase.tags[key]}`),
             host: host,
-            interval: 1
+            interval: 0
         },
         {
             type: 'gauge',
@@ -23,7 +23,7 @@ function buildMetrics(taggedTestCase, metricName, host) {
             value: taggedTestCase.duration * 1000,
             tags: Object.keys(taggedTestCase.tags).map(key => `${key}:${taggedTestCase.tags[key]}`),
             host: host,
-            interval: 1
+            interval: 0
         }
     ];
 }

@@ -33,7 +33,7 @@ describe('metrics', () => {
           'success:true'
         ],
         host: 'acme',
-        interval: 1
+        interval: 0
       },
       {
         type: 'gauge',
@@ -45,7 +45,7 @@ describe('metrics', () => {
           'success:true'
         ],
         host: 'acme',
-        interval: 1
+        interval: 0
       },
       {
         type: 'count',
@@ -57,7 +57,7 @@ describe('metrics', () => {
           'test_case:receive_message'
         ],
         host: 'acme',
-        interval: 1
+        interval: 0
       },
       {
         type: 'gauge',
@@ -69,7 +69,7 @@ describe('metrics', () => {
           'test_case:receive_message'
         ],
         host: 'acme',
-        interval: 1
+        interval: 0
       }
     ])
   })
