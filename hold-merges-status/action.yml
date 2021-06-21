@@ -21,4 +21,4 @@ inputs:
 
 outputs:
   status:
-    description: The current merge status. Either "hold" or "allow".
+    description: The current merge status. Either "hold", "allow", "error".
