@@ -20,6 +20,16 @@ describe('JUnit Test Result Parser', () => {
                     result: 'succeeded'
                   })
                 ])
+              }),
+              expect.objectContaining({
+                name: 'com.example.SampleTests',
+                testCases: expect.arrayContaining([
+                  expect.objectContaining({
+                    name: 'skippedTestName',
+                    duration: 0.057,
+                    result: 'skipped'
+                  })
+                ])
               })
             ])
           })
