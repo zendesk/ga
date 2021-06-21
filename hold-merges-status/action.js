@@ -6,7 +6,7 @@ const HOLD_MERGES_BASE_URL = 'http://hold-merges.internaltools-staging-use1.zend
 
 async function fetchStatus() {
   const repo = core.getInput('repo') || process.env['GITHUB_REPOSITORY']
-  const client = new httpm.HttpClient('hold-merges-action')
+  const client = new httpm.HttpClient('hold-merges-action', undefined, { socketTimeout: 30000 });
   const response = await client.get(`${HOLD_MERGES_BASE_URL}/status/${repo}`)
   const body = await response.readBody()
   const json = JSON.parse(body)
@@ -20,7 +20,7 @@ async function run() {
   core.info(`Hold-merges status: ${status}`)
   core.setOutput('status', status)
 
-  if (core.getInput('fail_on_hold_status')) {
+  if (status == 'hold' && core.getInput('fail_on_hold_status') != 'false') {
     core.setFailed('Hold status detected. Failing check.')
   }
 }
@@ -28,5 +28,6 @@ async function run() {
 try {
   run()
 } catch (error) {
+  core.setOutput('status', 'error')
   core.setFailed(`Action failed with error ${error}`)
 }

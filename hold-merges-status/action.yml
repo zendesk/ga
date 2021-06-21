@@ -16,7 +16,7 @@ inputs:
     required: false
   fail_on_hold_status:
     description: >
-      Fail the check if the status from hold-merges is `hold`. Default: false
+      Fail the check if the status from hold-merges is `hold`. Set `false` to keep this informative (not recommended). Default: `true`.
     required: false
 
 outputs:
