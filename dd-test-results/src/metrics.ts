@@ -6,6 +6,7 @@ export function buildAllMetrics(
   host: string
 ): Metric[] {
   return taggedTestCases
+    .filter(ttc => ttc.result !== 'skipped')
     .map(ttc => buildMetrics(includeRequiredTags(ttc), metricName, host))
     .reduce((total, current) => [...total, ...current])
 }

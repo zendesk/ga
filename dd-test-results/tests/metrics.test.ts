@@ -17,6 +17,12 @@ describe('metrics', () => {
         duration: 12,
         result: 'failed',
         tags: {test_type: 'browser'}
+      },
+      {
+        name: 'skipped_test',
+        duration: 12,
+        result: 'skipped',
+        tags: {test_type: 'browser'}
       }
     ]
 
