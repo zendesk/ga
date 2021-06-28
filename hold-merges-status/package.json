@@ -1,0 +1,24 @@
+{
+  "name": "hold-merges",
+  "version": "0.1.0",
+  "description": "Check with the hold-merges app to see if merging is currently allowed",
+  "main": "action.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zendesk/hold-merges.git"
+  },
+  "author": "Craig Day",
+  "license": "MIT",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/zendesk/hold-merges/issues"
+  },
+  "homepage": "https://github.com/zendesk/hold-merges#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/http-client": "^1.0.9"
+  }
+}
