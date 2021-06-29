@@ -7,9 +7,11 @@ const HOLD_MERGES_BASE_URL = 'http://hold-merges.internaltools-staging-use1.zend
 async function fetchStatus() {
   const repo = core.getInput('repo') || process.env['GITHUB_REPOSITORY']
   const client = new httpm.HttpClient('hold-merges-action', undefined, { socketTimeout: 30000 });
+  core.info(`requesting from ${HOLD_MERGES_BASE_URL}/status/${repo}`)
   const response = await client.get(`${HOLD_MERGES_BASE_URL}/status/${repo}`)
   const body = await response.readBody()
-  const json = {};
+  core.info(`response body: ${body}`)
+  let json = {}
 
   try {
     json = JSON.parse(body)
