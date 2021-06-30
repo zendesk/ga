@@ -5,10 +5,16 @@ Check with the hold-merges app to see if merging is currently allowed
 ## Usage
 
 ```yaml
-- name: Hold-merges Status
-  uses: zendesk/ga/hold-merges-status@v2
-  with:
-    repo: GITHUB_REPOSITORY
+jobs:
+  check_hold_merges:
+    runs-on:
+      - self-hosted
+      - zendesk-general
+    steps:
+      - uses: zendesk/checkout@v2
+      - uses: zendesk/ga/hold-merges-status@v2
+        with:
+          repo: GITHUB_REPOSITORY
 ```
 
 ## Inputs
